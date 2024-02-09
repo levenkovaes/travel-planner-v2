@@ -32,16 +32,16 @@ export const LIGHT: ITheme = {
     },
     button: {
       background: COLORS.white,
-      text: COLORS.accentDarkColor,
-      border: COLORS.accentColor,
+      text: COLORS.primaryDarkColor,
+      border: COLORS.primaryDarkColor,
 
       accentBackground: COLORS.accentColor,
       accentText: COLORS.white,
 
       disabled: COLORS.disabledButton,
 
-      hover: COLORS.accentDarkColor,
-      activeBackground: COLORS.activeButton,
+      hover: COLORS.accentColor,
+      active: COLORS.activeButton,
     },
     input: {
       background: COLORS.white,
@@ -76,7 +76,7 @@ export const DARK: ITheme = {
       disabled: COLORS.disabledButton,
 
       hover: COLORS.accentDarkColor,
-      activeBackground: COLORS.activeButton,
+      active: COLORS.activeButton,
     },
     input: {
       background: COLORS.primaryDarkColor,

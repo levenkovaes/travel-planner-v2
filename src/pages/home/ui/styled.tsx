@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import bg from "../ui/imgs/bg.jpg";
-import bgLaptop from "../ui/imgs/bg-laptop.jpg";
-import bgMobile from "../ui/imgs/bg-mobile.jpg";
+
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
+import PAGE_PADDING from "../../../shared/constants/styles/page-padding";
+import { TransparentLongButton } from "../../../shared/ui/button";
 import { COLORS } from "../../../shared/ui/theme";
+import bgLaptop from "../ui/assets/bg-laptop.jpg";
+import bg from "../ui/assets/bg.jpg";
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -11,33 +13,30 @@ export const HomeContainer = styled.div`
 
   &::before {
     content: "";
-    width: 100%;
+    width: 65%;
     height: 100%;
-    z-index: -1;
     position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
     background-image: url(${bg});
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: top right;
+    background-position: top center;
 
     @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
-      background-size: cover;
-      opacity: 0.4;
+      width: 100%;
     }
 
-    @media ${MEDIA_QUERY.laptop}, ${MEDIA_QUERY.tablet} {
+    @media ${MEDIA_QUERY.laptop}, ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
       background-image: url(${bgLaptop});
-    }
-
-    @media ${MEDIA_QUERY.mobile} {
-      background-image: url(${bgMobile});
     }
   }
 `;
 
 export const HomeWrapper = styled.div`
   flex-grow: 1;
-  padding: 160px;
+  ${PAGE_PADDING}
   background: linear-gradient(
     90deg,
     ${COLORS.white} 0%,
@@ -45,27 +44,35 @@ export const HomeWrapper = styled.div`
     transparent 70%
   );
 
-  @media ${MEDIA_QUERY.laptop} {
-    padding: 100px;
-  }
-
   @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
     background: unset;
-  }
-
-  @media ${MEDIA_QUERY.tablet} {
-    padding: 60px;
-  }
-
-  @media ${MEDIA_QUERY.mobile} {
-    padding: 40px 20px;
   }
 `;
 
 export const Section = styled.div`
   max-width: 50%;
 
+  & button:last-child {
+    margin-top: 60px;
+  }
+
   @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
     max-width: unset;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & button:last-child {
+      margin-top: 40px;
+    }
+  }
+`;
+
+export const STransparentLongButton = styled(TransparentLongButton)`
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    background-color: ${({ theme }) => theme.colors.button.background};
+    color: ${({ theme }) => theme.colors.button.text};
+    border: none;
   }
 `;

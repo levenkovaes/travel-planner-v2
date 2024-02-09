@@ -20,7 +20,7 @@ export interface ITheme {
       disabled: string;
 
       hover: string;
-      activeBackground: string;
+      active: string;
     };
     input: {
       background: string;

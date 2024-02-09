@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { Slide, ToastContainer } from "react-toastify";
 import { ThemeProvider } from "styled-components";
 
-import { Pages } from "../pages";
+import Pages from "../pages";
 import { selectTheme } from "../shared/ui/theme/themeSlice/themeSlice";
 
-export const App = () => {
+const App = () => {
   const selectedTheme = useSelector(selectTheme);
 
   return (
@@ -31,3 +31,5 @@ export const App = () => {
     </React.Fragment>
   );
 };
+
+export default App;
