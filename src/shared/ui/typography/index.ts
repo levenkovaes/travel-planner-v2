@@ -1,8 +1,10 @@
 import styled from "styled-components";
+
 import MEDIA_QUERY from "../../constants/styles/media-query";
 
 export const Heading1 = styled.h1`
   font-size: 60px;
+  letter-spacing: 0.7px;
   padding-bottom: 40px;
 
   @media ${MEDIA_QUERY.laptop} {
@@ -23,16 +25,17 @@ export const Heading1 = styled.h1`
 
 export const Paragraph1 = styled.p`
   font-size: 32px;
+  padding-bottom: 8px;
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 28px;
   }
 
   @media ${MEDIA_QUERY.tablet} {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   @media ${MEDIA_QUERY.mobile} {
-    font-size: 20px;
+    font-size: 18px;
   }
 `;
