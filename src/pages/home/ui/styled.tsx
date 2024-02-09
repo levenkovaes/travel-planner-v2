@@ -1,13 +1,27 @@
 import styled from "styled-components";
 
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
-import PAGE_PADDING from "../../../shared/constants/styles/page-padding";
+import MAIN_PADDING from "../../../shared/constants/styles/main-padding";
 import { TransparentLongButton } from "../../../shared/ui/button";
 import { COLORS } from "../../../shared/ui/theme";
 import bgLaptop from "../ui/assets/bg-laptop.jpg";
 import bg from "../ui/assets/bg.jpg";
 
 export const HomeContainer = styled.div`
+  flex-grow: 1;
+  background: linear-gradient(
+    90deg,
+    ${COLORS.white} 0%,
+    ${COLORS.white} 45%,
+    transparent 70%
+  );
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    background: unset;
+  }
+`;
+
+export const MainContainer = styled.main`
   display: flex;
   min-height: 100%;
 
@@ -34,19 +48,9 @@ export const HomeContainer = styled.div`
   }
 `;
 
-export const HomeWrapper = styled.div`
+export const MainWrapper = styled.div`
   flex-grow: 1;
-  ${PAGE_PADDING}
-  background: linear-gradient(
-    90deg,
-    ${COLORS.white} 0%,
-    ${COLORS.white} 45%,
-    transparent 70%
-  );
-
-  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
-    background: unset;
-  }
+  ${MAIN_PADDING}
 `;
 
 export const Section = styled.div`
