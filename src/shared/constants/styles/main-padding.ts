@@ -2,7 +2,7 @@ import { css } from "styled-components";
 
 import MEDIA_QUERY from "./media-query";
 
-const PAGE_PADDING = css`
+const MAIN_PADDING = css`
   padding: 160px;
 
   @media ${MEDIA_QUERY.laptop} {
@@ -18,4 +18,4 @@ const PAGE_PADDING = css`
   }
 `;
 
-export default PAGE_PADDING;
+export default MAIN_PADDING;

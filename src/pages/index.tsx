@@ -5,9 +5,8 @@ import Home from "./home/ui";
 
 const Pages = () => (
   <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-    </Route>
+    <Route index element={<Home />} />
+    <Route path="/" element={<Layout />}></Route>
   </Routes>
 );
 
