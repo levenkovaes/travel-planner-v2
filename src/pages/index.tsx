@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import { Layout } from "../shared/ui/layout";
-import { Home } from "./home";
+import { Home } from "./home/ui";
 
 export const Pages = () => (
   <Routes>

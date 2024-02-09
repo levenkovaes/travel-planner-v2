@@ -1,24 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "../../../../app/store";
-import { dark, light } from "../themes";
+import { DARK, LIGHT } from "..";
 import { IThemeState } from "./types";
 
 const initialState: IThemeState = window.matchMedia(
-  "(prefers-color-scheme: dark)"
+  "(prefers-color-scheme: DARK)"
 ).matches
-  ? { currentTheme: dark }
-  : { currentTheme: light };
+  ? { currentTheme: DARK }
+  : { currentTheme: LIGHT };
 
 export const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
     changeTheme: (state) => {
-      if (state.currentTheme.name === "light") {
-        state.currentTheme = dark;
+      if (state.currentTheme.name === "LIGHT") {
+        state.currentTheme = DARK;
       } else {
-        state.currentTheme = light;
+        state.currentTheme = LIGHT;
       }
     },
   },
