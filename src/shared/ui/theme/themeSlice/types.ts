@@ -28,6 +28,7 @@ export interface ITheme {
       placeholder: string;
       border: string;
     };
+    card: string;
     error: string;
     accentColor: string;
   };
