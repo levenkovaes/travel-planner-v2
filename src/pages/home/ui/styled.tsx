@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import MAIN_PADDING from "../../../shared/constants/styles/main-padding";
-import { TransparentLongButton } from "../../../shared/ui/button";
+import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
+import { LongButton } from "../../../shared/ui/button";
 import { COLORS } from "../../../shared/ui/theme";
+import { Heading1, Paragraph } from "../../../shared/ui/typography";
 import bgLaptop from "../ui/assets/bg-laptop.jpg";
 import bg from "../ui/assets/bg.jpg";
 
@@ -49,8 +50,13 @@ export const MainContainer = styled.main`
 `;
 
 export const MainWrapper = styled.div`
+  align-self: center;
   flex-grow: 1;
   ${MAIN_PADDING}
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    align-self: unset;
+  }
 `;
 
 export const Section = styled.div`
@@ -73,15 +79,28 @@ export const Section = styled.div`
   }
 `;
 
-export const STransparentLongButton = styled(TransparentLongButton)`
+export const HomeH1 = styled(Heading1)`
+  color: ${COLORS.primaryDarkColor};
+`;
+
+export const HomeParagraph = styled(Paragraph)`
+  color: ${COLORS.primaryDarkColor};
+`;
+
+export const HomeButton = styled(LongButton)`
+  border: 1px solid ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) => theme.colors.background};
+
   :hover,
   :focus {
-    color: ${COLORS.white};
+    background-color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.background};
+    cursor: pointer;
   }
 
   @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
-    background-color: ${COLORS.white};
-    color: ${({ theme }) => theme.colors.button.text};
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
     border: none;
   }
 `;
