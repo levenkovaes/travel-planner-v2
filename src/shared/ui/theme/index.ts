@@ -31,7 +31,7 @@ export const LIGHT: ITheme = {
       cover: COLORS.modalCoverLight,
     },
     button: {
-      background: COLORS.white,
+      background: COLORS.primaryLightColor,
       text: COLORS.primaryDarkColor,
       border: COLORS.primaryDarkColor,
 
@@ -40,7 +40,7 @@ export const LIGHT: ITheme = {
 
       disabled: COLORS.disabledButton,
 
-      hover: COLORS.accentColor,
+      hover: COLORS.accentLightColor,
       active: COLORS.activeButton,
     },
     input: {
@@ -49,6 +49,7 @@ export const LIGHT: ITheme = {
       placeholder: COLORS.primaryColor,
       border: COLORS.primaryDarkColor,
     },
+    card: COLORS.primaryLightColor,
     error: COLORS.red,
     accentColor: COLORS.accentLightColor,
   },
@@ -84,6 +85,7 @@ export const DARK: ITheme = {
       placeholder: COLORS.primaryColor,
       border: COLORS.primaryColor,
     },
+    card: COLORS.primaryDarkColor,
     error: COLORS.red,
     accentColor: COLORS.accentColor,
   },

@@ -74,8 +74,13 @@ export const Section = styled.div`
 `;
 
 export const STransparentLongButton = styled(TransparentLongButton)`
+  :hover,
+  :focus {
+    color: ${COLORS.white};
+  }
+
   @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
-    background-color: ${({ theme }) => theme.colors.button.background};
+    background-color: ${COLORS.white};
     color: ${({ theme }) => theme.colors.button.text};
     border: none;
   }

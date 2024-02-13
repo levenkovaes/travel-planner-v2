@@ -3,6 +3,9 @@ import styled from "styled-components";
 import MEDIA_QUERY from "../../constants/styles/media-query";
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: clamp(120px, 100%, 250px);
   min-width: fit-content;
   padding: 6px 20px;
@@ -10,8 +13,8 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.button.background};
   color: ${({ theme }) => theme.colors.button.text};
   border: none;
-  border-radius: 10px;
-  font-size: 30px;
+  border-radius: 8px;
+  font-size: 26px;
   transition: all 0.2s linear;
 
   :hover,
@@ -31,7 +34,7 @@ export const Button = styled.button`
   }
 
   @media ${MEDIA_QUERY.laptop} {
-    font-size: 26px;
+    font-size: 22px;
   }
 
   @media ${MEDIA_QUERY.tablet} {
@@ -67,4 +70,29 @@ export const TransparentButton = styled(Button)`
 
 export const TransparentLongButton = styled(TransparentButton)`
   width: clamp(120px, 100%, 350px);
+`;
+
+export const IconButton = styled(Button)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 100px;
+
+  @media ${MEDIA_QUERY.laptop} {
+    width: 54px;
+    height: 54px;
+  }
+
+  @media ${MEDIA_QUERY.tablet} {
+    width: 50px;
+    height: 50px;
+  }
+
+  @media ${MEDIA_QUERY.mobile} {
+    width: 40px;
+    height: 40px;
+  }
 `;
