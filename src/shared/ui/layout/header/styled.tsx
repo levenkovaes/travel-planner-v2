@@ -1,14 +1,27 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import MEDIA_QUERY from "../../../constants/styles/media-query";
 import { IconButton } from "../../button";
+import { COLORS } from "../../theme";
 
-const SHeader = styled.header`
+const SHeader = styled.header<{ variant?: string }>`
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
   background-color: ${({ theme }) => theme.colors.background};
   transition: background-color 0.2s, color 0.2s;
+
+  ${({ variant }) =>
+    variant === "transparentBg" &&
+    css`
+      background: transparent;
+
+      button:first-child {
+        path {
+          fill: ${COLORS.primaryDarkColor};
+        }
+      }
+    `}
 
   @media ${MEDIA_QUERY.laptop} {
     padding: 16px 40px;
@@ -27,7 +40,6 @@ export const LogoButton = styled(IconButton)`
   background: transparent;
 
   &:hover,
-  &:focus,
   &:active {
     background: transparent;
 

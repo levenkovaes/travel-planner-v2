@@ -19,27 +19,6 @@ export const HomeContainer = styled.div`
     transparent 70%
   );
 
-  header {
-    background: transparent;
-
-    button:first-child {
-      path {
-        fill: ${COLORS.primaryDarkColor};
-      }
-    }
-  }
-
-  footer {
-    background: transparent;
-
-    @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
-      p {
-        color: ${COLORS.primaryLightColor};
-        font-size: 10px;
-      }
-    }
-  }
-
   @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
     background: unset;
   }
@@ -122,8 +101,7 @@ export const HomeButton = styled(LongButton)`
   border: 1px solid ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};
 
-  :hover,
-  :focus {
+  :hover {
     background-color: ${({ theme }) => theme.colors.text};
     border-color: ${({ theme }) => theme.colors.text};
     color: ${({ theme }) => theme.colors.background};

@@ -9,8 +9,7 @@ export const CardContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.card};
   transition: all 0.2s linear;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.button.hover};
   }
 

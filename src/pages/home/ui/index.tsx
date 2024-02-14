@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <Header />
+      <Header variant="transparentBg" />
 
       <MainContainer>
         <MainWrapper>
@@ -38,7 +38,7 @@ const Home = () => {
         </MainWrapper>
       </MainContainer>
 
-      <Footer></Footer>
+      <Footer variant="transparentBg" />
     </HomeContainer>
   );
 };

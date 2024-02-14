@@ -17,8 +17,7 @@ export const Button = styled.button`
   font-size: 26px;
   transition: all 0.2s linear;
 
-  :hover,
-  :focus {
+  :hover {
     background-color: ${({ theme }) => theme.colors.button.hover};
     cursor: pointer;
   }
@@ -57,8 +56,7 @@ export const TransparentButton = styled(Button)`
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.colors.button.text};
 
-  :hover,
-  :focus {
+  :hover {
     background-color: ${({ theme }) => theme.colors.button.text};
     border-color: ${({ theme }) => theme.colors.button.text};
     color: ${({ theme }) => theme.colors.button.background};
