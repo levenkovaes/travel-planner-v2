@@ -7,6 +7,7 @@ export const Heading1 = styled.h1`
   font-weight: 700;
   letter-spacing: 0.7px;
   padding-bottom: 40px;
+  color: ${({ theme }) => theme.colors.text};
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 40px;
@@ -28,6 +29,7 @@ export const Heading2 = styled.h2`
   font-size: 30px;
   font-weight: 600;
   padding-bottom: 10px;
+  color: ${({ theme }) => theme.colors.text};
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 26px;
@@ -46,6 +48,7 @@ export const Paragraph = styled.p`
   font-size: 30px;
   font-weight: 400;
   padding-bottom: 8px;
+  color: ${({ theme }) => theme.colors.text};
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 26px;
@@ -64,6 +67,7 @@ export const SmallerParagraph = styled.p`
   font-size: 26px;
   font-weight: 400;
   padding-bottom: 8px;
+  color: ${({ theme }) => theme.colors.text};
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 22px;

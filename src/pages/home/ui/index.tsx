@@ -1,38 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Footer from "../../../shared/ui/layout/footer";
 import Header from "../../../shared/ui/layout/header";
-import { Heading1, Paragraph } from "../../../shared/ui/typography";
 import {
+  HomeButton,
   HomeContainer,
+  HomeH1,
+  HomeParagraph,
   MainContainer,
   MainWrapper,
   Section,
-  STransparentLongButton,
 } from "./styled";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
 
+  const handleClick = () => navigate("/menu");
+
   return (
     <HomeContainer>
-      <Header></Header>
+      <Header />
 
       <MainContainer>
         <MainWrapper>
           <Section>
             <div>
-              <Heading1>Travel Planner</Heading1>
-              <Paragraph>
+              <HomeH1>Travel Planner</HomeH1>
+              <HomeParagraph>
                 Manage your travel. <br />
                 Create and&nbsp;share your travel&nbsp;plans. <br />
                 Create packing and&nbsp;to-do lists.
-              </Paragraph>
+              </HomeParagraph>
             </div>
-            <STransparentLongButton onClick={() => navigate("/menu")}>
-              Try
-            </STransparentLongButton>
+            <HomeButton onClick={handleClick}>Try</HomeButton>
           </Section>
         </MainWrapper>
       </MainContainer>

@@ -1,14 +1,13 @@
 import React from "react";
 
-import { MenuContainer } from "./styled";
-import { Heading1 } from "../../../shared/ui/typography";
 import { Grid } from "../../../shared/ui/grid";
 import MenuCard from "../../../widgets/menu-card/ui";
+import { MenuContainer, MenuHeading } from "./styled";
 
 const Menu = () => {
   return (
     <MenuContainer>
-      <Heading1>Menu</Heading1>
+      <MenuHeading>Menu</MenuHeading>
       <Grid>
         <MenuCard></MenuCard>
         <MenuCard></MenuCard>

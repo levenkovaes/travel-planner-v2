@@ -2,6 +2,7 @@ import { ITheme } from "./themeSlice/types";
 
 export const COLORS = {
   white: "#ffffff",
+  darkGrey: "#212121",
   red: "#ff4a4a",
 
   primaryLightColor: "#eeebe7",
@@ -51,7 +52,7 @@ export const LIGHT: ITheme = {
     },
     card: COLORS.primaryLightColor,
     error: COLORS.red,
-    accentColor: COLORS.accentLightColor,
+    accentColor: COLORS.accentColor,
   },
 };
 
@@ -59,7 +60,7 @@ export const DARK: ITheme = {
   name: "dark",
   colors: {
     primaryColor: COLORS.primaryColor,
-    background: COLORS.primaryDarkColor,
+    background: COLORS.darkGrey,
     text: COLORS.primaryLightColor,
     modal: {
       background: COLORS.primaryDarkColor,

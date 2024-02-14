@@ -4,16 +4,14 @@ import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { TransparentButton } from "../../../shared/ui/button";
 
 export const CardContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.card};
   padding: 26px;
-  /* border: 2px solid ${({ theme }) => theme.colors.text}; */
   border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.card};
   transition: all 0.2s linear;
 
   &:hover,
   &:focus {
     background-color: ${({ theme }) => theme.colors.button.hover};
-    border: none;
   }
 
   @media ${MEDIA_QUERY.laptop} {

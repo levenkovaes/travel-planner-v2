@@ -9,6 +9,7 @@ const MEDIA_QUERY = {
     BREAKPOINTS.xl
   }px)`,
   desktop: `(min-width: ${BREAKPOINTS.xl}px)`,
+  xxl: `(min-width: ${BREAKPOINTS.xxl}px)`,
 };
 
 export default MEDIA_QUERY;

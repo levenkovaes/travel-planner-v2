@@ -23,6 +23,10 @@ button {
 body {
   min-height: 100dvh;
   display: flex;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #212121;
+  }
 }
 
 #root {
