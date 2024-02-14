@@ -32,9 +32,8 @@ export const LogoButton = styled(IconButton)`
     background: transparent;
 
     path {
-      fill: path {
-        fill: ${({ theme }) => theme.colors.accentColor};
-      }
+      transition: fill 0.2s ease-in-out;
+      fill: ${({ theme }) => theme.colors.accentColor};
     }
   }
 `;
