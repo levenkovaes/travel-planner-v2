@@ -10,12 +10,32 @@ import bg from "../ui/assets/bg.jpg";
 
 export const HomeContainer = styled.div`
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(
     90deg,
     ${COLORS.white} 0%,
     ${COLORS.white} 45%,
     transparent 70%
   );
+
+  header {
+    background: transparent;
+
+    button:first-child {
+      path {
+        fill: ${COLORS.primaryDarkColor};
+      }
+    }
+  }
+
+  footer {
+    background: transparent;
+
+    @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+      display: none;
+    }
+  }
 
   @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
     background: unset;
@@ -24,7 +44,7 @@ export const HomeContainer = styled.div`
 
 export const MainContainer = styled.main`
   display: flex;
-  min-height: 100%;
+  flex-grow: 1;
 
   &::before {
     content: "";
@@ -81,10 +101,18 @@ export const Section = styled.div`
 
 export const HomeH1 = styled(Heading1)`
   color: ${COLORS.primaryDarkColor};
+
+  @media ${MEDIA_QUERY.mobile} {
+    text-align: center;
+  }
 `;
 
 export const HomeParagraph = styled(Paragraph)`
   color: ${COLORS.primaryDarkColor};
+
+  @media ${MEDIA_QUERY.mobile} {
+    text-align: center;
+  }
 `;
 
 export const HomeButton = styled(LongButton)`
@@ -94,6 +122,7 @@ export const HomeButton = styled(LongButton)`
   :hover,
   :focus {
     background-color: ${({ theme }) => theme.colors.text};
+    border-color: ${({ theme }) => theme.colors.text};
     color: ${({ theme }) => theme.colors.background};
     cursor: pointer;
   }
@@ -102,5 +131,9 @@ export const HomeButton = styled(LongButton)`
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
     border: none;
+  }
+
+  @media ${MEDIA_QUERY.mobile} {
+    margin: 0 auto;
   }
 `;

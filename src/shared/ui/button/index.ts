@@ -25,6 +25,7 @@ export const Button = styled.button`
 
   :active {
     background-color: ${({ theme }) => theme.colors.button.background};
+    border-color: ${({ theme }) => theme.colors.button.background};
   }
 
   :disabled {
@@ -59,12 +60,14 @@ export const TransparentButton = styled(Button)`
   :hover,
   :focus {
     background-color: ${({ theme }) => theme.colors.button.text};
+    border-color: ${({ theme }) => theme.colors.button.text};
     color: ${({ theme }) => theme.colors.button.background};
     cursor: pointer;
   }
 
   :active {
     background-color: ${({ theme }) => theme.colors.button.active};
+    border-color: ${({ theme }) => theme.colors.button.active};
   }
 `;
 
@@ -80,6 +83,10 @@ export const IconButton = styled(Button)`
   height: 60px;
   padding: 10px;
   border-radius: 100px;
+
+  path {
+    fill: ${({ theme }) => theme.colors.text};
+  }
 
   @media ${MEDIA_QUERY.laptop} {
     width: 54px;

@@ -52,7 +52,7 @@ export const LIGHT: ITheme = {
     },
     card: COLORS.primaryLightColor,
     error: COLORS.red,
-    accentColor: COLORS.accentLightColor,
+    accentColor: COLORS.accentColor,
   },
 };
 

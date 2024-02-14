@@ -5,9 +5,10 @@ import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { Heading1 } from "../../../shared/ui/typography";
 
 export const MenuContainer = styled.div`
-  height: 100%;
+  flex-grow: 1;
   ${MAIN_PADDING}
   background-color: ${({ theme }) => theme.colors.background};
+  transition: background-color 0.2s, color 0.2s;
 `;
 
 export const MenuHeading = styled(Heading1)`

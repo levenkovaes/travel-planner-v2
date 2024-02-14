@@ -12,7 +12,6 @@ export const CardContainer = styled.div`
   &:hover,
   &:focus {
     background-color: ${({ theme }) => theme.colors.button.hover};
-    border: none;
   }
 
   @media ${MEDIA_QUERY.laptop} {
@@ -26,12 +25,6 @@ export const CardContainer = styled.div`
 
 export const CardButton = styled(TransparentButton)`
   margin: 20px auto 0;
-
-  &:hover,
-  &:focus,
-  &:active {
-    border: none;
-  }
 
   @media ${MEDIA_QUERY.laptop} {
     margin-top: 16px;

@@ -15,7 +15,7 @@ export const themeSlice = createSlice({
   initialState,
   reducers: {
     changeTheme: (state) => {
-      if (state.currentTheme.name === "LIGHT") {
+      if (state.currentTheme.name === "light") {
         state.currentTheme = DARK;
       } else {
         state.currentTheme = LIGHT;

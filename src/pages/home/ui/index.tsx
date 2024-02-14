@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <Header></Header>
+      <Header />
 
       <MainContainer>
         <MainWrapper>
