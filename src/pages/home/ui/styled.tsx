@@ -33,7 +33,10 @@ export const HomeContainer = styled.div`
     background: transparent;
 
     @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
-      display: none;
+      p {
+        color: ${COLORS.primaryLightColor};
+        font-size: 10px;
+      }
     }
   }
 
