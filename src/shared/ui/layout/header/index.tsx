@@ -7,7 +7,7 @@ import DarkMode from "./assets/DarkMode";
 import LightMode from "./assets/LightMode";
 import { Logo } from "./assets/Logo";
 import SHeader, { LogoButton } from "./styled";
-import { HeaderProps } from "./types";
+import HeaderProps from "./types";
 
 const Header: React.FC<HeaderProps> = ({ variant }) => {
   const dispatch = useDispatch();

@@ -1,19 +1,13 @@
 import React from "react";
 
-import { Grid } from "../../../shared/ui/grid";
-import MenuCard from "../../../widgets/menu-card/ui";
 import { MenuContainer, MenuHeading } from "./styled";
+import MenuGrid from "../../../widgets/menu-grid/ui";
 
 const Menu = () => {
   return (
     <MenuContainer>
       <MenuHeading>Menu</MenuHeading>
-      <Grid>
-        <MenuCard></MenuCard>
-        <MenuCard></MenuCard>
-        <MenuCard></MenuCard>
-        <MenuCard></MenuCard>
-      </Grid>
+      <MenuGrid />
     </MenuContainer>
   );
 };
