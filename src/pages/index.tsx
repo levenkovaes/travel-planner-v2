@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../shared/ui/layout";
 import Home from "./home/ui";
 import Menu from "./menu/ui";
+import NoPage from "./no-page/ui";
 import PackingChecklist from "./packing-checklist/ui";
-import NoPage from "./no-page";
 
 const Pages = () => (
   <Routes>

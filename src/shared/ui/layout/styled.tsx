@@ -8,6 +8,7 @@ const Main = styled.main`
   flex-direction: column;
   ${MAIN_PADDING}
   background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 `;
 

@@ -1,4 +1,4 @@
-import { Heading1, Paragraph } from "../../shared/ui/typography";
+import { Heading1, Paragraph } from "../../../shared/ui/typography";
 import { NoPageContainer } from "./styled";
 
 const NoPage = () => {
