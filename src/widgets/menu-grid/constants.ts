@@ -14,6 +14,6 @@ export const MENU_CARD_CONTENT: MenuCardProps[] = [
   {
     title: "Packing checklist",
     description: "Create a packing list.",
-    link: "",
+    link: "/packing-checklist",
   },
 ];

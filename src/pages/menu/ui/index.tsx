@@ -1,14 +1,14 @@
 import React from "react";
 
-import { MenuContainer, MenuHeading } from "./styled";
 import MenuGrid from "../../../widgets/menu-grid/ui";
+import { MenuHeading } from "./styled";
 
 const Menu = () => {
   return (
-    <MenuContainer>
-      <MenuHeading>Menu</MenuHeading>
+    <>
+      <MenuHeading>MENU</MenuHeading>
       <MenuGrid />
-    </MenuContainer>
+    </>
   );
 };
 
