@@ -7,8 +7,9 @@ import DarkMode from "./assets/DarkMode";
 import LightMode from "./assets/LightMode";
 import { Logo } from "./assets/Logo";
 import SHeader, { LogoButton } from "./styled";
+import HeaderProps from "./types";
 
-const Header = () => {
+const Header: React.FC<HeaderProps> = ({ variant }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const selectedTheme = useSelector(selectTheme);
@@ -22,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <SHeader>
+    <SHeader variant={variant}>
       <LogoButton onClick={handleLogoClick}>
         <Logo></Logo>
       </LogoButton>

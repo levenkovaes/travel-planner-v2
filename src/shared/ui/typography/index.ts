@@ -28,7 +28,6 @@ export const Heading1 = styled.h1`
 export const Heading2 = styled.h2`
   font-size: 30px;
   font-weight: 600;
-  padding-bottom: 10px;
   color: ${({ theme }) => theme.colors.text};
 
   @media ${MEDIA_QUERY.laptop} {

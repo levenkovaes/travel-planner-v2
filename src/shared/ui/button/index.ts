@@ -8,24 +8,24 @@ export const Button = styled.button`
   justify-content: center;
   width: clamp(120px, 100%, 250px);
   min-width: fit-content;
-  padding: 6px 20px;
+  padding: 10px 20px;
   margin: 0;
   background-color: ${({ theme }) => theme.colors.button.background};
   color: ${({ theme }) => theme.colors.button.text};
   border: none;
   border-radius: 8px;
   font-size: 26px;
-  transition: all 0.2s linear;
+  transition: all 0.2s ease-in-out;
 
-  :hover,
-  :focus {
+  :hover {
     background-color: ${({ theme }) => theme.colors.button.hover};
     cursor: pointer;
   }
 
   :active {
-    background-color: ${({ theme }) => theme.colors.button.background};
-    border-color: ${({ theme }) => theme.colors.button.background};
+    background-color: ${({ theme }) => theme.colors.button.active};
+    border-color: ${({ theme }) => theme.colors.button.active};
+    color: ${({ theme }) => theme.colors.button.background};
   }
 
   :disabled {
@@ -40,12 +40,10 @@ export const Button = styled.button`
 
   @media ${MEDIA_QUERY.tablet} {
     font-size: 20px;
-    padding: 10px 20px;
   }
 
   @media ${MEDIA_QUERY.mobile} {
     font-size: 18px;
-    padding: 10px 20px;
   }
 `;
 
@@ -57,8 +55,7 @@ export const TransparentButton = styled(Button)`
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.colors.button.text};
 
-  :hover,
-  :focus {
+  :hover {
     background-color: ${({ theme }) => theme.colors.button.text};
     border-color: ${({ theme }) => theme.colors.button.text};
     color: ${({ theme }) => theme.colors.button.background};

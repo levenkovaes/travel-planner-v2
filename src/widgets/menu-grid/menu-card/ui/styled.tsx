@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
-import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
-import { TransparentButton } from "../../../shared/ui/button";
+import MEDIA_QUERY from "../../../../shared/constants/styles/media-query";
+import { TransparentButton } from "../../../../shared/ui/button";
 
 export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
   padding: 26px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.card};
-  transition: all 0.2s linear;
+  transition: all 0.3s ease-in-out;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.button.hover};
   }
 
@@ -24,17 +27,5 @@ export const CardContainer = styled.div`
 `;
 
 export const CardButton = styled(TransparentButton)`
-  margin: 20px auto 0;
-
-  @media ${MEDIA_QUERY.laptop} {
-    margin-top: 16px;
-  }
-
-  @media ${MEDIA_QUERY.tablet} {
-    margin-top: 12px;
-  }
-
-  @media ${MEDIA_QUERY.mobile} {
-    margin-top: 10px;
-  }
+  margin: auto auto 0;
 `;

@@ -1,10 +1,10 @@
-import { SmallerParagraph } from "../../typography";
-import SFooter from "./styled";
+import SFooter, { FooterParagraph } from "./styled";
+import FooterProps from "./types";
 
-const Footer = () => {
+const Footer: React.FC<FooterProps> = ({ variant }) => {
   return (
-    <SFooter>
-      <SmallerParagraph>© 2024. All Rights Reserved.</SmallerParagraph>
+    <SFooter variant={variant}>
+      <FooterParagraph>© 2024. All Rights Reserved.</FooterParagraph>
     </SFooter>
   );
 };
