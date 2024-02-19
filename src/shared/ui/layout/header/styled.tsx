@@ -9,7 +9,7 @@ const SHeader = styled.header<{ variant?: string }>`
   justify-content: space-between;
   padding: 20px 60px;
   background-color: ${({ theme }) => theme.colors.background};
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
   ${({ variant }) =>
     variant === "transparentBg" &&

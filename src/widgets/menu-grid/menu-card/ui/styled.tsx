@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
   padding: 26px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.card};
-  transition: all 0.2s linear;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.button.hover};

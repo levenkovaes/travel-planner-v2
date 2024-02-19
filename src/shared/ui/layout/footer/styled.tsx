@@ -10,7 +10,7 @@ const SFooter = styled.footer<{ variant?: string }>`
   align-items: center;
   padding: 0 20px 20px;
   background-color: ${({ theme }) => theme.colors.background};
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
   ${({ variant }) =>
     variant === "transparentBg" &&

@@ -15,7 +15,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 8px;
   font-size: 26px;
-  transition: all 0.2s linear;
+  transition: all 0.2s ease-in-out;
 
   :hover {
     background-color: ${({ theme }) => theme.colors.button.hover};

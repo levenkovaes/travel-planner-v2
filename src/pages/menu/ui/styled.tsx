@@ -8,7 +8,7 @@ export const MenuContainer = styled.div`
   flex-grow: 1;
   ${MAIN_PADDING}
   background-color: ${({ theme }) => theme.colors.background};
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 `;
 
 export const MenuHeading = styled(Heading1)`
