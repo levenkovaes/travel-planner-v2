@@ -1,32 +1,32 @@
 import { useNavigate } from "react-router-dom";
 
 import { LongButton } from "../../../shared/ui/button";
-import { Heading1 } from "../../../shared/ui/typography";
-import {
-  PackingChecklistButtonWrapper,
-  PackingChecklistContainer,
-} from "./styled";
+import CenteringDiv from "../../../shared/ui/centering-div";
+import { CenteredHeading1 } from "../../../shared/ui/typography";
+import { PackingChecklistButtonWrapper } from "./styled";
 
 const PackingChecklist = () => {
   const navigate = useNavigate();
 
-  const handleShowNewChecklist = () => {
-    navigate("/new-checklist");
+  const handleShowChecklistCreation = () => {
+    navigate("/create-packing-checklist");
   };
-  const handleShowChecklist = () => {
-    navigate("/new-checklist");
+  const handleShowAllChecklists = () => {
+    navigate("/all-packing-checklists");
   };
 
   return (
-    <PackingChecklistContainer>
-      <Heading1>TRAVEL PACKING CHECKLIST</Heading1>
+    <CenteringDiv>
+      <CenteredHeading1>TRAVEL PACKING CHECKLIST</CenteredHeading1>
       <PackingChecklistButtonWrapper>
-        <LongButton onClick={handleShowNewChecklist}>New checklist</LongButton>
-        <LongButton onClick={handleShowChecklist}>
+        <LongButton onClick={handleShowChecklistCreation}>
+          New checklist
+        </LongButton>
+        <LongButton onClick={handleShowAllChecklists}>
           Previous checklists
         </LongButton>
       </PackingChecklistButtonWrapper>
-    </PackingChecklistContainer>
+    </CenteringDiv>
   );
 };
 

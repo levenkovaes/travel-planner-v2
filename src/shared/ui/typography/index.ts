@@ -25,6 +25,10 @@ export const Heading1 = styled.h1`
   }
 `;
 
+export const CenteredHeading1 = styled(Heading1)`
+  text-align: center;
+`;
+
 export const Heading2 = styled.h2`
   font-size: 30px;
   font-weight: 600;

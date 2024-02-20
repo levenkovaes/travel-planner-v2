@@ -5,6 +5,7 @@ import Home from "./home/ui";
 import Menu from "./menu/ui";
 import NoPage from "./no-page/ui";
 import PackingChecklist from "./packing-checklist/ui";
+import PackingChecklistCreation from "./packing-checklist-creation/ui";
 
 const Pages = () => (
   <Routes>
@@ -12,6 +13,10 @@ const Pages = () => (
     <Route path="/" element={<Layout />}>
       <Route path="menu" element={<Menu />} />
       <Route path="packing-checklist" element={<PackingChecklist />} />
+      <Route
+        path="create-packing-checklist"
+        element={<PackingChecklistCreation />}
+      />
 
       <Route path="*" element={<NoPage />} />
     </Route>
