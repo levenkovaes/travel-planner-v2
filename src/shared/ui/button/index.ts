@@ -31,6 +31,7 @@ export const Button = styled.button`
   :disabled {
     background-color: ${({ theme }) => theme.colors.button.disabled};
     border-color: ${({ theme }) => theme.colors.button.disabled};
+    color: ${({ theme }) => theme.colors.button.disabledText};
     cursor: auto;
   }
 

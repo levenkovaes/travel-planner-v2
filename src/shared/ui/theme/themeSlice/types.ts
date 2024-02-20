@@ -18,6 +18,7 @@ export interface ITheme {
       accentText: string;
 
       disabled: string;
+      disabledText: string;
 
       hover: string;
       active: string;
