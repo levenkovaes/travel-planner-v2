@@ -36,12 +36,16 @@ module.exports = {
           "sass-loader",
         ],
       },
-
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: "asset/resource",
       },
-      { test: /\\.(png|jp(e*)g|svg|gif)$/, use: ["file-loader"] },
+      { test: /\\.(png|jp(e*)g|gif)$/, use: ["file-loader"] },
+
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",

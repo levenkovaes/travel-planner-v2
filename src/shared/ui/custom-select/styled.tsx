@@ -5,11 +5,23 @@ import { SmallerParagraph } from "../typography";
 
 export const SelectWrapper = styled.div`
   position: relative;
+  margin: 6px 0 20px;
+
+  @media ${MEDIA_QUERY.laptop} {
+    margin: 4px 0 20px;
+  }
+
+  @media ${MEDIA_QUERY.tablet} {
+    margin: 2px 0 20px;
+  }
+
+  @media ${MEDIA_QUERY.mobile} {
+    margin: 0 0 20px;
+  }
 `;
 
 export const Select = styled.div<{ isOpen?: boolean }>`
   padding: 10px 20px;
-  margin: 6px 0 20px;
   border: 2px solid ${({ theme }) => theme.colors.input.border};
   border-radius: 6px;
   background-color: transparent;
@@ -30,37 +42,64 @@ export const Select = styled.div<{ isOpen?: boolean }>`
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 22px;
-    margin: 4px 0 20px;
   }
 
   @media ${MEDIA_QUERY.tablet} {
     font-size: 20px;
-    margin: 2px 0 20px;
   }
 
   @media ${MEDIA_QUERY.mobile} {
     font-size: 18px;
-    margin: 0 0 20px;
+  }
+`;
+
+export const IconContainer = styled.div<{ isOpen?: boolean }>`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  height: 40px;
+  width: 40px;
+  transition: transform 0.3s ease-in-out;
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      transform: translateY(-50%) rotate(-180deg);
+    `}
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    height: 30px;
+    width: 30px;
+  }
+
+  svg {
+    @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  path {
+    fill: ${({ theme }) => theme.colors.primaryColor};
   }
 `;
 
 export const DropdownContainer = styled.ul`
   position: absolute;
   left: 0;
-  top: 62px;
+  top: 54px;
   width: 100%;
-  padding: 10px 0;
   background-color: ${({ theme }) => theme.colors.background};
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.boxShadow};
   z-index: 2;
 
   @media ${MEDIA_QUERY.laptop} {
-    top: 56px;
+    top: 50px;
   }
 
   @media ${MEDIA_QUERY.tablet} {
-    top: 51px;
+    top: 48px;
   }
 
   @media ${MEDIA_QUERY.mobile} {
@@ -69,15 +108,25 @@ export const DropdownContainer = styled.ul`
 `;
 
 export const Option = styled(SmallerParagraph)<{ isSelected?: boolean }>`
-  padding: 8px 20px;
+  padding: 10px 20px;
   ${({ isSelected }) =>
     isSelected &&
     css`
       background-color: ${({ theme }) => theme.colors.card};
     `}
-  transition: background-color .3s ease-in-out;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  transition: background-color 0.3s ease-in-out;
 
-  :hover {
+  &:first-child {
+    border-radius: 6px 6px 0 0;
+  }
+
+  &:last-child {
+    box-shadow: none;
+    border-radius: 0 0 6px 6px;
+  }
+
+  &:hover {
     background-color: ${({ theme }) => theme.colors.button.hover};
   }
 `;
