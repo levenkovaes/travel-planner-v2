@@ -4,6 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import { DropdownContainer, Option, Select } from "./styled";
 import { CustomSelectProps } from "./types";
+import useClickOutside from "../../hooks/useClickOutside";
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
@@ -11,18 +12,28 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const clickRef = React.useRef<HTMLDivElement | null>(null);
 
-  const handleToggle = () => {
-    setIsOpen((prev) => !prev);
+  const handleOpen = () => {
+    setIsOpen(true);
   };
+
+  const handleClose = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
+  useClickOutside(clickRef, handleClose);
 
   const onOptionClick = (selectedOption: string) => {
     value = selectedOption;
     onChange(selectedOption);
+    handleClose();
   };
 
   return (
-    <Select isOpen={isOpen} onClick={handleToggle}>
+    <Select isOpen={isOpen} onClick={handleOpen} ref={clickRef}>
       {value}
       {isOpen && (
         <DropdownContainer>
