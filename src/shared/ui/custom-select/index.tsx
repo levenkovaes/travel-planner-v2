@@ -22,12 +22,16 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   };
 
   return (
-    <Select open={isOpen} onClick={handleToggle}>
+    <Select isOpen={isOpen} onClick={handleToggle}>
       {value}
       {isOpen && (
         <DropdownContainer>
           {options.map((option) => (
-            <Option key={nanoid()} onClick={() => onOptionClick(option)}>
+            <Option
+              key={nanoid()}
+              onClick={() => onOptionClick(option)}
+              isSelected={option === value}
+            >
               {option}
             </Option>
           ))}

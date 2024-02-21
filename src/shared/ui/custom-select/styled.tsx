@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import MEDIA_QUERY from "../../constants/styles/media-query";
 import { SmallerParagraph } from "../typography";
 
-export const Select = styled.div<{ open?: boolean }>`
+export const Select = styled.div<{ isOpen?: boolean }>`
   position: relative;
   padding: 10px 20px;
   margin: 6px 0 20px;
@@ -15,8 +15,8 @@ export const Select = styled.div<{ open?: boolean }>`
   font-weight: 400;
   transition: all 0.2s ease-in-out;
 
-  ${({ open }) =>
-    open &&
+  ${({ isOpen }) =>
+    isOpen &&
     css`
       border-color: ${({ theme }) => theme.colors.accentColor};
     `}
@@ -65,8 +65,14 @@ export const DropdownContainer = styled.ul`
   }
 `;
 
-export const Option = styled(SmallerParagraph)`
+export const Option = styled(SmallerParagraph)<{ isSelected?: boolean }>`
   padding: 8px 20px;
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      background-color: ${({ theme }) => theme.colors.card};
+    `}
+  transition: background-color .3s ease-in-out;
 
   :hover {
     background-color: ${({ theme }) => theme.colors.button.hover};
