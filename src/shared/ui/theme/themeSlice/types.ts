@@ -18,6 +18,7 @@ export interface ITheme {
       accentText: string;
 
       disabled: string;
+      disabledText: string;
 
       hover: string;
       active: string;
@@ -32,6 +33,7 @@ export interface ITheme {
     error: string;
     accentColor: string;
   };
+  boxShadow: string;
 }
 
 export type IThemeState = {

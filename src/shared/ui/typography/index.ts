@@ -6,23 +6,27 @@ export const Heading1 = styled.h1`
   font-size: 60px;
   font-weight: 700;
   letter-spacing: 0.7px;
-  padding-bottom: 40px;
+  padding-bottom: 46px;
   color: ${({ theme }) => theme.colors.text};
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 40px;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
   }
 
   @media ${MEDIA_QUERY.tablet} {
     font-size: 32px;
-    padding-bottom: 24px;
+    padding-bottom: 34px;
   }
 
   @media ${MEDIA_QUERY.mobile} {
     font-size: 26px;
-    padding-bottom: 16px;
+    padding-bottom: 28px;
   }
+`;
+
+export const CenteredHeading1 = styled(Heading1)`
+  text-align: center;
 `;
 
 export const Heading2 = styled.h2`

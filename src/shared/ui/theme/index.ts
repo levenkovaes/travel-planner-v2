@@ -2,7 +2,10 @@ import { ITheme } from "./themeSlice/types";
 
 export const COLORS = {
   white: "#ffffff",
+  lightGrey: "#C3C3C3",
+  grey: "#7F7F7F",
   darkGrey: "#212121",
+
   red: "#ff4a4a",
 
   primaryLightColor: "#eeebe7",
@@ -13,7 +16,6 @@ export const COLORS = {
   accentColor: "#6f9491",
   accentDarkColor: "#526e6c",
 
-  disabledButton: "#d0d9d7",
   activeButton: "#364746",
 
   modalCoverLight: "rgba(59, 57, 56, 0.7)",
@@ -39,7 +41,8 @@ export const LIGHT: ITheme = {
       accentBackground: COLORS.accentColor,
       accentText: COLORS.white,
 
-      disabled: COLORS.disabledButton,
+      disabled: COLORS.lightGrey,
+      disabledText: COLORS.grey,
 
       hover: COLORS.accentLightColor,
       active: COLORS.activeButton,
@@ -54,6 +57,7 @@ export const LIGHT: ITheme = {
     error: COLORS.red,
     accentColor: COLORS.accentColor,
   },
+  boxShadow: "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px",
 };
 
 export const DARK: ITheme = {
@@ -75,7 +79,8 @@ export const DARK: ITheme = {
       accentBackground: COLORS.accentDarkColor,
       accentText: COLORS.white,
 
-      disabled: COLORS.disabledButton,
+      disabled: COLORS.grey,
+      disabledText: COLORS.lightGrey,
 
       hover: COLORS.accentDarkColor,
       active: COLORS.activeButton,
@@ -90,4 +95,5 @@ export const DARK: ITheme = {
     error: COLORS.red,
     accentColor: COLORS.accentColor,
   },
+  boxShadow: "rgba(0, 0, 0, 0.8) 0px 48px 100px 0px;",
 };

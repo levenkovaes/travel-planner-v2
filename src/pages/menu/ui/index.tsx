@@ -1,12 +1,12 @@
 import React from "react";
 
+import { CenteredHeading1 } from "../../../shared/ui/typography";
 import MenuGrid from "../../../widgets/menu-grid/ui";
-import { MenuHeading } from "./styled";
 
 const Menu = () => {
   return (
     <>
-      <MenuHeading>MENU</MenuHeading>
+      <CenteredHeading1>MENU</CenteredHeading1>
       <MenuGrid />
     </>
   );
