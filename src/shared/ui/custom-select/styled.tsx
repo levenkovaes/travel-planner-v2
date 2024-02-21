@@ -3,8 +3,11 @@ import styled, { css } from "styled-components";
 import MEDIA_QUERY from "../../constants/styles/media-query";
 import { SmallerParagraph } from "../typography";
 
-export const Select = styled.div<{ isOpen?: boolean }>`
+export const SelectWrapper = styled.div`
   position: relative;
+`;
+
+export const Select = styled.div<{ isOpen?: boolean }>`
   padding: 10px 20px;
   margin: 6px 0 20px;
   border: 2px solid ${({ theme }) => theme.colors.input.border};
@@ -43,9 +46,9 @@ export const Select = styled.div<{ isOpen?: boolean }>`
 
 export const DropdownContainer = styled.ul`
   position: absolute;
-  left: -2px;
-  top: 52px;
-  width: calc(100% + 4px);
+  left: 0;
+  top: 62px;
+  width: 100%;
   padding: 10px 0;
   background-color: ${({ theme }) => theme.colors.background};
   border-radius: 6px;
@@ -53,15 +56,15 @@ export const DropdownContainer = styled.ul`
   z-index: 2;
 
   @media ${MEDIA_QUERY.laptop} {
-    top: 48px;
+    top: 56px;
   }
 
   @media ${MEDIA_QUERY.tablet} {
-    top: 46px;
+    top: 51px;
   }
 
   @media ${MEDIA_QUERY.mobile} {
-    top: 44px;
+    top: 46px;
   }
 `;
 

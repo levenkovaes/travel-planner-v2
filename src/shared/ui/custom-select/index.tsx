@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { nanoid } from "@reduxjs/toolkit";
 
-import { DropdownContainer, Option, Select } from "./styled";
+import { DropdownContainer, Option, Select, SelectWrapper } from "./styled";
 import { CustomSelectProps } from "./types";
 import useClickOutside from "../../hooks/useClickOutside";
 
@@ -33,8 +33,10 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   };
 
   return (
-    <Select isOpen={isOpen} onClick={handleOpen} ref={clickRef}>
-      {value}
+    <SelectWrapper ref={clickRef}>
+      <Select isOpen={isOpen} onClick={handleOpen}>
+        {value}
+      </Select>
       {isOpen && (
         <DropdownContainer>
           {options.map((option) => (
@@ -48,7 +50,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           ))}
         </DropdownContainer>
       )}
-    </Select>
+    </SelectWrapper>
   );
 };
 
