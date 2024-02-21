@@ -33,6 +33,7 @@ export interface ITheme {
     error: string;
     accentColor: string;
   };
+  boxShadow: string;
 }
 
 export type IThemeState = {

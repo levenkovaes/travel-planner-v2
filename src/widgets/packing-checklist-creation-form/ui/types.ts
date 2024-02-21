@@ -4,3 +4,5 @@ export interface IFormValues {
   season: string;
   destination: string;
 }
+
+export type FormSelectOptions = string[];

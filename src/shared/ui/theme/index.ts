@@ -16,7 +16,6 @@ export const COLORS = {
   accentColor: "#6f9491",
   accentDarkColor: "#526e6c",
 
-  // disabledButton: "#A1A1A1",
   activeButton: "#364746",
 
   modalCoverLight: "rgba(59, 57, 56, 0.7)",
@@ -58,6 +57,7 @@ export const LIGHT: ITheme = {
     error: COLORS.red,
     accentColor: COLORS.accentColor,
   },
+  boxShadow: "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px",
 };
 
 export const DARK: ITheme = {
@@ -95,4 +95,5 @@ export const DARK: ITheme = {
     error: COLORS.red,
     accentColor: COLORS.accentColor,
   },
+  boxShadow: "rgba(0, 0, 0, 0.8) 0px 48px 100px 0px;",
 };

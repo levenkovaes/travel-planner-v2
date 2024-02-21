@@ -5,10 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 import { nanoid } from "@reduxjs/toolkit";
 
+import ChecklistCreationFormSelect from "../../../entities/checklist-creation-form-select/ui";
 import { LongButton } from "../../../shared/ui/button";
 import ErrorMessage from "../../../shared/ui/error-message";
 import Input from "../../../shared/ui/input";
 import { Paragraph } from "../../../shared/ui/typography";
+import {
+  DESTINATION_OPTIONS,
+  FORM_DEFAULT_VALUES,
+  SEASON_OPTIONS,
+} from "./constants";
 import { ChecklistCreationForm } from "./styled";
 import { IFormValues } from "./types";
 
@@ -19,25 +25,30 @@ const PackingChecklistCreationForm = () => {
   const {
     register,
     handleSubmit,
+    control,
+    reset,
     formState: { errors, isDirty },
   } = useForm<IFormValues>({
     mode: "onChange",
-    defaultValues: { checklistName: "", numberOfDays: "" },
+    defaultValues: FORM_DEFAULT_VALUES,
   });
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
+    console.log(data);
+
     const dataForChecklist = {
       checklistName: data.checklistName,
       id: nanoid(),
       isDefault: !isDirty,
-      numberOfDays: Number(data.numberOfDays),
+      numberOfDays: data.numberOfDays,
       season: data.season,
       destination: data.destination,
     };
 
-    // dispatch(addChecklist(dataForChecklist));
+    reset();
 
-    navigate(`/checklists/${dataForChecklist.id}`);
+    // dispatch(addChecklist(dataForChecklist));
+    // navigate(`/checklists/${dataForChecklist.id}`);
   };
 
   return (
@@ -60,7 +71,7 @@ const PackingChecklistCreationForm = () => {
       />
       {errors.checklistName && (
         <ErrorMessage>
-          <span>{errors.checklistName.message}</span>
+          <span>{errors.checklistName.message} </span>
           <span>{`${errors.checklistName.ref?.value.length}/40`}</span>
         </ErrorMessage>
       )}
@@ -92,10 +103,20 @@ const PackingChecklistCreationForm = () => {
       <Paragraph as="label" htmlFor="season">
         Season
       </Paragraph>
+      <ChecklistCreationFormSelect
+        control={control}
+        name="season"
+        options={SEASON_OPTIONS}
+      />
 
       <Paragraph as="label" htmlFor="destination">
         Destination
       </Paragraph>
+      <ChecklistCreationFormSelect
+        control={control}
+        name="destination"
+        options={DESTINATION_OPTIONS}
+      />
 
       <LongButton
         type="submit"
