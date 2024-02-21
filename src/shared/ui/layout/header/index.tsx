@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { IconButton } from "../../button";
 import { changeTheme, selectTheme } from "../../theme/themeSlice/themeSlice";
-import DarkMode from "./assets/DarkMode";
-import LightMode from "./assets/LightMode";
-import { Logo } from "./assets/Logo";
+import DarkModeIcon from "./assets/dark_mode.svg";
+import LogoIcon from "./assets/landscape_40.svg";
+import LightModeIcon from "./assets/light_mode.svg";
 import SHeader, { LogoButton } from "./styled";
 import HeaderProps from "./types";
 
@@ -25,11 +25,11 @@ const Header: React.FC<HeaderProps> = ({ variant }) => {
   return (
     <SHeader variant={variant}>
       <LogoButton onClick={handleLogoClick}>
-        <Logo></Logo>
+        <LogoIcon />
       </LogoButton>
 
       <IconButton onClick={changeMode}>
-        {selectedTheme.name === "light" ? <LightMode /> : <DarkMode />}
+        {selectedTheme.name === "light" ? <LightModeIcon /> : <DarkModeIcon />}
       </IconButton>
     </SHeader>
   );

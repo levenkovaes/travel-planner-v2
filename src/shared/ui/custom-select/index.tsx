@@ -2,9 +2,16 @@ import React, { useState } from "react";
 
 import { nanoid } from "@reduxjs/toolkit";
 
-import { DropdownContainer, Option, Select, SelectWrapper } from "./styled";
-import { CustomSelectProps } from "./types";
 import useClickOutside from "../../hooks/useClickOutside";
+import MoreIcon from "./assets/expand_more_40.svg";
+import {
+  DropdownContainer,
+  IconContainer,
+  Option,
+  Select,
+  SelectWrapper,
+} from "./styled";
+import { CustomSelectProps } from "./types";
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
@@ -36,7 +43,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     <SelectWrapper ref={clickRef}>
       <Select isOpen={isOpen} onClick={handleOpen}>
         {value}
+        <IconContainer isOpen={isOpen}>
+          <MoreIcon />
+        </IconContainer>
       </Select>
+
       {isOpen && (
         <DropdownContainer>
           {options.map((option) => (
