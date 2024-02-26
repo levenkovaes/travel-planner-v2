@@ -17,6 +17,7 @@ import {
 } from "./constants";
 import { ChecklistCreationForm } from "./styled";
 import { IFormValues } from "./types";
+import { addChecklist } from "../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 
 const PackingChecklistCreationForm = () => {
   const dispatch = useDispatch();
@@ -40,15 +41,15 @@ const PackingChecklistCreationForm = () => {
       checklistName: data.checklistName,
       id: nanoid(),
       isDefault: !isDirty,
-      numberOfDays: data.numberOfDays,
+      numberOfDays: Number(data.numberOfDays),
       season: data.season,
       destination: data.destination,
     };
 
     reset();
 
-    // dispatch(addChecklist(dataForChecklist));
-    // navigate(`/checklists/${dataForChecklist.id}`);
+    dispatch(addChecklist(dataForChecklist));
+    navigate(`/checklists/${dataForChecklist.id}`);
   };
 
   return (

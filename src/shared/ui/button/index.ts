@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import MEDIA_QUERY from "../../constants/styles/media-query";
+import { COLORS } from "../theme";
 
 export const Button = styled.button`
   display: flex;
@@ -86,6 +87,12 @@ export const IconButton = styled(Button)`
     fill: ${({ theme }) => theme.colors.text};
   }
 
+  &:active {
+    path {
+      fill: ${COLORS.primaryLightColor};
+    }
+  }
+
   @media ${MEDIA_QUERY.laptop} {
     width: 54px;
     height: 54px;
@@ -99,5 +106,31 @@ export const IconButton = styled(Button)`
   @media ${MEDIA_QUERY.mobile} {
     width: 40px;
     height: 40px;
+  }
+`;
+
+export const TransparentIconButton = styled.button`
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+
+  svg {
+    width: 30px;
+    height: 30px;
+
+    path {
+      fill: ${({ theme }) => theme.colors.text};
+      transition: fill 0.2s ease-in-out;
+    }
+  }
+
+  :hover {
+    cursor: pointer;
+
+    path {
+      fill: ${({ theme }) => theme.colors.accentColor};
+    }
   }
 `;

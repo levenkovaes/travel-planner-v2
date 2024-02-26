@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
+import { packingChecklistsSliceReducer } from "../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import { themeSliceReducer } from "../../shared/ui/theme/themeSlice/themeSlice";
 
 const rootReducer = combineReducers({
   theme: themeSliceReducer,
+  packingChecklists: packingChecklistsSliceReducer,
 });
 
 export const store = configureStore({
