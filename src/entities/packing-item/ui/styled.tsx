@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 import { TransparentIconButton } from "../../../shared/ui/button";
+import { NO_PRINT } from "../../../shared/constants/styles/print";
 
 export const PakingItemButtonContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   opacity: 0;
+  ${NO_PRINT}
 `;
 
 export const PakingItemContainer = styled.div`
