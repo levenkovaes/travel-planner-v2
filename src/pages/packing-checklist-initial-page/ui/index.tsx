@@ -12,7 +12,7 @@ const PackingChecklistInitialPage = () => {
     navigate("/create-packing-checklist");
   };
   const handleShowAllChecklists = () => {
-    navigate("/all-packing-checklists");
+    navigate("/packing-checklists");
   };
 
   return (
