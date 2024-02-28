@@ -22,7 +22,9 @@ const RemoveCheckmarcksModal: React.FC<RemoveCheckmarcksModalProps> = ({
   return (
     <Modal handleClose={handleClose}>
       <ModalContent heading="Are you sure you want to remove all checkmarks?"></ModalContent>
-      <Button onClick={handleClick}>Yes</Button>
+      <Button isDelete onClick={handleClick}>
+        Yes
+      </Button>
     </Modal>
   );
 };

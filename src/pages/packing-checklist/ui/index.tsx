@@ -4,7 +4,11 @@ import { useParams } from "react-router-dom";
 
 import { nanoid } from "@reduxjs/toolkit";
 
-import { TransparentLongButton } from "../../../shared/ui/button";
+import {
+  ChecklistButtonWrapper,
+  LongButton,
+  TransparentLongButton,
+} from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
 import { Grid } from "../../../shared/ui/grid";
 import RemoveCheckmarcksModal from "../../../shared/ui/modal/modal-content/remove-checkmarks-modal";
@@ -29,6 +33,8 @@ const PackingChecklist = () => {
     setIsRemoveCheckmarksModalDisplaying(false);
   };
 
+  const print = () => window.print();
+
   const checklistBody = useMemo(() => {
     if (checklist) {
       return Object.entries(checklist.categories).map((el) => (
@@ -46,9 +52,12 @@ const PackingChecklist = () => {
       <Grid>{checklistBody}</Grid>
 
       {checklistBody && (
-        <TransparentLongButton onClick={openRemoveCheckmarksModal}>
-          Remove checkmarks
-        </TransparentLongButton>
+        <ChecklistButtonWrapper>
+          <LongButton onClick={print}>Print checklist</LongButton>
+          <TransparentLongButton isDelete onClick={openRemoveCheckmarksModal}>
+            Remove checkmarks
+          </TransparentLongButton>
+        </ChecklistButtonWrapper>
       )}
 
       {isRemoveCheckmarksModalDisplaying && (
