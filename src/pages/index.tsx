@@ -7,6 +7,7 @@ import NoPage from "./no-page/ui";
 import PackingChecklistInitialPage from "./packing-checklist-initial-page/ui";
 import PackingChecklistCreation from "./packing-checklist-creation/ui";
 import PackingChecklist from "./packing-checklist/ui";
+import PreviousPackingChecklists from "./previous-packing-checklists/ui";
 
 const Pages = () => (
   <Routes>
@@ -21,7 +22,14 @@ const Pages = () => (
         path="create-packing-checklist"
         element={<PackingChecklistCreation />}
       />
-      <Route path="checklists/:checklistId" element={<PackingChecklist />} />
+      <Route
+        path="packing-checklists/:checklistId"
+        element={<PackingChecklist />}
+      />
+      <Route
+        path="packing-checklists"
+        element={<PreviousPackingChecklists />}
+      />
 
       <Route path="*" element={<NoPage />} />
     </Route>

@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import MEDIA_QUERY from "../../../constants/styles/media-query";
 import { IconButton } from "../../button";
 import { COLORS } from "../../theme";
+import { NO_PRINT } from "../../../constants/styles/print";
 
 const SHeader = styled.header<{ variant?: string }>`
   display: flex;
@@ -10,6 +11,8 @@ const SHeader = styled.header<{ variant?: string }>`
   padding: 20px 60px;
   background-color: ${({ theme }) => theme.colors.background};
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  ${NO_PRINT}
 
   ${({ variant }) =>
     variant === "transparentBg" &&

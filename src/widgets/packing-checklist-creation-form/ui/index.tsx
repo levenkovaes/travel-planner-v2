@@ -49,7 +49,7 @@ const PackingChecklistCreationForm = () => {
     reset();
 
     dispatch(addChecklist(dataForChecklist));
-    navigate(`/checklists/${dataForChecklist.id}`);
+    navigate(`/packing-checklists/${dataForChecklist.id}`);
   };
 
   return (
