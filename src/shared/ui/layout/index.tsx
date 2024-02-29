@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 import Footer from "./footer";
 import Header from "./header";
-import Main from "./styled";
+import Main from "./main";
 
 const Layout: React.FC = () => {
   return (

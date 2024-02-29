@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import MAIN_PADDING from "../../constants/styles/main-padding";
+import MAIN_PADDING from "../../../constants/styles/main-padding";
 
 const Main = styled.main`
   flex-grow: 1;
