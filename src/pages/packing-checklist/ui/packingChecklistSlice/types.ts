@@ -7,7 +7,7 @@ export type IPackingItem = {
 export type IPackingChecklist = {
   name: string;
   id: string | null;
-  categories: Record<string, IPackingItem[]>;
+  categories: Record<string, { isUpdated: boolean; data: IPackingItem[] }>;
 };
 
 export type IPackingChecklistsState = {
@@ -56,4 +56,9 @@ export interface ICheckItemAction {
 
 export interface IRemoveCheckmarksAction {
   checklistId: string | undefined;
+}
+
+export interface IСategoryIsUpdatedResetAction {
+  checklistId: string | undefined;
+  categoryName: string;
 }
