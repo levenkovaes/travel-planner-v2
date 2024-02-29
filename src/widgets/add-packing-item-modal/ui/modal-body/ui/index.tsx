@@ -3,20 +3,25 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import { nanoid } from "@reduxjs/toolkit";
+
+import AddPackingItemFormSelect from "../../../../../entities/add-packing-item-form-select/ui";
 import {
   addItem,
   selectChecklistById,
 } from "../../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import { LongButton } from "../../../../../shared/ui/button";
+import { Chip, ChipContainer } from "../../../../../shared/ui/chip";
 import ErrorMessage from "../../../../../shared/ui/error-message";
 import Input from "../../../../../shared/ui/input";
+import {
+  BoldSpan,
+  SmallerParagraph,
+} from "../../../../../shared/ui/typography";
 import { AddItemModalProps } from "../../types";
-import { IFormValues, IItemMatchData } from "./types";
-import AddPackingItemFormSelect from "../../../../../entities/add-packing-item-form-select/ui";
-import { nanoid } from "@reduxjs/toolkit";
-import { findMatch } from "./utils";
-import { SmallerParagraph } from "../../../../../shared/ui/typography";
 import { ItemMatchModalBody } from "./styled";
+import { IFormValues, IItemMatchData } from "./types";
+import { findMatch } from "./utils";
 
 const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
   handleClose,
@@ -123,20 +128,18 @@ const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
   ) : (
     <ItemMatchModalBody>
       <SmallerParagraph>
-        {itemMatch.match[0].item?.itemName} already exists in
+        <BoldSpan>{itemMatch.match[0].item?.itemName}</BoldSpan> already exists
+        in
       </SmallerParagraph>
-      <SmallerParagraph as="ul">
+      <ChipContainer as="ul">
         {itemMatch.match?.map((el) => (
-          <SmallerParagraph
-            as="li"
-            key={nanoid()}
-          >{`${el.category}`}</SmallerParagraph>
+          <Chip as="li" key={nanoid()}>{`${el.category}`}</Chip>
         ))}
-      </SmallerParagraph>
+      </ChipContainer>
       <SmallerParagraph>
         Do you want to add
-        {` ${itemMatch.input?.itemName} `}
-        to {`${itemMatch.input?.category}`}?
+        <BoldSpan>{` ${itemMatch.input?.itemName} `}</BoldSpan>
+        to <BoldSpan>{`${itemMatch.input?.category}`}</BoldSpan>?
       </SmallerParagraph>
       <LongButton
         type="submit"
