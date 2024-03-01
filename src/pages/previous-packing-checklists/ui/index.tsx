@@ -42,7 +42,7 @@ const PreviousPackingChecklists = () => {
         {namesToDisplay}
 
         {allChecklists.length ? (
-          <TransparentLongButton onClick={handleClick}>
+          <TransparentLongButton isDelete onClick={handleClick}>
             Delete all checklist
           </TransparentLongButton>
         ) : (

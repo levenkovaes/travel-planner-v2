@@ -8,15 +8,15 @@ export const findMatch = (
   if (!checklist) return [];
 
   return Object.entries(checklist.categories).reduce(
-    (acc: IItemMatch[], el) => {
+    (acc: IItemMatch[], [groupName, { data }]) => {
       if (
-        el[1].find((item) => {
+        data.find((item) => {
           return item.itemName.replace(/\s?(×|x|х)\d+$/, "") === enteredItem;
         })
       ) {
         acc.push({
-          category: el[0],
-          item: el[1].find(
+          category: groupName,
+          item: data.find(
             (item) =>
               item.itemName.replace(/\s?(×|x|х)\d+$/, "") === enteredItem
           ),

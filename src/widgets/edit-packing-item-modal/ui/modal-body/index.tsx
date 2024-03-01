@@ -10,6 +10,7 @@ import {
   selectChecklistById,
 } from "../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import { LongButton } from "../../../../shared/ui/button";
+import { Chip, ChipContainer } from "../../../../shared/ui/chip";
 import ErrorMessage from "../../../../shared/ui/error-message";
 import Input from "../../../../shared/ui/input";
 import { SmallerParagraph } from "../../../../shared/ui/typography";
@@ -120,14 +121,11 @@ const EditPackingItemModalBody: React.FC<EditItemModalProps> = ({
       <SmallerParagraph>
         {itemMatch.match[0].item?.itemName} already exists in
       </SmallerParagraph>
-      <SmallerParagraph as="ul">
+      <ChipContainer as="ul">
         {itemMatch.match?.map((el) => (
-          <SmallerParagraph
-            as="li"
-            key={nanoid()}
-          >{`${el.category}`}</SmallerParagraph>
+          <Chip as="li" key={nanoid()}>{`${el.category}`}</Chip>
         ))}
-      </SmallerParagraph>
+      </ChipContainer>
       <SmallerParagraph>
         Do you want to add
         {` ${itemMatch.input?.itemName} `}

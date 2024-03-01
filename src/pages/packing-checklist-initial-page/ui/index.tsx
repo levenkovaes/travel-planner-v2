@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-import { LongButton } from "../../../shared/ui/button";
+import { ChecklistButtonWrapper, LongButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
 import { CenteredHeading1 } from "../../../shared/ui/typography";
-import { PackingChecklistButtonWrapper } from "./styled";
 
 const PackingChecklistInitialPage = () => {
   const navigate = useNavigate();
@@ -18,14 +17,14 @@ const PackingChecklistInitialPage = () => {
   return (
     <CenteringDiv>
       <CenteredHeading1>TRAVEL PACKING CHECKLIST</CenteredHeading1>
-      <PackingChecklistButtonWrapper>
+      <ChecklistButtonWrapper>
         <LongButton onClick={handleShowChecklistCreation}>
           New checklist
         </LongButton>
         <LongButton onClick={handleShowAllChecklists}>
           Previous checklists
         </LongButton>
-      </PackingChecklistButtonWrapper>
+      </ChecklistButtonWrapper>
     </CenteringDiv>
   );
 };

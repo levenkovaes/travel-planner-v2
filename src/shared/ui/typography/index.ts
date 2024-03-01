@@ -84,3 +84,7 @@ export const SmallerParagraph = styled.p`
     font-size: 16px;
   }
 `;
+
+export const BoldSpan = styled.span`
+  font-weight: 700;
+`;

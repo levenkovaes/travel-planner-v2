@@ -22,6 +22,7 @@ import {
   IPackingChecklist,
   IPackingChecklistsState,
   IRemoveCheckmarksAction,
+  IСategoryIsUpdatedResetAction,
 } from "./types";
 import { addNumberOfItems } from "./utils";
 
@@ -49,10 +50,10 @@ export const packingChecklistsSlice = createSlice({
 
       if (!action.payload.isDefault) {
         if (action.payload.destination === "nature") {
-          newChecklist.categories["personal hygiene & medicines"].push(
+          newChecklist.categories["personal hygiene & medicines"].data.push(
             ...IF_NATURE_TO_MEDS
           );
-          newChecklist.categories["additional equipment"].push(
+          newChecklist.categories["additional equipment"].data.push(
             ...IF_NATURE_TO_ADDITIONAL_EQUIP
           );
         }
@@ -62,7 +63,7 @@ export const packingChecklistsSlice = createSlice({
           action.payload.season === "spring" ||
           action.payload.season === "automn"
         ) {
-          newChecklist.categories["additional equipment"].push(
+          newChecklist.categories["additional equipment"].data.push(
             ...IF_NOT_WINTER_TO_ADDITIONAL_EQUIP
           );
         }
@@ -71,7 +72,7 @@ export const packingChecklistsSlice = createSlice({
           Number(action.payload.numberOfDays) >= 1 &&
           Number(action.payload.numberOfDays) < 14
         ) {
-          newChecklist.categories.clothes.push(
+          newChecklist.categories.clothes.data.push(
             ...IF_MORE_THAN_1_TO_CLOTHES.map((el) => {
               let item = structuredClone(el);
 
@@ -113,7 +114,7 @@ export const packingChecklistsSlice = createSlice({
         }
 
         if (Number(action.payload.numberOfDays) >= 14) {
-          newChecklist.categories.clothes.push(
+          newChecklist.categories.clothes.data.push(
             ...IF_MORE_THAN_1_TO_CLOTHES.map((el) => {
               if (el.itemName === "underwear" || el.itemName === "socks") {
                 el.itemName = `${el.itemName} ×14`;
@@ -137,25 +138,25 @@ export const packingChecklistsSlice = createSlice({
         }
 
         if (Number(action.payload.numberOfDays) >= 1) {
-          newChecklist.categories["personal hygiene & medicines"].push(
+          newChecklist.categories["personal hygiene & medicines"].data.push(
             ...IF_MORE_THAN_1_TO_MEDS
           );
-          newChecklist.categories["additional equipment"].push(
+          newChecklist.categories["additional equipment"].data.push(
             ...IF_MORE_THAN_1_TO_ADDITIONAL_EQUIP
           );
 
           if (Number(action.payload.numberOfDays) >= 3) {
-            newChecklist.categories["personal hygiene & medicines"].push(
+            newChecklist.categories["personal hygiene & medicines"].data.push(
               ...IF_MORE_THAN_3_TO_MEDS
             );
           }
 
           if (action.payload.season === "winter") {
-            newChecklist.categories.clothes.push(...IF_WINTER_TO_CLOTHES);
+            newChecklist.categories.clothes.data.push(...IF_WINTER_TO_CLOTHES);
           }
 
           if (action.payload.season === "summer") {
-            newChecklist.categories.clothes.push(...IF_SUMMER_TO_CLOTHES);
+            newChecklist.categories.clothes.data.push(...IF_SUMMER_TO_CLOTHES);
           }
         }
       }
@@ -173,9 +174,10 @@ export const packingChecklistsSlice = createSlice({
       );
 
       if (currentChecklist) {
-        currentChecklist.categories[action.payload.category].push(
+        currentChecklist.categories[action.payload.category].data.push(
           action.payload.item
         );
+        currentChecklist.categories[action.payload.category].isUpdated = true;
       }
     },
 
@@ -185,7 +187,7 @@ export const packingChecklistsSlice = createSlice({
       );
 
       if (currentChecklist) {
-        currentChecklist.categories[action.payload.editedCategory].forEach(
+        currentChecklist.categories[action.payload.editedCategory].data.forEach(
           (el) => {
             if (el.id === action.payload.editedItem.id) {
               el.itemName = action.payload.editedItem.itemName;
@@ -202,8 +204,8 @@ export const packingChecklistsSlice = createSlice({
       );
 
       if (currentChecklist) {
-        currentChecklist.categories[action.payload.category] =
-          currentChecklist.categories[action.payload.category].filter(
+        currentChecklist.categories[action.payload.category].data =
+          currentChecklist.categories[action.payload.category].data.filter(
             ({ id }) => {
               return id !== action.payload.itemId;
             }
@@ -217,9 +219,9 @@ export const packingChecklistsSlice = createSlice({
       );
 
       if (currentChecklist) {
-        const item = currentChecklist.categories[action.payload.category].find(
-          ({ id }) => id === action.payload.item.id
-        );
+        const item = currentChecklist.categories[
+          action.payload.category
+        ].data.find(({ id }) => id === action.payload.item.id);
 
         if (item) {
           item.isChecked = !item.isChecked;
@@ -237,10 +239,24 @@ export const packingChecklistsSlice = createSlice({
 
       if (currentChecklist) {
         for (let key in currentChecklist.categories) {
-          currentChecklist.categories[key].forEach((el) => {
+          currentChecklist.categories[key].data.forEach((el) => {
             return (el.isChecked = false);
           });
         }
+      }
+    },
+
+    categoryIsUpdatedReset: (
+      state,
+      action: PayloadAction<IСategoryIsUpdatedResetAction>
+    ) => {
+      const currentChecklist = state.list.find(
+        ({ id }) => id === action.payload.checklistId
+      );
+
+      if (currentChecklist) {
+        currentChecklist.categories[action.payload.categoryName].isUpdated =
+          false;
       }
     },
   },
@@ -255,6 +271,7 @@ export const {
   deleteItem,
   checkItem,
   removeCheckmarks,
+  categoryIsUpdatedReset,
 } = packingChecklistsSlice.actions;
 
 export const selectChecklists = (state: RootState) => {

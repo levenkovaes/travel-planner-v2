@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import MEDIA_QUERY from "../../constants/styles/media-query";
 import { COLORS } from "../theme";
+import { NO_PRINT } from "../../constants/styles/print";
 
-export const Button = styled.button`
+export const Button = styled.button<{ isDelete?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,21 +14,36 @@ export const Button = styled.button`
   margin: 0;
   background-color: ${({ theme }) => theme.colors.button.background};
   color: ${({ theme }) => theme.colors.button.text};
-  border: none;
+  border: 1px solid ${({ theme }) => theme.colors.button.background};
   border-radius: 8px;
   font-size: 26px;
   transition: all 0.2s ease-in-out;
 
-  :hover {
-    background-color: ${({ theme }) => theme.colors.button.hover};
-    cursor: pointer;
-  }
+  ${({ isDelete }) =>
+    isDelete
+      ? css`
+          border: 1px solid ${({ theme }) => theme.colors.error};
+          background-color: ${({ theme }) => theme.colors.error};
+          color: ${COLORS.white};
 
-  :active {
-    background-color: ${({ theme }) => theme.colors.button.active};
-    border-color: ${({ theme }) => theme.colors.button.active};
-    color: ${({ theme }) => theme.colors.button.background};
-  }
+          :hover {
+            background-color: #f64747;
+            border-color: #f64747;
+          }
+        `
+      : css`
+          :hover {
+            border-color: ${({ theme }) => theme.colors.button.hover};
+            background-color: ${({ theme }) => theme.colors.button.hover};
+            cursor: pointer;
+          }
+
+          :active {
+            background-color: ${({ theme }) => theme.colors.button.active};
+            border-color: ${({ theme }) => theme.colors.button.active};
+            color: ${({ theme }) => theme.colors.button.background};
+          }
+        `}
 
   :disabled {
     background-color: ${({ theme }) => theme.colors.button.disabled};
@@ -53,21 +69,40 @@ export const LongButton = styled(Button)`
   width: clamp(120px, 100%, 350px);
 `;
 
-export const TransparentButton = styled(Button)`
+export const TransparentButton = styled(Button)<{ isDelete?: boolean }>`
   background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.button.text};
 
-  :hover {
-    background-color: ${({ theme }) => theme.colors.button.text};
-    border-color: ${({ theme }) => theme.colors.button.text};
-    color: ${({ theme }) => theme.colors.button.background};
-    cursor: pointer;
-  }
+  ${({ isDelete }) =>
+    isDelete
+      ? css`
+          border: 1px solid ${({ theme }) => theme.colors.error};
+          color: ${({ theme }) => theme.colors.error};
 
-  :active {
-    background-color: ${({ theme }) => theme.colors.button.active};
-    border-color: ${({ theme }) => theme.colors.button.active};
-  }
+          :hover {
+            background-color: ${({ theme }) => theme.colors.error};
+            color: ${COLORS.white};
+          }
+
+          :active {
+            border-color: ${({ theme }) => theme.colors.error};
+            background-color: ${({ theme }) => theme.colors.error};
+            color: ${COLORS.white};
+          }
+        `
+      : css`
+          border: 1px solid ${({ theme }) => theme.colors.button.text};
+
+          :hover {
+            background-color: ${({ theme }) => theme.colors.button.text};
+            border-color: ${({ theme }) => theme.colors.button.text};
+            color: ${({ theme }) => theme.colors.button.background};
+          }
+
+          :active {
+            background-color: ${({ theme }) => theme.colors.button.active};
+            border-color: ${({ theme }) => theme.colors.button.active};
+          }
+        `}
 `;
 
 export const TransparentLongButton = styled(TransparentButton)`
@@ -81,6 +116,7 @@ export const IconButton = styled(Button)`
   width: 60px;
   height: 60px;
   padding: 10px;
+  border: none;
   border-radius: 100px;
 
   path {
@@ -132,5 +168,18 @@ export const TransparentIconButton = styled.button`
     path {
       fill: ${({ theme }) => theme.colors.accentColor};
     }
+  }
+`;
+
+export const ChecklistButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  ${NO_PRINT}
+
+  button {
+    margin: 8px 20px;
   }
 `;
