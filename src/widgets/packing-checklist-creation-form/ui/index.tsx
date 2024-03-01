@@ -37,8 +37,6 @@ const PackingChecklistCreationForm = () => {
   });
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    console.log(data);
-
     const dataForChecklist = {
       checklistName: data.checklistName,
       id: nanoid(),

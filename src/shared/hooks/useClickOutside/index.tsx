@@ -9,8 +9,10 @@ const useClickOutside = (
       callback();
     }
   };
+
   useEffect(() => {
     document.addEventListener("click", handleClick);
+
     return () => {
       document.removeEventListener("click", handleClick);
     };
