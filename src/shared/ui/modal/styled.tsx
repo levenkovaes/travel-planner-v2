@@ -23,7 +23,7 @@ export const ModalWindow = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 16px 32px 32px;
-  width: clamp(200px, 80%, 500px);
+  width: clamp(200px, 86%, 500px);
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.modal.background};
   color: ${({ theme }) => theme.colors.modal.text};

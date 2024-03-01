@@ -8,13 +8,20 @@ export const PakingItemButtonContainer = styled.div`
   flex-wrap: nowrap;
   opacity: 0;
   ${NO_PRINT}
+  margin-left: 8px;
 `;
 
 export const PakingItemContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 1px 0;
+`;
+
+export const ItemWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 
   :hover {
     ${PakingItemButtonContainer} {

@@ -21,6 +21,7 @@ import CheckedCheckbox from "./assets/check_box_checked.svg";
 import Delete from "./assets/delete.svg";
 import Edit from "./assets/edit.svg";
 import {
+  ItemWrapper,
   PakingItemButtonContainer,
   PakingItemContainer,
   TransparentDeleteIconButton,
@@ -69,23 +70,23 @@ export const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
   return (
     <>
       <PakingItemContainer key={nanoid()}>
-        <CheckboxItemContainer>
-          <CustomCheckbox onClick={handleCheck}>
-            {item.isChecked ? <CheckedCheckbox /> : <BlankCheckbox />}
-          </CustomCheckbox>
+        <CustomCheckbox onClick={handleCheck}>
+          {item.isChecked ? <CheckedCheckbox /> : <BlankCheckbox />}
+        </CustomCheckbox>
+        <ItemWrapper>
           <SmallerParagraph as="label" htmlFor={item.id} key={item.id}>
             {item.itemName}
           </SmallerParagraph>
-        </CheckboxItemContainer>
 
-        <PakingItemButtonContainer>
-          <TransparentIconButton onClick={openEditItemModal}>
-            <Edit />
-          </TransparentIconButton>
-          <TransparentDeleteIconButton onClick={handleDeleteItem}>
-            <Delete />
-          </TransparentDeleteIconButton>
-        </PakingItemButtonContainer>
+          <PakingItemButtonContainer>
+            <TransparentIconButton onClick={openEditItemModal}>
+              <Edit />
+            </TransparentIconButton>
+            <TransparentDeleteIconButton onClick={handleDeleteItem}>
+              <Delete />
+            </TransparentDeleteIconButton>
+          </PakingItemButtonContainer>
+        </ItemWrapper>
       </PakingItemContainer>
 
       {isEditItemModalDisplaying && (
