@@ -14,6 +14,7 @@ export const PakingItemContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1px 0;
 
   :hover {
     ${PakingItemButtonContainer} {

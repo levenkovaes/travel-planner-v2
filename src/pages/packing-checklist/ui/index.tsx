@@ -30,7 +30,9 @@ const PackingChecklist = () => {
   };
 
   const closeRemoveCheckmarksModal = () => {
-    setIsRemoveCheckmarksModalDisplaying(false);
+    if (isRemoveCheckmarksModalDisplaying) {
+      setIsRemoveCheckmarksModalDisplaying(false);
+    }
   };
 
   const print = () => window.print();

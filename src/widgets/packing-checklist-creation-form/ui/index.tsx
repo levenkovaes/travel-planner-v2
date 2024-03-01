@@ -6,18 +6,20 @@ import { useNavigate } from "react-router-dom";
 import { nanoid } from "@reduxjs/toolkit";
 
 import ChecklistCreationFormSelect from "../../../entities/checklist-creation-form-select/ui";
-import { LongButton } from "../../../shared/ui/button";
+import { addChecklist } from "../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import ErrorMessage from "../../../shared/ui/error-message";
 import Input from "../../../shared/ui/input";
-import { Paragraph } from "../../../shared/ui/typography";
 import {
   DESTINATION_OPTIONS,
   FORM_DEFAULT_VALUES,
   SEASON_OPTIONS,
 } from "./constants";
-import { ChecklistCreationForm } from "./styled";
+import {
+  ChecklistCreationForm,
+  ChecklistCreationFormButton,
+  ChecklistCreationFormParagraph,
+} from "./styled";
 import { IFormValues } from "./types";
-import { addChecklist } from "../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 
 const PackingChecklistCreationForm = () => {
   const dispatch = useDispatch();
@@ -54,9 +56,9 @@ const PackingChecklistCreationForm = () => {
 
   return (
     <ChecklistCreationForm onSubmit={handleSubmit(onSubmit)}>
-      <Paragraph as="label" htmlFor="checklistName">
+      <ChecklistCreationFormParagraph as="label" htmlFor="checklistName">
         Checklist name
-      </Paragraph>
+      </ChecklistCreationFormParagraph>
       <Input
         {...register("checklistName", {
           maxLength: {
@@ -77,9 +79,9 @@ const PackingChecklistCreationForm = () => {
         </ErrorMessage>
       )}
 
-      <Paragraph as="label" htmlFor="numberOfDays">
+      <ChecklistCreationFormParagraph as="label" htmlFor="numberOfDays">
         Number of days
-      </Paragraph>
+      </ChecklistCreationFormParagraph>
       <Input
         {...register("numberOfDays", {
           min: {
@@ -101,30 +103,30 @@ const PackingChecklistCreationForm = () => {
         <ErrorMessage>{errors.numberOfDays.message}</ErrorMessage>
       )}
 
-      <Paragraph as="label" htmlFor="season">
+      <ChecklistCreationFormParagraph as="label" htmlFor="season">
         Season
-      </Paragraph>
+      </ChecklistCreationFormParagraph>
       <ChecklistCreationFormSelect
         control={control}
         name="season"
         options={SEASON_OPTIONS}
       />
 
-      <Paragraph as="label" htmlFor="destination">
+      <ChecklistCreationFormParagraph as="label" htmlFor="destination">
         Destination
-      </Paragraph>
+      </ChecklistCreationFormParagraph>
       <ChecklistCreationFormSelect
         control={control}
         name="destination"
         options={DESTINATION_OPTIONS}
       />
 
-      <LongButton
+      <ChecklistCreationFormButton
         type="submit"
         disabled={!!errors.checklistName || !!errors.numberOfDays}
       >
         {isDirty ? "Create" : "Create default"}
-      </LongButton>
+      </ChecklistCreationFormButton>
     </ChecklistCreationForm>
   );
 };

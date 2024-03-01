@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 import MAIN_PADDING from "../../constants/styles/main-padding";
+import { Button } from "../button";
+import Input from "../input";
+import MEDIA_QUERY from "../../constants/styles/media-query";
 
 export const ModalContainer = styled.div`
   position: fixed;
@@ -51,5 +54,25 @@ export const CloseButton = styled.button`
     path {
       fill: ${({ theme }) => theme.colors.text};
     }
+  }
+`;
+
+export const ModalForm = styled.form`
+  width: 100%;
+`;
+
+export const ModalInput = styled(Input)`
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const ModalButton = styled(Button)`
+  align-self: center;
+  margin: 24px auto 0;
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    width: 100%;
   }
 `;

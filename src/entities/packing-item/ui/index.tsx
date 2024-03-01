@@ -39,7 +39,9 @@ export const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
   };
 
   const closeEditItemModal = () => {
-    setIsEditItemModalDisplaying(false);
+    if (isEditItemModalDisplaying) {
+      setIsEditItemModalDisplaying(false);
+    }
   };
 
   const handleCheck = () => {

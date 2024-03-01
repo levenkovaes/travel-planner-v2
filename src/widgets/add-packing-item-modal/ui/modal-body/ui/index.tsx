@@ -10,10 +10,8 @@ import {
   addItem,
   selectChecklistById,
 } from "../../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
-import { LongButton } from "../../../../../shared/ui/button";
 import { Chip, ChipContainer } from "../../../../../shared/ui/chip";
 import ErrorMessage from "../../../../../shared/ui/error-message";
-import Input from "../../../../../shared/ui/input";
 import {
   BoldSpan,
   SmallerParagraph,
@@ -22,6 +20,11 @@ import { AddItemModalProps } from "../../types";
 import { ItemMatchModalBody } from "./styled";
 import { IFormValues, IItemMatchData } from "./types";
 import { findMatch } from "./utils";
+import {
+  ModalButton,
+  ModalForm,
+  ModalInput,
+} from "../../../../../shared/ui/modal/styled";
 
 const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
   handleClose,
@@ -85,8 +88,8 @@ const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
   };
 
   return !itemMatch ? (
-    <form onSubmit={handleSubmit(handleAddItemFormSubmit)}>
-      <Input
+    <ModalForm onSubmit={handleSubmit(handleAddItemFormSubmit)}>
+      <ModalInput
         {...register("itemName", {
           required: "Item name is required",
           maxLength: {
@@ -118,13 +121,13 @@ const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
         />
       )}
 
-      <LongButton
+      <ModalButton
         type="submit"
         disabled={!dirtyFields.itemName || !!errors.itemName}
       >
         Save
-      </LongButton>
-    </form>
+      </ModalButton>
+    </ModalForm>
   ) : (
     <ItemMatchModalBody>
       <SmallerParagraph>
@@ -141,7 +144,7 @@ const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
         <BoldSpan>{` ${itemMatch.input?.itemName} `}</BoldSpan>
         to <BoldSpan>{`${itemMatch.input?.category}`}</BoldSpan>?
       </SmallerParagraph>
-      <LongButton
+      <ModalButton
         type="submit"
         onClick={() =>
           handleAddItem({
@@ -151,7 +154,7 @@ const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
         }
       >
         Yes
-      </LongButton>
+      </ModalButton>
     </ItemMatchModalBody>
   );
 };
