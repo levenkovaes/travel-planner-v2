@@ -26,7 +26,9 @@ const PackingItemGroup: React.FC<PackingItemGroupProps> = ({ group }) => {
   };
 
   const closeAddItemModal = () => {
-    setIsAddItemModalDisplaying(false);
+    if (isAddItemModalDisplaying) {
+      setIsAddItemModalDisplaying(false);
+    }
   };
 
   const handleAddItem: MouseEventHandler<HTMLButtonElement> = (e) => {

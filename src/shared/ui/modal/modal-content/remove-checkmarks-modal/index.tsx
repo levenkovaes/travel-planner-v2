@@ -7,6 +7,7 @@ import { removeCheckmarks } from "../../../../../pages/packing-checklist/ui/pack
 import { Button } from "../../../button";
 import ModalContent from "../../modal-text-container";
 import { RemoveCheckmarcksModalProps } from "./types";
+import { ModalButton } from "../../styled";
 
 const RemoveCheckmarcksModal: React.FC<RemoveCheckmarcksModalProps> = ({
   handleClose,
@@ -22,9 +23,9 @@ const RemoveCheckmarcksModal: React.FC<RemoveCheckmarcksModalProps> = ({
   return (
     <Modal handleClose={handleClose}>
       <ModalContent heading="Are you sure you want to remove all checkmarks?"></ModalContent>
-      <Button isDelete onClick={handleClick}>
+      <ModalButton isDelete onClick={handleClick}>
         Yes
-      </Button>
+      </ModalButton>
     </Modal>
   );
 };

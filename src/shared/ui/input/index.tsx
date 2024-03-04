@@ -4,7 +4,7 @@ import MEDIA_QUERY from "../../constants/styles/media-query";
 
 const Input = styled.input<{ $error?: boolean }>`
   padding: 10px 20px;
-  margin: 6px 0 20px;
+  margin: 7px 0;
   border: 2px solid
     ${(props) =>
       props.$error
@@ -19,17 +19,14 @@ const Input = styled.input<{ $error?: boolean }>`
 
   @media ${MEDIA_QUERY.laptop} {
     font-size: 22px;
-    margin: 4px 0 20px;
   }
 
   @media ${MEDIA_QUERY.tablet} {
     font-size: 20px;
-    margin: 2px 0 20px;
   }
 
   @media ${MEDIA_QUERY.mobile} {
     font-size: 18px;
-    margin: 0 0 20px;
   }
 
   :focus {

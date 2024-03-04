@@ -9,10 +9,13 @@ import {
   editItem,
   selectChecklistById,
 } from "../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
-import { LongButton } from "../../../../shared/ui/button";
 import { Chip, ChipContainer } from "../../../../shared/ui/chip";
 import ErrorMessage from "../../../../shared/ui/error-message";
-import Input from "../../../../shared/ui/input";
+import {
+  ModalButton,
+  ModalForm,
+  ModalInput,
+} from "../../../../shared/ui/modal/styled";
 import { SmallerParagraph } from "../../../../shared/ui/typography";
 import { ItemMatchModalBody } from "../../../add-packing-item-modal/ui/modal-body/ui/styled";
 import { IItemMatchData } from "../../../add-packing-item-modal/ui/modal-body/ui/types";
@@ -84,8 +87,8 @@ const EditPackingItemModalBody: React.FC<EditItemModalProps> = ({
   };
 
   return !itemMatch ? (
-    <form onSubmit={handleSubmit(handleEditItemFormSubmit)}>
-      <Input
+    <ModalForm onSubmit={handleSubmit(handleEditItemFormSubmit)}>
+      <ModalInput
         {...register("itemName", {
           required: "Item name is required",
           maxLength: {
@@ -109,13 +112,13 @@ const EditPackingItemModalBody: React.FC<EditItemModalProps> = ({
         </ErrorMessage>
       )}
 
-      <LongButton
+      <ModalButton
         type="submit"
         disabled={!!errors.itemName || watchItemName === item.itemName}
       >
         Save
-      </LongButton>
-    </form>
+      </ModalButton>
+    </ModalForm>
   ) : (
     <ItemMatchModalBody>
       <SmallerParagraph>
@@ -131,9 +134,9 @@ const EditPackingItemModalBody: React.FC<EditItemModalProps> = ({
         {` ${itemMatch.input?.itemName} `}
         to {`${itemMatch.input?.category}`} anyway?
       </SmallerParagraph>
-      <LongButton type="submit" onClick={handleEditItemIfMatch}>
+      <ModalButton type="submit" onClick={handleEditItemIfMatch}>
         Yes
-      </LongButton>
+      </ModalButton>
     </ItemMatchModalBody>
   );
 };

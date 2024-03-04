@@ -5,29 +5,20 @@ import { SmallerParagraph } from "../typography";
 
 export const SelectWrapper = styled.div`
   position: relative;
-  margin: 6px 0 20px;
-
-  @media ${MEDIA_QUERY.laptop} {
-    margin: 4px 0 20px;
-  }
-
-  @media ${MEDIA_QUERY.tablet} {
-    margin: 2px 0 20px;
-  }
-
-  @media ${MEDIA_QUERY.mobile} {
-    margin: 0 0 20px;
-  }
+  margin: 7px 0;
 `;
 
 export const Select = styled.div<{ isOpen?: boolean }>`
-  padding: 10px 20px;
+  padding: 10px 40px 10px 20px;
   border: 2px solid ${({ theme }) => theme.colors.input.border};
   border-radius: 6px;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.input.text};
   font-size: 26px;
   font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: all 0.2s ease-in-out;
 
   ${({ isOpen }) =>

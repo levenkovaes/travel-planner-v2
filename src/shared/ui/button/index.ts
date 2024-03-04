@@ -41,7 +41,7 @@ export const Button = styled.button<{ isDelete?: boolean }>`
           :active {
             background-color: ${({ theme }) => theme.colors.button.active};
             border-color: ${({ theme }) => theme.colors.button.active};
-            color: ${({ theme }) => theme.colors.button.background};
+            color: ${COLORS.white};
           }
         `}
 
@@ -101,6 +101,7 @@ export const TransparentButton = styled(Button)<{ isDelete?: boolean }>`
           :active {
             background-color: ${({ theme }) => theme.colors.button.active};
             border-color: ${({ theme }) => theme.colors.button.active};
+            color: ${COLORS.white};
           }
         `}
 `;
