@@ -7,9 +7,9 @@ export const MENU_CARD_CONTENT: MenuCardProps[] = [
     link: "/",
   },
   {
-    title: "To-do lists",
+    title: "To-do list",
     description: "Create a to-do list.",
-    link: "",
+    link: "/to-do-list",
   },
   {
     title: "Packing checklist",

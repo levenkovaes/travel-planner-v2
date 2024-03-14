@@ -14,8 +14,8 @@ import { DeleteIconButton } from "../../../shared/ui/button/delete-icon/ui";
 import { CustomCheckbox } from "../../../shared/ui/custom-checkbox";
 import { SmallerParagraph } from "../../../shared/ui/typography";
 import EditPackingItemModal from "../../../widgets/edit-packing-item-modal/ui";
-import BlankCheckbox from "./assets/check_box_blank.svg";
-import CheckedCheckbox from "./assets/check_box_checked.svg";
+import BlankCheckbox from "../../../shared/ui/assets/icons/check_box_blank.svg";
+import CheckedCheckbox from "../../../shared/ui/assets/icons/check_box_checked.svg";
 import EditIcon from "./assets/edit.svg";
 import {
   ItemWrapper,

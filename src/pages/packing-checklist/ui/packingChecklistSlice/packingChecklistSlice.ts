@@ -267,6 +267,7 @@ export const packingChecklistsSlice = createSlice({
 });
 
 export const packingChecklistsSliceReducer = packingChecklistsSlice.reducer;
+
 export const {
   addChecklist,
   deleteChecklist,
