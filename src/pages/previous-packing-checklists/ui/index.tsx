@@ -7,9 +7,16 @@ import CenteringDiv from "../../../shared/ui/centering-div";
 import { CenteredHeading1, Paragraph } from "../../../shared/ui/typography";
 import {
   deleteAllChecklists,
+  deleteChecklist,
   selectChecklists,
 } from "../../packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
-import { AllChecklistsWrapper, ChecklistName } from "./styled";
+import {
+  AllChecklistsWrapper,
+  ChecklistName,
+  ChecklistWrapper,
+} from "./styled";
+import { DeleteIconButton } from "../../../shared/ui/button/delete-icon/ui";
+import { toast } from "react-toastify";
 
 const PreviousPackingChecklists = () => {
   const dispatch = useDispatch();
@@ -20,17 +27,38 @@ const PreviousPackingChecklists = () => {
     "You haven't created any checklist yet"
   );
 
+  const handleDeleteChecklist = (checklistId: string | null) => {
+    const notify = () =>
+      toast.info("Checklist has been removed!", {
+        autoClose: 500,
+        hideProgressBar: true,
+        progress: undefined,
+      });
+
+    if (checklistId) {
+      dispatch(deleteChecklist(checklistId));
+      notify();
+    }
+  };
+
   const namesToDisplay = allChecklists.map((checklist) => (
-    <ChecklistName
-      as="a"
-      onClick={() => navigate(`/packing-checklists/${checklist.id}`)}
-      key={checklist.id}
-    >
-      {checklist.name}
-    </ChecklistName>
+    <ChecklistWrapper key={checklist.id}>
+      <ChecklistName
+        as="a"
+        onClick={() => navigate(`/packing-checklists/${checklist.id}`)}
+      >
+        {checklist.name}
+      </ChecklistName>
+
+      <DeleteIconButton
+        handleClick={() => {
+          handleDeleteChecklist(checklist.id);
+        }}
+      />
+    </ChecklistWrapper>
   ));
 
-  const handleClick = () => {
+  const handleDeleteAll = () => {
     dispatch(deleteAllChecklists());
     setParagraphContent("All checklists have been deleted!");
   };
@@ -42,7 +70,7 @@ const PreviousPackingChecklists = () => {
         {namesToDisplay}
 
         {allChecklists.length ? (
-          <TransparentLongButton isDelete onClick={handleClick}>
+          <TransparentLongButton isDelete onClick={handleDeleteAll}>
             Delete all checklist
           </TransparentLongButton>
         ) : (

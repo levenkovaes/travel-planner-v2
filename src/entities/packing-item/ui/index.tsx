@@ -10,21 +10,17 @@ import {
   deleteItem,
 } from "../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import { TransparentIconButton } from "../../../shared/ui/button";
-import {
-  CheckboxItemContainer,
-  CustomCheckbox,
-} from "../../../shared/ui/custom-checkbox";
+import { DeleteIconButton } from "../../../shared/ui/button/delete-icon/ui";
+import { CustomCheckbox } from "../../../shared/ui/custom-checkbox";
 import { SmallerParagraph } from "../../../shared/ui/typography";
 import EditPackingItemModal from "../../../widgets/edit-packing-item-modal/ui";
 import BlankCheckbox from "./assets/check_box_blank.svg";
 import CheckedCheckbox from "./assets/check_box_checked.svg";
-import Delete from "./assets/delete.svg";
-import Edit from "./assets/edit.svg";
+import EditIcon from "./assets/edit.svg";
 import {
   ItemWrapper,
   PakingItemButtonContainer,
   PakingItemContainer,
-  TransparentDeleteIconButton,
 } from "./styled";
 import { PackingItemProps } from "./types";
 
@@ -80,11 +76,9 @@ export const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
 
           <PakingItemButtonContainer>
             <TransparentIconButton onClick={openEditItemModal}>
-              <Edit />
+              <EditIcon />
             </TransparentIconButton>
-            <TransparentDeleteIconButton onClick={handleDeleteItem}>
-              <Delete />
-            </TransparentDeleteIconButton>
+            <DeleteIconButton handleClick={handleDeleteItem} />
           </PakingItemButtonContainer>
         </ItemWrapper>
       </PakingItemContainer>

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { TransparentIconButton } from "../../../shared/ui/button";
 import { NO_PRINT } from "../../../shared/constants/styles/print";
 
 export const PakingItemButtonContainer = styled.div`
@@ -9,6 +8,7 @@ export const PakingItemButtonContainer = styled.div`
   opacity: 0;
   ${NO_PRINT}
   margin-left: 8px;
+  transition: opacity 0.2s ease-in-out;
 `;
 
 export const PakingItemContainer = styled.div`
@@ -26,16 +26,6 @@ export const ItemWrapper = styled.div`
   :hover {
     ${PakingItemButtonContainer} {
       opacity: 1;
-    }
-  }
-`;
-
-export const TransparentDeleteIconButton = styled(TransparentIconButton)`
-  margin-left: 8px;
-
-  :hover {
-    path {
-      fill: ${({ theme }) => theme.colors.error};
     }
   }
 `;
