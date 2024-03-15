@@ -164,6 +164,10 @@ export const packingChecklistsSlice = createSlice({
       state.list.push(newChecklist);
     },
 
+    deleteChecklist: (state, action: PayloadAction<string>) => {
+      state.list = state.list.filter(({ id }) => id !== action.payload);
+    },
+
     deleteAllChecklists: (state) => {
       state.list = initialState.list;
     },
@@ -265,6 +269,7 @@ export const packingChecklistsSlice = createSlice({
 export const packingChecklistsSliceReducer = packingChecklistsSlice.reducer;
 export const {
   addChecklist,
+  deleteChecklist,
   deleteAllChecklists,
   addItem,
   editItem,
