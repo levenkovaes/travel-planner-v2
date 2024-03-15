@@ -4,7 +4,7 @@ export const MENU_CARD_CONTENT: MenuCardProps[] = [
   {
     title: "Planner",
     description: "Create and share your travel plans.",
-    link: "/",
+    link: "/planner",
   },
   {
     title: "To-do list",
