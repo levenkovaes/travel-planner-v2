@@ -4,21 +4,28 @@ import { useParams } from "react-router-dom";
 
 import Modal from "../..";
 import { removeCheckmarks } from "../../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
-import { Button } from "../../../button";
 import ModalContent from "../../modal-text-container";
-import { RemoveCheckmarcksModalProps } from "./types";
 import { ModalButton } from "../../styled";
+import { RemoveCheckmarcksModalProps } from "./types";
+import { removeToDoCheckmarks } from "../../../../../pages/to-do-list/ui/toDoListSlice/toDoListSlice";
 
 const RemoveCheckmarcksModal: React.FC<RemoveCheckmarcksModalProps> = ({
   handleClose,
+  type,
 }) => {
   const dispatch = useDispatch();
   const { checklistId } = useParams();
 
-  const handleClick = () => {
-    dispatch(removeCheckmarks({ checklistId }));
-    handleClose();
-  };
+  const handleClick =
+    type === "todo"
+      ? () => {
+          dispatch(removeToDoCheckmarks());
+          handleClose();
+        }
+      : () => {
+          dispatch(removeCheckmarks({ checklistId }));
+          handleClose();
+        };
 
   return (
     <Modal handleClose={handleClose}>

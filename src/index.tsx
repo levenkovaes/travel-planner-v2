@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-//TODO loading
+// TODO loading
 
 root.render(
   <React.StrictMode>

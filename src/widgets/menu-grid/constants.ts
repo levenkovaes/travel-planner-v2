@@ -4,12 +4,12 @@ export const MENU_CARD_CONTENT: MenuCardProps[] = [
   {
     title: "Planner",
     description: "Create and share your travel plans.",
-    link: "/",
+    link: "/planner",
   },
   {
-    title: "To-do lists",
+    title: "To-do list",
     description: "Create a to-do list.",
-    link: "",
+    link: "/to-do-list",
   },
   {
     title: "Packing checklist",

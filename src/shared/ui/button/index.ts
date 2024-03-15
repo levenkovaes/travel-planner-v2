@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 import MEDIA_QUERY from "../../constants/styles/media-query";
-import { COLORS } from "../theme";
 import { NO_PRINT } from "../../constants/styles/print";
+import { COLORS } from "../theme";
 
 export const Button = styled.button<{ isDelete?: boolean }>`
   display: flex;

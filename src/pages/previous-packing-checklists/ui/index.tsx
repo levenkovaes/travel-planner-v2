@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { TransparentLongButton } from "../../../shared/ui/button";
-import CenteringDiv from "../../../shared/ui/centering-div";
+import { DeleteIconButton } from "../../../shared/ui/button/delete-icon/ui";
 import { CenteredHeading1, Paragraph } from "../../../shared/ui/typography";
 import {
   deleteAllChecklists,
@@ -15,8 +16,6 @@ import {
   ChecklistName,
   ChecklistWrapper,
 } from "./styled";
-import { DeleteIconButton } from "../../../shared/ui/button/delete-icon/ui";
-import { toast } from "react-toastify";
 
 const PreviousPackingChecklists = () => {
   const dispatch = useDispatch();
