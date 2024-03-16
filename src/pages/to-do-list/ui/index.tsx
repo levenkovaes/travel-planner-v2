@@ -26,8 +26,6 @@ const ToDoList = () => {
     }
   };
 
-  console.log(toDoList);
-
   const listItems = useMemo(
     () => toDoList.map((item) => <ToDoItem item={item} />),
     [toDoList]

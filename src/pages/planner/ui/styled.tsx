@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import Main from "../../../shared/ui/layout/main";
+
+import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { IconButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
-import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
+import Main from "../../../shared/ui/layout/main";
 
 export const PlannerMain = styled(Main)`
   padding-left: 0;

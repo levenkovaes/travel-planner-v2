@@ -33,6 +33,5 @@ export const toDoListSliceReducer = toDoListSlice.reducer;
 export const { checkToDoItem, removeToDoCheckmarks } = toDoListSlice.actions;
 
 export const selectToDoList = () => (state: RootState) => {
-  console.log(state.toDoList);
   return state.toDoList.toDoList;
 };

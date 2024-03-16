@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
+import { TransparentLongButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
 import Footer from "../../../shared/ui/layout/footer";
 import Header from "../../../shared/ui/layout/header";
 import { Heading1 } from "../../../shared/ui/typography";
+import { PlannerItemAdditionForm } from "../../../widgets/planner-item-addition-form/ui";
 import {
   AddButton,
   ButtonContainer,
@@ -11,14 +13,16 @@ import {
   PlannerMain,
   TimelineContainer,
 } from "./styled";
-import { TransparentLongButton } from "../../../shared/ui/button";
-import { PlannerItemAdditionForm } from "../../../widgets/planner-item-addition-form/ui";
 
 export const Planner = () => {
   const [isAdding, setIsAdding] = useState(false);
 
   const toggleAddItemWidget = () => {
     setIsAdding((prev) => !prev);
+  };
+
+  const closeAddItemWidget = () => {
+    setIsAdding(false);
   };
 
   return (
@@ -31,7 +35,9 @@ export const Planner = () => {
             <AddButton onClick={toggleAddItemWidget}>+</AddButton>
           </TimelineContainer>
 
-          {isAdding && <PlannerItemAdditionForm />}
+          {isAdding && (
+            <PlannerItemAdditionForm handleClose={closeAddItemWidget} />
+          )}
           <ButtonContainer>
             <TransparentLongButton isDelete>Clear</TransparentLongButton>
           </ButtonContainer>
