@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { useSelector } from "react-redux";
 
 import { TransparentLongButton } from "../../../shared/ui/button";
-import CenteringDiv from "../../../shared/ui/centering-div";
-import Footer from "../../../shared/ui/layout/footer";
-import Header from "../../../shared/ui/layout/header";
 import { Heading1 } from "../../../shared/ui/typography";
-import { PlannerItemAdditionForm } from "../../../widgets/planner-item-addition-form/ui";
+import PlannerItem from "../../../widgets/planner-item";
+import PlannerItemAdditionForm from "../../../widgets/planner-item-addition-form/ui";
+import { clearPlanner, selectPlanner } from "./plannerSlice/plannerSlice";
 import {
   AddButton,
+  AddItemContainer,
   ButtonContainer,
   PlannerContainer,
-  PlannerMain,
+  PlannerContent,
   TimelineContainer,
 } from "./styled";
+import { useDispatch } from "react-redux";
 
-export const Planner = () => {
+const Planner = () => {
+  const dispatch = useDispatch();
+  const planner = useSelector(selectPlanner);
   const [isAdding, setIsAdding] = useState(false);
 
   const toggleAddItemWidget = () => {
@@ -25,25 +29,43 @@ export const Planner = () => {
     setIsAdding(false);
   };
 
-  return (
-    <>
-      <Header />
-      <PlannerMain>
-        <PlannerContainer>
-          <Heading1>Planner</Heading1>
-          <TimelineContainer>
-            <AddButton onClick={toggleAddItemWidget}>+</AddButton>
-          </TimelineContainer>
+  const plannerItems = useMemo(() => {
+    return planner.map(({ date, place, activities, id }, index) => (
+      <PlannerItem
+        date={date}
+        place={place}
+        activities={activities}
+        count={index + 1}
+        key={id}
+      />
+    ));
+  }, [planner]);
 
+  const handleClearPlanner = () => {
+    dispatch(clearPlanner());
+  };
+
+  console.log(planner);
+
+  return (
+    <PlannerContainer>
+      <Heading1>Planner</Heading1>
+      <PlannerContent>
+        <TimelineContainer>{plannerItems}</TimelineContainer>
+        <AddItemContainer isAdding={isAdding}>
+          <AddButton onClick={toggleAddItemWidget}>+</AddButton>
           {isAdding && (
             <PlannerItemAdditionForm handleClose={closeAddItemWidget} />
           )}
-          <ButtonContainer>
-            <TransparentLongButton isDelete>Clear</TransparentLongButton>
-          </ButtonContainer>
-        </PlannerContainer>
-      </PlannerMain>
-      <Footer />
-    </>
+        </AddItemContainer>
+      </PlannerContent>
+      <ButtonContainer>
+        <TransparentLongButton isDelete onClick={handleClearPlanner}>
+          Clear
+        </TransparentLongButton>
+      </ButtonContainer>
+    </PlannerContainer>
   );
 };
+
+export default Planner;

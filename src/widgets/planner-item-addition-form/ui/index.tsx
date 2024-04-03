@@ -1,20 +1,25 @@
 import React from "react";
 import { DayPicker } from "react-day-picker";
 import { Controller, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
+import { addPlannerItem } from "../../../pages/planner/ui/plannerSlice/plannerSlice";
 import { LongButton } from "../../../shared/ui/button";
 import ErrorMessage from "../../../shared/ui/error-message";
 import Input from "../../../shared/ui/input";
 import { Form, FormContainer } from "./styled";
-import { FormValues } from "./types";
+import { PlannerItemAdditionFormProps, PlannerItemFormValues } from "./types";
 
-export const PlannerItemAdditionForm = ({ handleClose }) => {
+const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
+  handleClose,
+}) => {
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     register,
     formState: { errors },
     control,
-  } = useForm<FormValues>({
+  } = useForm<PlannerItemFormValues>({
     defaultValues: {
       date: new Date(),
       place: "",
@@ -22,8 +27,9 @@ export const PlannerItemAdditionForm = ({ handleClose }) => {
     },
   });
 
-  const handlePlannerFormSubmit = (data: FormValues) => {
+  const handlePlannerFormSubmit = (data: PlannerItemFormValues) => {
     console.log(data);
+    dispatch(addPlannerItem(data));
     handleClose();
   };
 
@@ -82,3 +88,5 @@ export const PlannerItemAdditionForm = ({ handleClose }) => {
     </FormContainer>
   );
 };
+
+export default PlannerItemAdditionForm;
