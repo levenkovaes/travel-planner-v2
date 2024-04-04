@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React from "react";
 
 import { Paragraph, SmallerParagraph } from "../../shared/ui/typography";
@@ -12,10 +13,16 @@ const PlannerItem: React.FC<PlannerItemProps> = ({
 }) => {
   return (
     <PlannerItemContainer>
-      <Date>{date.toLocaleString("en-GB")}</Date>
+      <Date>{dayjs(date).format("MMMM D, YYYY")}</Date>
       <DateChip>Day {count}</DateChip>
       <Paragraph>{place}</Paragraph>
-      <SmallerParagraph>{activities}</SmallerParagraph>
+      <ul>
+        {activities.split("\n").map((el, id) => (
+          <li key={id}>
+            <SmallerParagraph>{el}</SmallerParagraph>
+          </li>
+        ))}
+      </ul>
     </PlannerItemContainer>
   );
 };

@@ -3,18 +3,10 @@ import styled, { css } from "styled-components";
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { IconButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
+import { FormContainer } from "../../../widgets/planner-item-addition-form/ui/styled";
 
-export const PlannerContainer = styled(CenteringDiv)`
+export const PlannerContainer = styled(CenteringDiv)<{ isAdding: boolean }>`
   flex-grow: 1;
-`;
-
-export const PlannerContent = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 80px;
-  gap: 14px;
-  align-items: center;
-  width: 100%;
-  padding-bottom: 40px;
 `;
 
 export const TimelineContainer = styled.div`
@@ -42,16 +34,20 @@ export const AddItemContainer = styled.div<{ isAdding: boolean }>`
         align-items: start;
       }
     `}
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    position: unset;
+  }
 `;
 
 export const AddButton = styled(IconButton)`
   width: 100%;
   height: 100%;
   padding: 20px 0;
-  border-radius: 30px;
   color: ${({ theme }) => theme.colors.background};
   background-color: ${({ theme }) => theme.colors.text};
   font-size: 30px;
+  border-radius: 8px;
 
   &:hover {
     color: ${({ theme }) => theme.colors.background};
@@ -61,6 +57,33 @@ export const AddButton = styled(IconButton)`
   &:active {
     color: ${({ theme }) => theme.colors.background};
     background-color: ${({ theme }) => theme.colors.text};
+  }
+`;
+
+export const PlannerContent = styled.div<{ isEmpty: boolean }>`
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 40px;
+
+  ${({ isEmpty }) =>
+    isEmpty &&
+    css`
+      ${AddItemContainer} {
+        grid-area: 1 / 1 / 2 / 3;
+        justify-self: center;
+        width: 77px;
+      }
+
+      ${FormContainer} {
+        right: unset;
+      }
+    `}
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    grid-template-columns: 1fr;
   }
 `;
 

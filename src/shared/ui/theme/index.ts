@@ -27,6 +27,7 @@ export const LIGHT: ITheme = {
   colors: {
     primaryColor: COLORS.primaryColor,
     background: COLORS.white,
+    lessContrastBg: COLORS.primaryLightColor,
     text: COLORS.primaryDarkColor,
     modal: {
       background: COLORS.white,
@@ -56,6 +57,7 @@ export const LIGHT: ITheme = {
     card: COLORS.primaryLightColor,
     error: COLORS.red,
     accentColor: COLORS.accentColor,
+    lightAccent: COLORS.accentDarkColor,
   },
   boxShadow: "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px",
 };
@@ -65,6 +67,7 @@ export const DARK: ITheme = {
   colors: {
     primaryColor: COLORS.primaryColor,
     background: COLORS.darkGrey,
+    lessContrastBg: COLORS.primaryDarkColor,
     text: COLORS.primaryLightColor,
     modal: {
       background: COLORS.primaryDarkColor,
@@ -94,6 +97,7 @@ export const DARK: ITheme = {
     card: COLORS.primaryDarkColor,
     error: COLORS.red,
     accentColor: COLORS.accentColor,
+    lightAccent: COLORS.accentLightColor,
   },
   boxShadow: "rgba(0, 0, 0, 0.8) 0px 48px 100px 0px;",
 };

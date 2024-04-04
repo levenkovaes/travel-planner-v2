@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from "../../../../app/store";
@@ -14,9 +16,7 @@ const plannerSlice = createSlice({
   reducers: {
     addPlannerItem: (state, action: PayloadAction<PlannerItemFormValues>) => {
       state.list.push({ ...action.payload, id: nanoid() });
-      state.list.sort((a, b) => {
-        if (a.date < b.date) return a;
-      });
+      state.list.sort((a, b) => dayjs(a.date).diff(dayjs(b.date)));
     },
     editPlannerItem: (state, action: PayloadAction<string>) => {},
     deletePlannerItem: (state, action: PayloadAction<string>) => {},
