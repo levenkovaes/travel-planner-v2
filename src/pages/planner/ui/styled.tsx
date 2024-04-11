@@ -43,11 +43,14 @@ export const AddItemContainer = styled.div<{ isAdding: boolean }>`
 export const AddButton = styled(IconButton)`
   width: 100%;
   height: 100%;
-  padding: 20px 0;
+  padding: 20px;
   color: ${({ theme }) => theme.colors.background};
   background-color: ${({ theme }) => theme.colors.text};
-  font-size: 30px;
   border-radius: 8px;
+
+  path {
+    fill: ${({ theme }) => theme.colors.background};
+  }
 
   &:hover {
     color: ${({ theme }) => theme.colors.background};

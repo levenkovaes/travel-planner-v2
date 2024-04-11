@@ -72,6 +72,10 @@ export const LongButton = styled(Button)`
 export const TransparentButton = styled(Button)<{ isDelete?: boolean }>`
   background-color: transparent;
 
+  path {
+    transition: fill 0.2s ease-in-out;
+  }
+
   ${({ isDelete }) =>
     isDelete
       ? css`
@@ -96,12 +100,20 @@ export const TransparentButton = styled(Button)<{ isDelete?: boolean }>`
             background-color: ${({ theme }) => theme.colors.button.text};
             border-color: ${({ theme }) => theme.colors.button.text};
             color: ${({ theme }) => theme.colors.button.background};
+
+            path {
+              fill: ${({ theme }) => theme.colors.button.background};
+            }
           }
 
           :active {
             background-color: ${({ theme }) => theme.colors.button.active};
             border-color: ${({ theme }) => theme.colors.button.active};
             color: ${COLORS.white};
+
+            path {
+              fill: ${COLORS.white};
+            }
           }
         `}
 `;
