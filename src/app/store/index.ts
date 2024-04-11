@@ -1,7 +1,11 @@
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/es/storage";
 
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
 
 import { packingChecklistsSliceReducer } from "../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import { plannerSliceReducer } from "../../pages/planner/ui/plannerSlice/plannerSlice";
@@ -26,6 +30,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

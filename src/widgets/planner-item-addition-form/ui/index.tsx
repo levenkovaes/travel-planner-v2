@@ -29,7 +29,6 @@ const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
   });
 
   const handlePlannerFormSubmit = (data: PlannerItemFormValues) => {
-    console.log(data);
     dispatch(addPlannerItem(data));
     handleClose();
   };
@@ -47,7 +46,7 @@ const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
       <FormBackdrop onClick={(e) => handleBackdropClick(e)} />
       <FormContainer>
         <Form onSubmit={handleSubmit(handlePlannerFormSubmit)}>
-          <FormCloseButton onClick={handleClose}>
+          <FormCloseButton type="button" onClick={handleClose}>
             <CloseIcon />
           </FormCloseButton>
           <Controller

@@ -58,6 +58,15 @@ export const AddButton = styled(IconButton)`
     color: ${({ theme }) => theme.colors.background};
     background-color: ${({ theme }) => theme.colors.text};
   }
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    padding: 8px 0;
+  }
+
+  @media ${MEDIA_QUERY.mobile} {
+    font-size: 24px;
+    width: 45px;
+  }
 `;
 
 export const PlannerContent = styled.div<{ isEmpty: boolean }>`
@@ -74,7 +83,7 @@ export const PlannerContent = styled.div<{ isEmpty: boolean }>`
       ${AddItemContainer} {
         grid-area: 1 / 1 / 2 / 3;
         justify-self: center;
-        width: 77px;
+        width: 53px;
       }
 
       ${FormContainer} {
@@ -93,9 +102,4 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: auto;
-
-  @media ${MEDIA_QUERY.mobile} {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 `;

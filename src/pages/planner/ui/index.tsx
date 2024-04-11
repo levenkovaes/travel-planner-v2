@@ -55,8 +55,6 @@ const Planner = () => {
     dispatch(clearPlanner());
   };
 
-  console.log(planner);
-
   return (
     <PlannerContainer isAdding={isAdding}>
       <Heading1>Planner</Heading1>
