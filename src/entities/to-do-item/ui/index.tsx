@@ -11,11 +11,14 @@ import { CustomCheckbox } from "../../../shared/ui/custom-checkbox";
 import { SmallerParagraph } from "../../../shared/ui/typography";
 import { ToDoItemContainer } from "./styled";
 
-const ToDoItem: React.FC<{ item: IToDoItem }> = ({ item }) => {
+const ToDoItem: React.FC<{ item: IToDoItem; listId: string }> = ({
+  item,
+  listId,
+}) => {
   const dispatch = useDispatch();
 
   const handleCheck = () => {
-    dispatch(checkToDoItem(item.id));
+    dispatch(checkToDoItem({ itemId: item.id, listId }));
   };
 
   return (

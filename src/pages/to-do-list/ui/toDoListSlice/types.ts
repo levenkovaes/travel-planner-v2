@@ -5,5 +5,11 @@ export interface IToDoItem {
 }
 
 export interface IToDoListState {
-  toDoList: IToDoItem[];
+  list: IToDoList[];
+}
+
+export interface IToDoList {
+  name: string;
+  id: string;
+  items: IToDoItem[];
 }

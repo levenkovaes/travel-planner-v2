@@ -6,11 +6,14 @@ import { TransparentLongButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
 import RemoveCheckmarcksModal from "../../../shared/ui/modal/modal-content/remove-checkmarks-modal";
 import { Heading1 } from "../../../shared/ui/typography";
-import { selectToDoList } from "./toDoListSlice/toDoListSlice";
+import { selectToDoListById } from "./toDoListSlice/toDoListSlice";
 import { ListContainer } from "./styled";
+import { useParams } from "react-router-dom";
 
 const ToDoList = () => {
-  const toDoList = useSelector(selectToDoList());
+  const { listId } = useParams();
+  const toDoList = useSelector(selectToDoListById(listId || ""));
+
   const [
     isRemoveCheckmarksModalDisplaying,
     setIsRemoveCheckmarksModalDisplaying,
@@ -26,14 +29,17 @@ const ToDoList = () => {
     }
   };
 
-  const listItems = useMemo(
-    () => toDoList.map((item) => <ToDoItem item={item} />),
-    [toDoList]
-  );
+  const listItems = useMemo(() => {
+    if (toDoList) {
+      return toDoList.items.map((item) => (
+        <ToDoItem item={item} listId={listId || ""} key={item.id} />
+      ));
+    }
+  }, [toDoList]);
 
   return (
     <CenteringDiv>
-      <Heading1>To-do List</Heading1>
+      <Heading1>{toDoList?.name || "To-do List"}</Heading1>
       <ListContainer> {listItems}</ListContainer>
 
       <TransparentLongButton isDelete onClick={openRemoveCheckmarksModal}>

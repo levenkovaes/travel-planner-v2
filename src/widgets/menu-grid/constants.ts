@@ -11,7 +11,7 @@ export const MENU_CARD_CONTENT: MenuCardProps[] = [
     title: CardTitleEnum.ToDo,
     description: "Create a to-do list.",
     addLink: "/to-do-list",
-    previousLink: "/to-do-list",
+    previousLink: "/to-do-lists",
   },
   {
     title: CardTitleEnum.PackingList,

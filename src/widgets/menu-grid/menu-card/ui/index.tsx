@@ -1,18 +1,23 @@
 import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import { nanoid } from "@reduxjs/toolkit";
+
 import { selectChecklists } from "../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
+import {
+  addToDoList,
+  selectToDoLists,
+} from "../../../../pages/to-do-list/ui/toDoListSlice/toDoListSlice";
 import MEDIA_QUERY from "../../../../shared/constants/styles/media-query";
 import Icon from "../../../../shared/ui/assets/icons/add.svg";
+import { Chip } from "../../../../shared/ui/chip";
 import { Link } from "../../../../shared/ui/link";
+import { COLORS } from "../../../../shared/ui/theme";
 import { Heading2, SmallerParagraph } from "../../../../shared/ui/typography";
 import MenuCardProps, { CardTitleEnum } from "../../types";
 import { CardButton, CardContainer } from "./styled";
-import { nanoid } from "@reduxjs/toolkit";
-import { Chip } from "../../../../shared/ui/chip";
-import { COLORS } from "../../../../shared/ui/theme";
 
 const MenuCard: React.FC<MenuCardProps> = ({
   title,
@@ -21,10 +26,20 @@ const MenuCard: React.FC<MenuCardProps> = ({
   previousLink,
 }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // TODO
   const handleClick = () => {
-    navigate(addLink);
+    if (title === CardTitleEnum.ToDo) {
+      const id = nanoid();
+      dispatch(addToDoList(id));
+      navigate(addLink + "/" + id);
+    } else {
+      navigate(addLink);
+    }
   };
 
+  const allToDoLists = useSelector(selectToDoLists);
   const allChecklists = useSelector(selectChecklists);
 
   const previousItems = useMemo(() => {
@@ -32,7 +47,19 @@ const MenuCard: React.FC<MenuCardProps> = ({
       case CardTitleEnum.Planner:
         return "";
       case CardTitleEnum.ToDo:
-        return "";
+        return [...allToDoLists]
+          .reverse()
+          .filter((item, index) => index < 6)
+          .map((list) => {
+            return (
+              <ItemLink
+                onClick={() => navigate(`/to-do-list/${list.id}`)}
+                key={nanoid()}
+              >
+                <ItemChip>{list.name}</ItemChip>
+              </ItemLink>
+            );
+          });
       case CardTitleEnum.PackingList:
         return [...allChecklists]
           .reverse()
