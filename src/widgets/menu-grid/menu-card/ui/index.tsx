@@ -13,7 +13,7 @@ import {
 import MEDIA_QUERY from "../../../../shared/constants/styles/media-query";
 import Icon from "../../../../shared/ui/assets/icons/add.svg";
 import { Chip } from "../../../../shared/ui/chip";
-import { Link } from "../../../../shared/ui/link";
+import { LINK_FONT_STYLES, Link } from "../../../../shared/ui/link";
 import { COLORS } from "../../../../shared/ui/theme";
 import { Heading2, SmallerParagraph } from "../../../../shared/ui/typography";
 import MenuCardProps, { CardTitleEnum } from "../../types";
@@ -77,6 +77,8 @@ const MenuCard: React.FC<MenuCardProps> = ({
     }
   }, [allChecklists]);
 
+  console.log(previousItems);
+
   return (
     <FeatureContainer>
       <MenuCardContainer>
@@ -87,8 +89,14 @@ const MenuCard: React.FC<MenuCardProps> = ({
         </CardButton>
       </MenuCardContainer>
       <PreviousContainer>
-        <PreviousItems>{previousItems} </PreviousItems>
-        <MoreLink href={previousLink}>See more...</MoreLink>
+        {previousItems && previousItems.length > 0 ? (
+          <>
+            <PreviousItems>{previousItems} </PreviousItems>
+            <MoreLink href={previousLink}>See more...</MoreLink>
+          </>
+        ) : (
+          <PreviousText>There is nothing to display yet</PreviousText>
+        )}
       </PreviousContainer>
     </FeatureContainer>
   );
@@ -142,6 +150,11 @@ const PreviousContainer = styled.div`
 `;
 
 const PreviousItems = styled.div``;
+
+const PreviousText = styled(SmallerParagraph)`
+  ${LINK_FONT_STYLES}
+  color: #8f8f8f;
+`;
 
 const ItemLink = styled(Link)`
   display: inline-block;

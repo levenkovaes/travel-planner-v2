@@ -13,3 +13,22 @@ export interface IToDoList {
   id: string;
   items: IToDoItem[];
 }
+
+export interface IDeleteItemAction {
+  checklistId: string | undefined;
+  itemId: string;
+}
+export interface IEditItemAction {
+  checklistId: string | undefined;
+  itemId: string;
+  itemName: string;
+}
+
+export interface IAddItemAction {
+  item: {
+    itemName: string;
+    id: string;
+    isChecked: boolean;
+  };
+  checklistId: string | undefined;
+}

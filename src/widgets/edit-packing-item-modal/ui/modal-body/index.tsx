@@ -104,10 +104,10 @@ const EditPackingItemModalBody: React.FC<EditItemModalProps> = ({
 
       {errors.itemName && (
         <ErrorMessage>
-          <span>{errors.itemName.message}</span>
+          <span>{errors.itemName.message}&nbsp;</span>
           <span>
             {errors.itemName.type === "maxLength" &&
-              ` ${errors.itemName.ref?.value.length}/40`}
+              `${errors.itemName.ref?.value.length}/40`}
           </span>
         </ErrorMessage>
       )}

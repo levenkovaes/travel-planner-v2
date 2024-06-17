@@ -72,7 +72,7 @@ const PackingChecklistCreationForm = () => {
       />
       {errors.checklistName && (
         <ErrorMessage>
-          <span>{errors.checklistName.message} </span>
+          <span>{errors.checklistName.message}&nbsp;</span>
           <span>{`${errors.checklistName.ref?.value.length}/40`}</span>
         </ErrorMessage>
       )}

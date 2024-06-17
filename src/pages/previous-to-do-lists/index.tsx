@@ -43,7 +43,7 @@ const ToDoLists = () => {
 
   const namesToDisplay = allToDoLists.map((list) => (
     <ChecklistWrapper key={list.id}>
-      <Link onClick={() => navigate(`/packing-checklists/${list.id}`)}>
+      <Link onClick={() => navigate(`/to-do-list/${list.id}`)}>
         {list.name}
       </Link>
 
