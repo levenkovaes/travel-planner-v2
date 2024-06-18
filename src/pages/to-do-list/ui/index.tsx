@@ -1,28 +1,53 @@
 import React, { MouseEventHandler, useMemo, useState } from "react";
-import { useSelector } from "react-redux";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import ToDoItem from "../../../entities/to-do-item/ui";
+import AddIcon from "../../../shared/ui/assets/icons/add-small.svg";
 import { TransparentLongButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
-import RemoveCheckmarcksModal from "../../../shared/ui/modal/modal-content/remove-checkmarks-modal";
-import { Heading1 } from "../../../shared/ui/typography";
-import { selectToDoListById } from "./toDoListSlice/toDoListSlice";
-import { AddIconContainer, ListContainer } from "./styled";
-import { useParams } from "react-router-dom";
-import AddIcon from "../../../shared/ui/assets/icons/add-small.svg";
+import ErrorMessage from "../../../shared/ui/error-message";
 import Modal from "../../../shared/ui/modal";
+import RemoveCheckmarcksModal from "../../../shared/ui/modal/modal-content/remove-checkmarks-modal";
 import ModalContent from "../../../shared/ui/modal/modal-text-container";
 import AddToDoItemModalBody from "../../../widgets/add-to-do-item-modal-body/ui";
+import {
+  AddIconContainer,
+  EditForm,
+  EditInput,
+  ListContainer,
+  ListHeading,
+  ListHeadingContainer,
+} from "./styled";
+import { editTitle, selectToDoListById } from "./toDoListSlice/toDoListSlice";
+import { IFormValues } from "./types";
 
 const ToDoList = () => {
   const { listId } = useParams();
+  const dispatch = useDispatch();
   const toDoList = useSelector(selectToDoListById(listId || ""));
   const [isAddItemModalDisplaying, setIsAddItemModalDisplaying] =
-    useState(false);
+    useState<boolean>(false);
   const [
     isRemoveCheckmarksModalDisplaying,
     setIsRemoveCheckmarksModalDisplaying,
-  ] = useState(false);
+  ] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+
+  const title: string = toDoList?.name || "Sorry, checklist not found";
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, dirtyFields },
+  } = useForm<IFormValues>({
+    mode: "onChange",
+    defaultValues: {
+      title: title,
+    },
+  });
 
   const openRemoveCheckmarksModal = () => {
     setIsRemoveCheckmarksModalDisplaying(true);
@@ -53,18 +78,66 @@ const ToDoList = () => {
     setIsAddItemModalDisplaying(true);
   };
 
+  const handleEditStart = () => {
+    setIsEditing(true);
+  };
+
+  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data) => {
+    dispatch(
+      editTitle({
+        title: String(data.title),
+        checklistId: listId,
+      })
+    );
+
+    setIsEditing(false);
+  };
+
   return (
     <CenteringDiv>
-      <Heading1>{toDoList?.name || "To-do List"}</Heading1>
-      <ListContainer> {listItems}</ListContainer>
+      <ListHeadingContainer>
+        {isEditing && toDoList ? (
+          <EditForm onSubmit={handleSubmit(handleEditFormSubmit)}>
+            <EditInput
+              placeholder={title}
+              {...register("title", {
+                required: "List name is required",
+                maxLength: {
+                  value: 40,
+                  message: "Name is too long",
+                },
+              })}
+              autoFocus
+              type="text"
+              id="item"
+              $error={!!errors.title}
+            />
+            {errors.title && (
+              <ErrorMessage>
+                <span>{errors.title.message}&nbsp;</span>
+                <span>
+                  {errors.title.type === "maxLength" &&
+                    `${errors.title.ref?.value.length}/40`}
+                </span>
+              </ErrorMessage>
+            )}
+          </EditForm>
+        ) : (
+          <ListHeading onClick={handleEditStart}>{title}</ListHeading>
+        )}
+      </ListHeadingContainer>
 
-      <AddIconContainer onClick={handleAddItem}>
-        <AddIcon />
-      </AddIconContainer>
-
-      <TransparentLongButton isDelete onClick={openRemoveCheckmarksModal}>
-        Remove checkmarks
-      </TransparentLongButton>
+      {toDoList && (
+        <>
+          <ListContainer> {listItems}</ListContainer>
+          <AddIconContainer onClick={handleAddItem}>
+            <AddIcon />
+          </AddIconContainer>
+          <TransparentLongButton isDelete onClick={openRemoveCheckmarksModal}>
+            Remove checkmarks
+          </TransparentLongButton>
+        </>
+      )}
 
       {isRemoveCheckmarksModalDisplaying && (
         <RemoveCheckmarcksModal

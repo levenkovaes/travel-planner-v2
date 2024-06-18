@@ -62,3 +62,8 @@ export interface IСategoryIsUpdatedResetAction {
   checklistId: string | undefined;
   categoryName: string;
 }
+
+export interface IEditTitleAction {
+  checklistId: string | undefined;
+  title: string;
+}
