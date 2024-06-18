@@ -3,6 +3,7 @@ export interface ITheme {
   colors: {
     primaryColor: string;
     background: string;
+    lessContrastBg: string;
     text: string;
     modal: {
       background: string;
@@ -32,6 +33,7 @@ export interface ITheme {
     card: string;
     error: string;
     accentColor: string;
+    lightAccent: string;
   };
   boxShadow: string;
 }

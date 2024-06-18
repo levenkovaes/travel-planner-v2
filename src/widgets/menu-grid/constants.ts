@@ -1,19 +1,22 @@
-import MenuCardProps from "./types";
+import MenuCardProps, { CardTitleEnum } from "./types";
 
 export const MENU_CARD_CONTENT: MenuCardProps[] = [
   {
-    title: "Planner",
+    title: CardTitleEnum.Planner,
     description: "Create and share your travel plans.",
-    link: "/planner",
+    addLink: "/planner",
+    previousLink: "/planner",
   },
   {
-    title: "To-do list",
+    title: CardTitleEnum.ToDo,
     description: "Create a to-do list.",
-    link: "/to-do-list",
+    addLink: "/to-do-list",
+    previousLink: "/to-do-lists",
   },
   {
-    title: "Packing checklist",
+    title: CardTitleEnum.PackingList,
     description: "Create a packing list.",
-    link: "/packing-checklist",
+    addLink: "/create-packing-checklist",
+    previousLink: "/packing-checklists",
   },
 ];

@@ -4,7 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import { PakingItem } from "../../../entities/packing-item/ui";
 import AddPackingItemModal from "../../add-packing-item-modal/ui";
-import AddIcon from "./assets/add.svg";
+import AddIcon from "../../../shared/ui/assets/icons/add-small.svg";
 import { AddIconContainer, GroupContainer, GroupHeading } from "./styled";
 import { PackingItemGroupProps } from "./types";
 import { useDispatch } from "react-redux";
@@ -41,7 +41,7 @@ const PackingItemGroup: React.FC<PackingItemGroupProps> = ({ group }) => {
 
     ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
     dispatch(categoryIsUpdatedReset({ checklistId, categoryName: groupName }));
-  }, [isUpdated]);
+  }, [checklistId, groupName, isUpdated]);
 
   return (
     <>

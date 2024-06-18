@@ -13,13 +13,15 @@ const RemoveCheckmarcksModal: React.FC<RemoveCheckmarcksModalProps> = ({
   handleClose,
   type,
 }) => {
-  const dispatch = useDispatch();
+  const { listId } = useParams();
   const { checklistId } = useParams();
+  const dispatch = useDispatch();
 
+  // TODO
   const handleClick =
     type === "todo"
       ? () => {
-          dispatch(removeToDoCheckmarks());
+          dispatch(removeToDoCheckmarks(listId || ""));
           handleClose();
         }
       : () => {

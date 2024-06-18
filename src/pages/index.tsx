@@ -5,28 +5,26 @@ import Home from "./home/ui";
 import Menu from "./menu/ui";
 import NoPage from "./no-page/ui";
 import PackingChecklistCreation from "./packing-checklist-creation/ui";
-import PackingChecklistInitialPage from "./packing-checklist-initial-page/ui";
 import PackingChecklist from "./packing-checklist/ui";
+import Planner from "./planner/ui";
 import PreviousPackingChecklists from "./previous-packing-checklists/ui";
+import ToDoLists from "./previous-to-do-lists";
 import ToDoList from "./to-do-list/ui";
-import { Planner } from "./planner/ui";
 
 const Pages = () => (
   <Routes>
     <Route index element={<Home />} />
 
-    <Route path="/">
-      <Route path="planner" element={<Planner />} />
-    </Route>
+    <Route path="/"></Route>
 
     <Route path="/" element={<Layout />}>
       <Route path="menu" element={<Menu />} />
 
-      <Route path="to-do-list" element={<ToDoList />} />
-      <Route
-        path="packing-checklist"
-        element={<PackingChecklistInitialPage />}
-      />
+      <Route path="planner" element={<Planner />} />
+
+      <Route path="to-do-lists" element={<ToDoLists />} />
+      <Route path="to-do-list/:listId" element={<ToDoList />} />
+
       <Route
         path="create-packing-checklist"
         element={<PackingChecklistCreation />}

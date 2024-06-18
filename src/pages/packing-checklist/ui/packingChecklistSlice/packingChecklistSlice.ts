@@ -243,7 +243,7 @@ export const packingChecklistsSlice = createSlice({
 
       if (currentChecklist) {
         for (let key in currentChecklist.categories) {
-          currentChecklist.categories[key].data.forEach((el) => {
+          currentChecklist.categories[key].data.map((el) => {
             return (el.isChecked = false);
           });
         }
