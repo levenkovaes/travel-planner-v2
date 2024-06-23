@@ -32,3 +32,7 @@ export interface IAddItemAction {
   };
   checklistId: string | undefined;
 }
+export interface IEditTitleAction {
+  checklistId: string | undefined;
+  title: string;
+}

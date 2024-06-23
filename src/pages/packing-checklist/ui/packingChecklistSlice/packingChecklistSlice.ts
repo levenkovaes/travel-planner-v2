@@ -19,6 +19,7 @@ import {
   ICheckItemAction,
   IDeleteItemAction,
   IEditItemAction,
+  IEditTitleAction,
   IPackingChecklist,
   IPackingChecklistsState,
   IRemoveCheckmarksAction,
@@ -263,6 +264,16 @@ export const packingChecklistsSlice = createSlice({
           false;
       }
     },
+
+    editPackingListTitle: (state, action: PayloadAction<IEditTitleAction>) => {
+      const currentChecklist = state.list.find(
+        ({ id }) => id === action.payload.checklistId
+      );
+
+      if (currentChecklist) {
+        currentChecklist.name = action.payload.title;
+      }
+    },
   },
 });
 
@@ -278,6 +289,7 @@ export const {
   checkItem,
   removeCheckmarks,
   categoryIsUpdatedReset,
+  editPackingListTitle,
 } = packingChecklistsSlice.actions;
 
 export const selectChecklists = (state: RootState) => {

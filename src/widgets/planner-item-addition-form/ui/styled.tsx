@@ -65,5 +65,11 @@ export const Form = styled.form`
 
 export const FormCloseButton = styled(CloseButton)`
   position: absolute;
-  right: 0;
+  top: -10px;
+  right: -20px;
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    top: 0;
+    right: -10px;
+  }
 `;

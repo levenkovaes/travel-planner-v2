@@ -6,6 +6,7 @@ import {
   IAddItemAction,
   IDeleteItemAction,
   IEditItemAction,
+  IEditTitleAction,
   IToDoList,
   IToDoListState,
 } from "./types";
@@ -105,6 +106,16 @@ export const toDoListSlice = createSlice({
         });
       }
     },
+
+    editTitle: (state, action: PayloadAction<IEditTitleAction>) => {
+      const currentChecklist = state.list.find(
+        ({ id }) => id === action.payload.checklistId
+      );
+
+      if (currentChecklist) {
+        currentChecklist.name = action.payload.title;
+      }
+    },
   },
 });
 
@@ -119,6 +130,7 @@ export const {
   deleteToDoItem,
   checkToDoItem,
   removeToDoCheckmarks,
+  editTitle,
 } = toDoListSlice.actions;
 
 export const selectToDoLists = (state: RootState) => {

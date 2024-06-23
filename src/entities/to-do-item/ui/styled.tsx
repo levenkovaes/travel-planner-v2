@@ -50,6 +50,7 @@ export const EditForm = styled.form`
   flex-direction: column;
   align-self: flex-start;
   width: 100%;
+  padding-bottom: 10px;
 `;
 
 export const EditInput = styled(Input)`
@@ -75,15 +76,12 @@ export const EditInput = styled(Input)`
 
 export const EditErrorMessage = styled(ErrorMessage)`
   position: absolute;
-  top: -4px;
+  bottom: -22px;
   right: 0;
   font-size: 18px;
 
-  @media ${MEDIA_QUERY.tablet} {
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
     font-size: 16px;
-  }
-
-  @media ${MEDIA_QUERY.mobile} {
-    font-size: 16px;
+    bottom: -18px;
   }
 `;
