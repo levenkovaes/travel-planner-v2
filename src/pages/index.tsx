@@ -20,11 +20,11 @@ const Pages = () => (
     <Route path="/" element={<Layout />}>
       <Route path="menu" element={<Menu />} />
 
-      <Route path="planner" element={<Planner />} />
-
+      {/* TODO */}
+      {/* <Route path="planners" element={<Planners />} /> */}
+      <Route path="planner/:plannerId" element={<Planner />} />
       <Route path="to-do-lists" element={<ToDoLists />} />
       <Route path="to-do-list/:listId" element={<ToDoList />} />
-
       <Route
         path="create-packing-checklist"
         element={<PackingChecklistCreation />}
@@ -37,7 +37,6 @@ const Pages = () => (
         path="packing-checklists"
         element={<PreviousPackingChecklists />}
       />
-
       <Route path="*" element={<NoPage />} />
     </Route>
   </Routes>

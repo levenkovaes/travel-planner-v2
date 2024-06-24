@@ -4,6 +4,17 @@ export interface IPlannerItem extends PlannerItemFormValues {
   id: string;
 }
 
+export interface IPlanner {
+  name: string;
+  id: string;
+  plannerItems: IPlannerItem[];
+}
+
 export interface IPlannerState {
-  list: IPlannerItem[];
+  list: IPlanner[];
+}
+
+export interface IAddPlannerItemAction {
+  id: string | undefined;
+  item: PlannerItemFormValues;
 }

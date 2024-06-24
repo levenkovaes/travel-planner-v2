@@ -1,8 +1,14 @@
 import dayjs from "dayjs";
 import React from "react";
 
+import DeleteIcon from "../../shared/ui/assets/icons/delete-small.svg";
 import { Paragraph, SmallerParagraph } from "../../shared/ui/typography";
-import { Date, DateChip, PlannerItemContainer } from "./styled";
+import {
+  Date,
+  DateChip,
+  DeleteIconButton,
+  PlannerItemContainer,
+} from "./styled";
 import { PlannerItemProps } from "./types";
 
 const PlannerItem: React.FC<PlannerItemProps> = ({
@@ -11,6 +17,11 @@ const PlannerItem: React.FC<PlannerItemProps> = ({
   activities,
   count,
 }) => {
+  // TODO
+  const handleDelete = () => {
+    console.log("delete");
+  };
+
   return (
     <PlannerItemContainer>
       <Date>{dayjs(date).format("MMMM D, YYYY")}</Date>
@@ -23,6 +34,9 @@ const PlannerItem: React.FC<PlannerItemProps> = ({
           </li>
         ))}
       </ul>
+      <DeleteIconButton onClick={handleDelete}>
+        <DeleteIcon />
+      </DeleteIconButton>
     </PlannerItemContainer>
   );
 };

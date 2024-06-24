@@ -38,8 +38,6 @@ export const toDoListSlice = createSlice({
     },
 
     addToDoItem: (state, action: PayloadAction<IAddItemAction>) => {
-      console.log(action.payload);
-
       const currentChecklist = state.list.find(
         ({ id }) => id === action.payload.checklistId
       );

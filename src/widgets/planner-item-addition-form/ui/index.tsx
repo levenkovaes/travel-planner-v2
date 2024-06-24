@@ -10,11 +10,14 @@ import Input from "../../../shared/ui/input";
 import CloseIcon from "../../../shared/ui/modal/assets/close_40.svg";
 import { Form, FormBackdrop, FormCloseButton, FormContainer } from "./styled";
 import { PlannerItemAdditionFormProps, PlannerItemFormValues } from "./types";
+import { useParams } from "react-router-dom";
 
 const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
   handleClose,
 }) => {
   const dispatch = useDispatch();
+  const { plannerId } = useParams();
+
   const {
     handleSubmit,
     register,
@@ -29,7 +32,7 @@ const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
   });
 
   const handlePlannerFormSubmit = (data: PlannerItemFormValues) => {
-    dispatch(addPlannerItem(data));
+    dispatch(addPlannerItem({ id: plannerId, item: data }));
     handleClose();
   };
 

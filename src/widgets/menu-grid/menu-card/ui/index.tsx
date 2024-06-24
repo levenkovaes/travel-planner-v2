@@ -18,6 +18,10 @@ import { COLORS } from "../../../../shared/ui/theme";
 import { Heading2, SmallerParagraph } from "../../../../shared/ui/typography";
 import MenuCardProps, { CardTitleEnum } from "../../types";
 import { CardButton, CardContainer } from "./styled";
+import {
+  addPlanner,
+  selectPlanners,
+} from "../../../../pages/planner/ui/plannerSlice/plannerSlice";
 
 const MenuCard: React.FC<MenuCardProps> = ({
   title,
@@ -28,24 +32,43 @@ const MenuCard: React.FC<MenuCardProps> = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // TODO
   const handleClick = () => {
-    if (title === CardTitleEnum.ToDo) {
-      const id = nanoid();
-      dispatch(addToDoList(id));
-      navigate(addLink + "/" + id);
-    } else {
-      navigate(addLink);
+    switch (title) {
+      case CardTitleEnum.Planner:
+        const plannerId = nanoid();
+        dispatch(addPlanner(plannerId));
+        navigate(addLink + "/" + plannerId);
+        break;
+      case CardTitleEnum.ToDo:
+        const toDoListId = nanoid();
+        dispatch(addToDoList(toDoListId));
+        navigate(addLink + "/" + toDoListId);
+        break;
+      default:
+        navigate(addLink);
     }
   };
 
+  const allPlanners = useSelector(selectPlanners);
   const allToDoLists = useSelector(selectToDoLists);
   const allChecklists = useSelector(selectChecklists);
 
   const previousItems = useMemo(() => {
     switch (title) {
       case CardTitleEnum.Planner:
-        return "";
+        return [...allPlanners]
+          .reverse()
+          .filter((item, index) => index < 6)
+          .map((planner) => {
+            return (
+              <ItemLink
+                onClick={() => navigate(`/planner/${planner.id}`)}
+                key={planner.id}
+              >
+                <ItemChip>{planner.name}</ItemChip>
+              </ItemLink>
+            );
+          });
       case CardTitleEnum.ToDo:
         return [...allToDoLists]
           .reverse()
@@ -75,9 +98,7 @@ const MenuCard: React.FC<MenuCardProps> = ({
             );
           });
     }
-  }, [allChecklists]);
-
-  console.log(previousItems);
+  }, [allPlanners, allToDoLists, allChecklists, title]);
 
   return (
     <FeatureContainer>
