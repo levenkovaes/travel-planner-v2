@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Chip } from "../../shared/ui/chip";
 import { Heading2 } from "../../shared/ui/typography";
 import MEDIA_QUERY from "../../shared/constants/styles/media-query";
+import { COLORS } from "../../shared/ui/theme";
 
 export const DeleteIconButton = styled.button`
   position: absolute;
@@ -19,6 +20,16 @@ export const DeleteIconButton = styled.button`
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.25s ease-in;
+
+  path {
+    fill: ${COLORS.grey};
+  }
+
+  &:hover {
+    path {
+      fill: ${COLORS.red};
+    }
+  }
 `;
 
 export const PlannerItemContainer = styled.div`

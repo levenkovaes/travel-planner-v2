@@ -54,6 +54,7 @@ const Planner = () => {
             place={place}
             activities={activities}
             count={index + 1}
+            itemId={id}
             key={id}
           />
         )

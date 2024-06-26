@@ -18,3 +18,8 @@ export interface IAddPlannerItemAction {
   id: string | undefined;
   item: PlannerItemFormValues;
 }
+
+export interface IDeletePlannerItemAction {
+  plannerId: string | undefined;
+  itemId: string;
+}

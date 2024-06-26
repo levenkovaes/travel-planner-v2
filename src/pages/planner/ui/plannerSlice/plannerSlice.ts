@@ -3,7 +3,12 @@ import dayjs from "dayjs";
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from "../../../../app/store";
-import { IAddPlannerItemAction, IPlanner, IPlannerState } from "./types";
+import {
+  IAddPlannerItemAction,
+  IDeletePlannerItemAction,
+  IPlanner,
+  IPlannerState,
+} from "./types";
 
 const initialState: IPlannerState = {
   list: [],
@@ -23,29 +28,42 @@ const plannerSlice = createSlice({
       state.list.push(newPlanner);
     },
     addPlannerItem: (state, action: PayloadAction<IAddPlannerItemAction>) => {
-      const currentChecklist = state.list.find(
+      const currentPlanner = state.list.find(
         ({ id }) => id === action.payload.id
       );
 
-      if (currentChecklist) {
-        currentChecklist.plannerItems.push({
+      if (currentPlanner) {
+        currentPlanner.plannerItems.push({
           ...action.payload.item,
           id: nanoid(),
         });
-        currentChecklist.plannerItems.sort((a, b) =>
+        currentPlanner.plannerItems.sort((a, b) =>
           dayjs(a.date).diff(dayjs(b.date))
         );
       }
     },
     editPlannerItem: (state, action: PayloadAction<string>) => {},
-    deletePlannerItem: (state, action: PayloadAction<string>) => {},
-    clearPlanner: (state, action: PayloadAction<string | undefined>) => {
-      const currentChecklist = state.list.find(
-        ({ id }) => id === action.payload
+    deletePlannerItem: (
+      state,
+      action: PayloadAction<IDeletePlannerItemAction>
+    ) => {
+      const currentPlanner = state.list.find(
+        ({ id }) => id === action.payload.plannerId
       );
 
-      if (currentChecklist) {
-        currentChecklist.plannerItems = [];
+      if (currentPlanner) {
+        currentPlanner.plannerItems = currentPlanner.plannerItems.filter(
+          ({ id }) => {
+            return id !== action.payload.itemId;
+          }
+        );
+      }
+    },
+    clearPlanner: (state, action: PayloadAction<string | undefined>) => {
+      const currentPlanner = state.list.find(({ id }) => id === action.payload);
+
+      if (currentPlanner) {
+        currentPlanner.plannerItems = [];
       }
     },
     clearPlanners: (state) => {

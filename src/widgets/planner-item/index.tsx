@@ -10,16 +10,22 @@ import {
   PlannerItemContainer,
 } from "./styled";
 import { PlannerItemProps } from "./types";
+import { useDispatch } from "react-redux";
+import { deletePlannerItem } from "../../pages/planner/ui/plannerSlice/plannerSlice";
+import { useParams } from "react-router-dom";
 
 const PlannerItem: React.FC<PlannerItemProps> = ({
   date,
   place,
   activities,
   count,
+  itemId,
 }) => {
-  // TODO
+  const dispatch = useDispatch();
+  const { plannerId } = useParams();
+
   const handleDelete = () => {
-    console.log("delete");
+    dispatch(deletePlannerItem({ plannerId, itemId }));
   };
 
   return (
