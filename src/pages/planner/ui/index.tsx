@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -6,26 +7,48 @@ import styled from "styled-components";
 import useClickOutside from "../../../shared/hooks/useClickOutside";
 import Icon from "../../../shared/ui/assets/icons/add.svg";
 import { TransparentLongButton } from "../../../shared/ui/button";
-import { Heading1 } from "../../../shared/ui/typography";
+import ErrorMessage from "../../../shared/ui/error-message";
 import PlannerItem from "../../../widgets/planner-item";
 import PlannerItemAdditionForm from "../../../widgets/planner-item-addition-form/ui";
-import { clearPlanner, selectPlannerById } from "./plannerSlice/plannerSlice";
+import {
+  clearPlanner,
+  editTitle,
+  selectPlannerById,
+} from "./plannerSlice/plannerSlice";
 import {
   AddButton,
   AddItemContainer,
   ButtonContainer,
+  EditForm,
+  EditInput,
+  ListHeading,
+  ListHeadingContainer,
   PlannerContainer,
   PlannerContent,
   TimelineContainer,
 } from "./styled";
+import { IFormValues } from "./types";
 
 const Planner = () => {
   const dispatch = useDispatch();
   const { plannerId } = useParams();
   const planner = useSelector(selectPlannerById(plannerId));
   const [isAdding, setIsAdding] = useState(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const plannerTitle: string = planner?.name || "Sorry, planner not found";
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, dirtyFields },
+  } = useForm<IFormValues>({
+    mode: "onChange",
+    defaultValues: {
+      title: plannerTitle,
+    },
+  });
 
   const clickRef = useRef(null);
 
@@ -66,9 +89,54 @@ const Planner = () => {
     dispatch(clearPlanner(plannerId));
   };
 
+  const handleEditStart = () => {
+    setIsEditing(true);
+  };
+
+  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data) => {
+    dispatch(
+      editTitle({
+        title: String(data.title),
+        plannerId: plannerId,
+      })
+    );
+
+    setIsEditing(false);
+  };
+
   return (
     <PlannerContainer isAdding={isAdding}>
-      <Heading1>{plannerTitle}</Heading1>
+      <ListHeadingContainer>
+        {isEditing && planner ? (
+          <EditForm onSubmit={handleSubmit(handleEditFormSubmit)}>
+            <EditInput
+              placeholder={plannerTitle}
+              {...register("title", {
+                required: "List name is required",
+                maxLength: {
+                  value: 40,
+                  message: "Name is too long",
+                },
+              })}
+              autoFocus
+              type="text"
+              id="item"
+              $error={!!errors.title}
+            />
+            {errors.title && (
+              <ErrorMessage>
+                <span>{errors.title.message}&nbsp;</span>
+                <span>
+                  {errors.title.type === "maxLength" &&
+                    `${errors.title.ref?.value.length}/40`}
+                </span>
+              </ErrorMessage>
+            )}
+          </EditForm>
+        ) : (
+          <ListHeading onClick={handleEditStart}>{plannerTitle}</ListHeading>
+        )}
+      </ListHeadingContainer>
       {planner && (
         <>
           <PlannerContent isEmpty={planner.plannerItems.length === 0}>

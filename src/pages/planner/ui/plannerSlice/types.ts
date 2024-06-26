@@ -23,3 +23,8 @@ export interface IDeletePlannerItemAction {
   plannerId: string | undefined;
   itemId: string;
 }
+
+export interface IEditTitleAction {
+  plannerId: string | undefined;
+  title: string;
+}

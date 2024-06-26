@@ -6,6 +6,7 @@ import { RootState } from "../../../../app/store";
 import {
   IAddPlannerItemAction,
   IDeletePlannerItemAction,
+  IEditTitleAction,
   IPlanner,
   IPlannerState,
 } from "./types";
@@ -27,6 +28,7 @@ const plannerSlice = createSlice({
 
       state.list.push(newPlanner);
     },
+
     addPlannerItem: (state, action: PayloadAction<IAddPlannerItemAction>) => {
       const currentPlanner = state.list.find(
         ({ id }) => id === action.payload.id
@@ -42,7 +44,9 @@ const plannerSlice = createSlice({
         );
       }
     },
+
     editPlannerItem: (state, action: PayloadAction<string>) => {},
+
     deletePlannerItem: (
       state,
       action: PayloadAction<IDeletePlannerItemAction>
@@ -59,6 +63,7 @@ const plannerSlice = createSlice({
         );
       }
     },
+
     clearPlanner: (state, action: PayloadAction<string | undefined>) => {
       const currentPlanner = state.list.find(({ id }) => id === action.payload);
 
@@ -66,8 +71,19 @@ const plannerSlice = createSlice({
         currentPlanner.plannerItems = [];
       }
     },
+
     clearPlanners: (state) => {
       state.list = initialState.list;
+    },
+
+    editTitle: (state, action: PayloadAction<IEditTitleAction>) => {
+      const currentPlanner = state.list.find(
+        ({ id }) => id === action.payload.plannerId
+      );
+
+      if (currentPlanner) {
+        currentPlanner.name = action.payload.title;
+      }
     },
   },
 });
@@ -81,6 +97,7 @@ export const {
   deletePlannerItem,
   clearPlanner,
   clearPlanners,
+  editTitle,
 } = plannerSlice.actions;
 
 export const selectPlanners = (state: RootState) => {
