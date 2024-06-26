@@ -34,6 +34,14 @@ export const DeleteIconButton = styled.button`
 
 export const PlannerItemContainer = styled.div`
   position: relative;
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    position: unset;
+  }
+`;
+
+export const PlannerItemCard = styled.div`
+  position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: column;

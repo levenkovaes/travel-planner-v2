@@ -1,4 +1,4 @@
-import { PlannerItemFormValues } from "../../../../widgets/planner-item-addition-form/ui/types";
+import { PlannerItemFormValues } from "../../../../widgets/planner-item-form/ui/types";
 
 export interface IPlannerItem extends PlannerItemFormValues {
   id: string;
@@ -15,8 +15,14 @@ export interface IPlannerState {
 }
 
 export interface IAddPlannerItemAction {
-  id: string | undefined;
+  plannerId: string | undefined;
   item: PlannerItemFormValues;
+}
+
+export interface IEditPlannerItemAction {
+  plannerId: string | undefined;
+  item: PlannerItemFormValues;
+  itemId: string | undefined;
 }
 
 export interface IDeletePlannerItemAction {

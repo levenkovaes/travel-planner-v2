@@ -5,7 +5,7 @@ import { IconButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
 import Input from "../../../shared/ui/input";
 import { Heading1 } from "../../../shared/ui/typography";
-import { FormContainer } from "../../../widgets/planner-item-addition-form/ui/styled";
+import { FormContainer } from "../../../widgets/planner-item-form/ui/styled";
 
 export const PlannerContainer = styled(CenteringDiv)<{ isAdding: boolean }>`
   flex-grow: 1;

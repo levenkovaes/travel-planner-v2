@@ -2,17 +2,22 @@ import React from "react";
 import { DayPicker } from "react-day-picker";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { addPlannerItem } from "../../../pages/planner/ui/plannerSlice/plannerSlice";
 import { LongButton } from "../../../shared/ui/button";
 import ErrorMessage from "../../../shared/ui/error-message";
 import Input from "../../../shared/ui/input";
 import CloseIcon from "../../../shared/ui/modal/assets/close_40.svg";
 import { Form, FormBackdrop, FormCloseButton, FormContainer } from "./styled";
-import { PlannerItemAdditionFormProps, PlannerItemFormValues } from "./types";
-import { useParams } from "react-router-dom";
+import { PlannerItemFormProps, PlannerItemFormValues } from "./types";
 
-const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
+const PlannerItemForm: React.FC<PlannerItemFormProps> = ({
+  item = {
+    date: new Date(),
+    place: "",
+    activities: "",
+  },
+  reducer,
   handleClose,
 }) => {
   const dispatch = useDispatch();
@@ -25,14 +30,18 @@ const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
     control,
   } = useForm<PlannerItemFormValues>({
     defaultValues: {
-      date: new Date(),
-      place: "",
-      activities: "",
+      date: item.date,
+      place: item.place,
+      activities: item.activities,
     },
   });
 
   const handlePlannerFormSubmit = (data: PlannerItemFormValues) => {
-    dispatch(addPlannerItem({ id: plannerId, item: data }));
+    if (item.id) {
+      dispatch(reducer({ plannerId, item: data, itemId: item.id }));
+    } else {
+      dispatch(reducer({ plannerId, item: data }));
+    }
     handleClose();
   };
 
@@ -62,7 +71,7 @@ const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
               <DayPicker
                 mode="single"
                 required
-                selected={value}
+                selected={new Date(value)}
                 onSelect={onChange}
               />
             )}
@@ -106,4 +115,4 @@ const PlannerItemAdditionForm: React.FC<PlannerItemAdditionFormProps> = ({
   );
 };
 
-export default PlannerItemAdditionForm;
+export default PlannerItemForm;

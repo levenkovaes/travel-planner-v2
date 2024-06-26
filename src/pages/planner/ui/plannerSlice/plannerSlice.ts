@@ -6,6 +6,7 @@ import { RootState } from "../../../../app/store";
 import {
   IAddPlannerItemAction,
   IDeletePlannerItemAction,
+  IEditPlannerItemAction,
   IEditTitleAction,
   IPlanner,
   IPlannerState,
@@ -31,7 +32,7 @@ const plannerSlice = createSlice({
 
     addPlannerItem: (state, action: PayloadAction<IAddPlannerItemAction>) => {
       const currentPlanner = state.list.find(
-        ({ id }) => id === action.payload.id
+        ({ id }) => id === action.payload.plannerId
       );
 
       if (currentPlanner) {
@@ -45,7 +46,26 @@ const plannerSlice = createSlice({
       }
     },
 
-    editPlannerItem: (state, action: PayloadAction<string>) => {},
+    editPlannerItem: (state, action: PayloadAction<IEditPlannerItemAction>) => {
+      const currentPlanner = state.list.find(
+        ({ id }) => id === action.payload.plannerId
+      );
+
+      if (currentPlanner) {
+        currentPlanner.plannerItems.map((el) => {
+          if (el.id === action.payload.itemId) {
+            el.activities = action.payload.item.activities;
+            el.date = action.payload.item.date;
+            el.place = action.payload.item.place;
+          }
+          return el;
+        });
+
+        currentPlanner.plannerItems.sort((a, b) =>
+          dayjs(a.date).diff(dayjs(b.date))
+        );
+      }
+    },
 
     deletePlannerItem: (
       state,

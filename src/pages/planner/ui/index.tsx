@@ -9,8 +9,9 @@ import Icon from "../../../shared/ui/assets/icons/add.svg";
 import { TransparentLongButton } from "../../../shared/ui/button";
 import ErrorMessage from "../../../shared/ui/error-message";
 import PlannerItem from "../../../widgets/planner-item";
-import PlannerItemAdditionForm from "../../../widgets/planner-item-addition-form/ui";
+import PlannerItemForm from "../../../widgets/planner-item-form/ui";
 import {
+  addPlannerItem,
   clearPlanner,
   editTitle,
   selectPlannerById,
@@ -70,18 +71,9 @@ const Planner = () => {
 
   const plannerItems = useMemo(() => {
     if (planner) {
-      return planner.plannerItems.map(
-        ({ date, place, activities, id }, index) => (
-          <PlannerItem
-            date={date}
-            place={place}
-            activities={activities}
-            count={index + 1}
-            itemId={id}
-            key={id}
-          />
-        )
-      );
+      return planner.plannerItems.map((item, index) => (
+        <PlannerItem item={item} count={index + 1} key={item.id} />
+      ));
     }
   }, [planner]);
 
@@ -147,7 +139,10 @@ const Planner = () => {
               </AddButton>
 
               {isAdding && (
-                <PlannerItemAdditionForm handleClose={closeAddItemWidget} />
+                <PlannerItemForm
+                  reducer={addPlannerItem}
+                  handleClose={closeAddItemWidget}
+                />
               )}
             </AddItemContainer>
           </PlannerContent>
