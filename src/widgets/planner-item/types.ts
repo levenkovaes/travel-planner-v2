@@ -1,5 +1,6 @@
-import { PlannerItemFormValues } from "../planner-item-addition-form/ui/types";
+import { IPlannerItem } from "../../pages/planner/ui/plannerSlice/types";
 
-export interface PlannerItemProps extends PlannerItemFormValues {
+export interface PlannerItemProps {
+  item: IPlannerItem;
   count: number;
 }

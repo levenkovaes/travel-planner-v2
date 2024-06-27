@@ -28,20 +28,26 @@ export const FormContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 376px;
+  z-index: 10;
 
-  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+  @media ${MEDIA_QUERY.tablet} {
     padding: 20px;
-    margin: 0;
+    margin: 30px 0 30px;
     top: 50dvh;
     transform: translateY(-50%);
     right: unset;
-    z-index: 10;
+    height: fit-content;
   }
 
   @media ${MEDIA_QUERY.mobile} {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100dvw;
-    height: 100dvh;
-
+    height: fit-content;
+    padding: 20px;
+    margin: 0;
     border-radius: 0;
   }
 `;

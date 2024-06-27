@@ -3,7 +3,9 @@ import styled, { css } from "styled-components";
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { IconButton } from "../../../shared/ui/button";
 import CenteringDiv from "../../../shared/ui/centering-div";
-import { FormContainer } from "../../../widgets/planner-item-addition-form/ui/styled";
+import Input from "../../../shared/ui/input";
+import { Heading1 } from "../../../shared/ui/typography";
+import { FormContainer } from "../../../widgets/planner-item-form/ui/styled";
 
 export const PlannerContainer = styled(CenteringDiv)<{ isAdding: boolean }>`
   flex-grow: 1;
@@ -105,4 +107,28 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: auto;
+`;
+
+export const ListHeadingContainer = styled.div`
+  padding-bottom: 46px;
+`;
+
+export const ListHeading = styled(Heading1)`
+  cursor: pointer;
+  padding-bottom: 0;
+`;
+
+export const EditForm = styled.form`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 100%;
+`;
+
+export const EditInput = styled(Input)`
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
 `;
