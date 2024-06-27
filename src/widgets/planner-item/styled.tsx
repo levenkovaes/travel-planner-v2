@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-import { Chip } from "../../shared/ui/chip";
-import { Heading2 } from "../../shared/ui/typography";
 import MEDIA_QUERY from "../../shared/constants/styles/media-query";
+import { Chip } from "../../shared/ui/chip";
 import { COLORS } from "../../shared/ui/theme";
+import { Heading2 } from "../../shared/ui/typography";
 
 export const DeleteIconButton = styled.button`
   position: absolute;
@@ -40,7 +40,7 @@ export const PlannerItemContainer = styled.div`
   }
 `;
 
-export const PlannerItemCard = styled.div`
+export const PlannerItemCard = styled.div<{ hasPassed: boolean }>`
   position: relative;
   cursor: pointer;
   display: flex;
@@ -51,16 +51,31 @@ export const PlannerItemCard = styled.div`
   background-color: ${({ theme }) => theme.colors.lessContrastBg};
   transition: filter 0.25s ease-in;
 
-  &:hover {
-    filter: brightness(104%);
+  ${({ hasPassed }) =>
+    hasPassed
+      ? css`
+          filter: grayscale(1) brightness(0.7);
 
-    ${DeleteIconButton} {
-      opacity: 1;
-    }
-  }
+          &:hover {
+            filter: grayscale(1) brightness(0.8);
+
+            ${DeleteIconButton} {
+              opacity: 1;
+            }
+          }
+        `
+      : css`
+          &:hover {
+            filter: brightness(104%);
+
+            ${DeleteIconButton} {
+              opacity: 1;
+            }
+          }
+        `}
 `;
 
-export const Date = styled(Heading2)`
+export const DateWrapper = styled(Heading2)`
   font-size: 22px;
   color: ${({ theme }) => theme.colors.lightAccent};
 

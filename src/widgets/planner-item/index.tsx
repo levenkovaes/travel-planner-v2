@@ -7,18 +7,18 @@ import {
   deletePlannerItem,
   editPlannerItem,
 } from "../../pages/planner/ui/plannerSlice/plannerSlice";
+import useClickOutside from "../../shared/hooks/useClickOutside";
 import DeleteIcon from "../../shared/ui/assets/icons/delete-small.svg";
 import { Paragraph, SmallerParagraph } from "../../shared/ui/typography";
 import PlannerItemForm from "../planner-item-form/ui";
 import {
-  Date,
   DateChip,
+  DateWrapper,
   DeleteIconButton,
   PlannerItemCard,
   PlannerItemContainer,
 } from "./styled";
 import { PlannerItemProps } from "./types";
-import useClickOutside from "../../shared/hooks/useClickOutside";
 
 const PlannerItem: React.FC<PlannerItemProps> = ({ item, count }) => {
   const dispatch = useDispatch();
@@ -49,8 +49,11 @@ const PlannerItem: React.FC<PlannerItemProps> = ({ item, count }) => {
 
   return (
     <PlannerItemContainer ref={clickRef}>
-      <PlannerItemCard onClick={openAddItemWidget}>
-        <Date>{dayjs(item.date).format("MMMM D, YYYY")}</Date>
+      <PlannerItemCard
+        hasPassed={dayjs(item.date).isBefore(dayjs(new Date()), "day")}
+        onClick={openAddItemWidget}
+      >
+        <DateWrapper>{dayjs(item.date).format("MMMM D, YYYY")}</DateWrapper>
         <DateChip>Day {count}</DateChip>
         <Paragraph>{item.place}</Paragraph>
         <ul>
