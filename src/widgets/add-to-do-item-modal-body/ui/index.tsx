@@ -1,10 +1,11 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { nanoid } from "@reduxjs/toolkit";
 
+import { addToDoItem } from "../../../pages/to-do-list/ui/toDoListSlice/toDoListSlice";
 import ErrorMessage from "../../../shared/ui/error-message";
 import {
   ModalButton,
@@ -12,17 +13,14 @@ import {
   ModalInput,
 } from "../../../shared/ui/modal/styled";
 import { AddItemModalProps, IFormValues } from "./types";
-import { addToDoItem } from "../../../pages/to-do-list/ui/toDoListSlice/toDoListSlice";
 
 const AddToDoItemModalBody: React.FC<AddItemModalProps> = ({ handleClose }) => {
   const dispatch = useDispatch();
   const { listId } = useParams();
-  //   const checklist = useSelector(selectToDoListById(checklistId));
 
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors, dirtyFields },
   } = useForm<IFormValues>({
     mode: "onChange",

@@ -70,7 +70,7 @@ const PlannerItem: React.FC<PlannerItemProps> = ({ item, count }) => {
       {isEditing && (
         <PlannerItemForm
           item={item}
-          reducer={editPlannerItem}
+          action={editPlannerItem}
           handleClose={closeEditItemWidget}
         />
       )}

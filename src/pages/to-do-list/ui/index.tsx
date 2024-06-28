@@ -40,8 +40,7 @@ const ToDoList = () => {
   const {
     register,
     handleSubmit,
-    control,
-    formState: { errors, dirtyFields },
+    formState: { errors },
   } = useForm<IFormValues>({
     mode: "onChange",
     defaultValues: {
@@ -65,7 +64,7 @@ const ToDoList = () => {
         <ToDoItem item={item} listId={listId || ""} key={item.id} />
       ));
     }
-  }, [toDoList]);
+  }, [toDoList, listId]);
 
   const closeAddItemModal = () => {
     if (isAddItemModalDisplaying) {

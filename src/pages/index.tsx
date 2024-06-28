@@ -7,6 +7,7 @@ import NoPage from "./no-page/ui";
 import PackingChecklistCreation from "./packing-checklist-creation/ui";
 import PackingChecklist from "./packing-checklist/ui";
 import Planner from "./planner/ui";
+import Planners from "./planners/ui";
 import PreviousPackingChecklists from "./previous-packing-checklists/ui";
 import ToDoLists from "./previous-to-do-lists";
 import ToDoList from "./to-do-list/ui";
@@ -20,8 +21,7 @@ const Pages = () => (
     <Route path="/" element={<Layout />}>
       <Route path="menu" element={<Menu />} />
 
-      {/* TODO */}
-      {/* <Route path="planners" element={<Planners />} /> */}
+      <Route path="planners" element={<Planners />} />
       <Route path="planner/:plannerId" element={<Planner />} />
       <Route path="to-do-lists" element={<ToDoLists />} />
       <Route path="to-do-list/:listId" element={<ToDoList />} />

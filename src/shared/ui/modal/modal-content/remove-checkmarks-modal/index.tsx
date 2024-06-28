@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 
 import Modal from "../..";
 import { removeCheckmarks } from "../../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
+import { removeToDoCheckmarks } from "../../../../../pages/to-do-list/ui/toDoListSlice/toDoListSlice";
 import ModalContent from "../../modal-text-container";
 import { ModalButton } from "../../styled";
 import { RemoveCheckmarcksModalProps } from "./types";
-import { removeToDoCheckmarks } from "../../../../../pages/to-do-list/ui/toDoListSlice/toDoListSlice";
 
 const RemoveCheckmarcksModal: React.FC<RemoveCheckmarcksModalProps> = ({
   handleClose,
@@ -17,17 +17,18 @@ const RemoveCheckmarcksModal: React.FC<RemoveCheckmarcksModalProps> = ({
   const { checklistId } = useParams();
   const dispatch = useDispatch();
 
-  // TODO
-  const handleClick =
-    type === "todo"
-      ? () => {
-          dispatch(removeToDoCheckmarks(listId || ""));
-          handleClose();
-        }
-      : () => {
-          dispatch(removeCheckmarks({ checklistId }));
-          handleClose();
-        };
+  const handleClick = (): void => {
+    switch (type) {
+      case "todo":
+        dispatch(removeToDoCheckmarks(listId || ""));
+        break;
+
+      default:
+        dispatch(removeCheckmarks({ checklistId }));
+        break;
+    }
+    handleClose();
+  };
 
   return (
     <Modal handleClose={handleClose}>

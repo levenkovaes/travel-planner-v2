@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { DARK, LIGHT } from "../";
 import { RootState } from "../../../../app/store";
-import { DARK, LIGHT } from "..";
 import { IThemeState } from "./types";
 
 const initialState: IThemeState = window.matchMedia(

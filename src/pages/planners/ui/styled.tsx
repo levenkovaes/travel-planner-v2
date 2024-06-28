@@ -4,9 +4,8 @@ import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { TransparentLongButton } from "../../../shared/ui/button";
 import { TransparentDeleteIconButton } from "../../../shared/ui/button/delete-icon/ui/styled";
 import CenteringDiv from "../../../shared/ui/centering-div";
-import { Paragraph } from "../../../shared/ui/typography";
 
-export const AllChecklistsWrapper = styled(CenteringDiv)`
+export const AllPlannersWrapper = styled(CenteringDiv)`
   flex-grow: 1;
 
   ${TransparentLongButton} {
@@ -14,7 +13,7 @@ export const AllChecklistsWrapper = styled(CenteringDiv)`
   }
 `;
 
-export const ChecklistWrapper = styled.div`
+export const PlannersWrapper = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
@@ -37,15 +36,5 @@ export const ChecklistWrapper = styled.div`
     ${TransparentDeleteIconButton} {
       opacity: 1;
     }
-  }
-`;
-
-export const ChecklistName = styled(Paragraph)`
-  transition: color 0.2s ease-in-out;
-  cursor: pointer;
-  padding: 7px 10px 7px 0;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.primaryColor};
   }
 `;

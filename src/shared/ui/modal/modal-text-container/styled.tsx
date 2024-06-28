@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { Heading2 } from "../../typography";
 import CenteringDiv from "../../centering-div";
+import { Heading2 } from "../../typography";
 
 export const ModalContentWrapper = styled(CenteringDiv)`
   width: 100%;

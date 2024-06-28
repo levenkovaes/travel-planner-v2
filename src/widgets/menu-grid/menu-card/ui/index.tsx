@@ -7,21 +7,21 @@ import { nanoid } from "@reduxjs/toolkit";
 
 import { selectChecklists } from "../../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import {
+  addPlanner,
+  selectPlanners,
+} from "../../../../pages/planner/ui/plannerSlice/plannerSlice";
+import {
   addToDoList,
   selectToDoLists,
 } from "../../../../pages/to-do-list/ui/toDoListSlice/toDoListSlice";
 import MEDIA_QUERY from "../../../../shared/constants/styles/media-query";
 import Icon from "../../../../shared/ui/assets/icons/add.svg";
 import { Chip } from "../../../../shared/ui/chip";
-import { LINK_FONT_STYLES, Link } from "../../../../shared/ui/link";
+import { Link, LINK_FONT_STYLES } from "../../../../shared/ui/link";
 import { COLORS } from "../../../../shared/ui/theme";
 import { Heading2, SmallerParagraph } from "../../../../shared/ui/typography";
 import MenuCardProps, { CardTitleEnum } from "../../types";
 import { CardButton, CardContainer } from "./styled";
-import {
-  addPlanner,
-  selectPlanners,
-} from "../../../../pages/planner/ui/plannerSlice/plannerSlice";
 
 const MenuCard: React.FC<MenuCardProps> = ({
   title,

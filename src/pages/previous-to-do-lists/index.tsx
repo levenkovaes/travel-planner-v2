@@ -7,7 +7,6 @@ import { TransparentLongButton } from "../../shared/ui/button";
 import { DeleteIconButton } from "../../shared/ui/button/delete-icon/ui";
 import { Link } from "../../shared/ui/link";
 import { CenteredHeading1, Paragraph } from "../../shared/ui/typography";
-// TODO
 import {
   AllChecklistsWrapper,
   ChecklistWrapper,

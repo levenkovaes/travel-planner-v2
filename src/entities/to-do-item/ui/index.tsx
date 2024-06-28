@@ -37,8 +37,7 @@ const ToDoItem: React.FC<{ item: IToDoItem; listId: string }> = ({
   const {
     register,
     handleSubmit,
-    control,
-    formState: { errors, dirtyFields },
+    formState: { errors },
   } = useForm<IFormValues>({
     mode: "onChange",
     defaultValues: {

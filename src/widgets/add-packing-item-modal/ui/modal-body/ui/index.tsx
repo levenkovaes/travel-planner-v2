@@ -13,6 +13,11 @@ import {
 import { Chip, ChipContainer } from "../../../../../shared/ui/chip";
 import ErrorMessage from "../../../../../shared/ui/error-message";
 import {
+  ModalButton,
+  ModalForm,
+  ModalInput,
+} from "../../../../../shared/ui/modal/styled";
+import {
   BoldSpan,
   SmallerParagraph,
 } from "../../../../../shared/ui/typography";
@@ -20,11 +25,6 @@ import { AddItemModalProps } from "../../types";
 import { ItemMatchModalBody } from "./styled";
 import { IFormValues, IItemMatchData } from "./types";
 import { findMatch } from "./utils";
-import {
-  ModalButton,
-  ModalForm,
-  ModalInput,
-} from "../../../../../shared/ui/modal/styled";
 
 const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
   handleClose,
