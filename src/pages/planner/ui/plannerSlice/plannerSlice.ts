@@ -30,6 +30,12 @@ const plannerSlice = createSlice({
       state.list.push(newPlanner);
     },
 
+    deletePlanner: (state, action: PayloadAction<string>) => {
+      state.list = state.list.filter(
+        (planner) => planner.id !== action.payload
+      );
+    },
+
     addPlannerItem: (state, action: PayloadAction<IAddPlannerItemAction>) => {
       const currentPlanner = state.list.find(
         ({ id }) => id === action.payload.plannerId
@@ -112,6 +118,7 @@ export const plannerSliceReducer = plannerSlice.reducer;
 
 export const {
   addPlanner,
+  deletePlanner,
   addPlannerItem,
   editPlannerItem,
   deletePlannerItem,

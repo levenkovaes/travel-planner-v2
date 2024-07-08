@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+
 import MEDIA_QUERY from "../../constants/styles/media-query";
 
 export const LINK_FONT_STYLES = css`

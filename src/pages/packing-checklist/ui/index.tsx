@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -25,7 +26,6 @@ import {
   ListHeadingContainer,
 } from "./styled";
 import { IFormValues } from "./types";
-import { SubmitHandler, useForm } from "react-hook-form";
 
 const PackingChecklist = () => {
   const dispatch = useDispatch();
@@ -38,8 +38,7 @@ const PackingChecklist = () => {
   const {
     register,
     handleSubmit,
-    control,
-    formState: { errors, dirtyFields },
+    formState: { errors },
   } = useForm<IFormValues>({
     mode: "onChange",
     defaultValues: {

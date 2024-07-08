@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
 import MEDIA_QUERY from "../../../constants/styles/media-query";
+import { NO_PRINT } from "../../../constants/styles/print";
 import { IconButton } from "../../button";
 import { COLORS } from "../../theme";
-import { NO_PRINT } from "../../../constants/styles/print";
 
 const SHeader = styled.header<{ variant?: string }>`
   display: flex;

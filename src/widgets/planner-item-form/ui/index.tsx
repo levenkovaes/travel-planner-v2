@@ -17,7 +17,7 @@ const PlannerItemForm: React.FC<PlannerItemFormProps> = ({
     place: "",
     activities: "",
   },
-  reducer,
+  action,
   handleClose,
 }) => {
   const dispatch = useDispatch();
@@ -37,10 +37,10 @@ const PlannerItemForm: React.FC<PlannerItemFormProps> = ({
   });
 
   const handlePlannerFormSubmit = (data: PlannerItemFormValues) => {
-    if (item.id) {
-      dispatch(reducer({ plannerId, item: data, itemId: item.id }));
+    if (item.hasOwnProperty("id")) {
+      dispatch(action({ plannerId, item: data, itemId: item.id }));
     } else {
-      dispatch(reducer({ plannerId, item: data }));
+      dispatch(action({ plannerId, item: data }));
     }
     handleClose();
   };

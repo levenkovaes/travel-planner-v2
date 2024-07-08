@@ -5,7 +5,7 @@ export const MENU_CARD_CONTENT: MenuCardProps[] = [
     title: CardTitleEnum.Planner,
     description: "Create and share your travel plans.",
     addLink: "/planner",
-    previousLink: "/planner",
+    previousLink: "/planners",
   },
   {
     title: CardTitleEnum.ToDo,

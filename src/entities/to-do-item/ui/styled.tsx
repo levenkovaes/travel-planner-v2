@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
-import { NO_PRINT } from "../../../shared/constants/styles/print";
-import { SmallerParagraph } from "../../../shared/ui/typography";
-import Input from "../../../shared/ui/input";
-import ErrorMessage from "../../../shared/ui/error-message";
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
+import { NO_PRINT } from "../../../shared/constants/styles/print";
+import ErrorMessage from "../../../shared/ui/error-message";
+import Input from "../../../shared/ui/input";
+import { SmallerParagraph } from "../../../shared/ui/typography";
 
 export const ToDoItemContainer = styled.div`
   display: flex;

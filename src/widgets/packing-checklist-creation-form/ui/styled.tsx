@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { LongButton } from "../../../shared/ui/button";
 import { Paragraph } from "../../../shared/ui/typography";

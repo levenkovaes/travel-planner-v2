@@ -1,15 +1,15 @@
 import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import { nanoid } from "@reduxjs/toolkit";
 
 import { PakingItem } from "../../../entities/packing-item/ui";
-import AddPackingItemModal from "../../add-packing-item-modal/ui";
+import { categoryIsUpdatedReset } from "../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import AddIcon from "../../../shared/ui/assets/icons/add-small.svg";
+import AddPackingItemModal from "../../add-packing-item-modal/ui";
 import { AddIconContainer, GroupContainer, GroupHeading } from "./styled";
 import { PackingItemGroupProps } from "./types";
-import { useDispatch } from "react-redux";
-import { categoryIsUpdatedReset } from "../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
-import { useParams } from "react-router-dom";
 
 const PackingItemGroup: React.FC<PackingItemGroupProps> = ({ group }) => {
   const ref = useRef<null | HTMLDivElement>(null);

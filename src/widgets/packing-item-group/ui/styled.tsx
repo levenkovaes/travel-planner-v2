@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
+import { NO_PRINT } from "../../../shared/constants/styles/print";
 import { TransparentLongButton } from "../../../shared/ui/button";
 import { COLORS } from "../../../shared/ui/theme";
 import { Heading2 } from "../../../shared/ui/typography";
-import { NO_PRINT } from "../../../shared/constants/styles/print";
 
 export const GroupContainer = styled.div`
   padding: 0 20px;

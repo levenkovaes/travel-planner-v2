@@ -42,8 +42,7 @@ const Planner = () => {
   const {
     register,
     handleSubmit,
-    control,
-    formState: { errors, dirtyFields },
+    formState: { errors },
   } = useForm<IFormValues>({
     mode: "onChange",
     defaultValues: {
@@ -140,7 +139,7 @@ const Planner = () => {
 
               {isAdding && (
                 <PlannerItemForm
-                  reducer={addPlannerItem}
+                  action={addPlannerItem}
                   handleClose={closeAddItemWidget}
                 />
               )}

@@ -1,9 +1,10 @@
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
+
 import { IPlannerItem } from "../../../pages/planner/ui/plannerSlice/types";
 
 export interface PlannerItemFormProps {
   item?: IPlannerItem;
-  // TODO
-  reducer: any;
+  action: ActionCreatorWithPayload<any, any>;
   handleClose: () => void;
 }
 
