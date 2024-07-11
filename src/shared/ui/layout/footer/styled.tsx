@@ -30,6 +30,7 @@ const SFooter = styled.footer<{ variant?: string }>`
 export const FooterParagraph = styled(SmallerParagraph)`
   font-size: 16px;
   text-align: center;
+
   @media ${MEDIA_QUERY.tablet} {
     font-size: 12px;
   }
