@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MAIN_PADDING from "../../../shared/constants/styles/main-padding";
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { LongButton } from "../../../shared/ui/button";
+import { FooterParagraph } from "../../../shared/ui/layout/footer/styled";
 import { COLORS } from "../../../shared/ui/theme";
 import { Heading1, Paragraph } from "../../../shared/ui/typography";
 import bgLaptop from "../ui/assets/bg-laptop.jpg";
@@ -116,5 +117,25 @@ export const HomeButton = styled(LongButton)`
 
   @media ${MEDIA_QUERY.mobile} {
     margin: 0 auto;
+  }
+`;
+
+export const HomeAttribution = styled(FooterParagraph)`
+  padding-right: 60px;
+  color: ${COLORS.lightGrey};
+  text-align: right;
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
+
+  @media ${MEDIA_QUERY.laptop} {
+    padding-right: 40px;
+  }
+
+  @media ${MEDIA_QUERY.tablet}, ${MEDIA_QUERY.mobile} {
+    text-align: center;
+    padding-right: 0;
   }
 `;
