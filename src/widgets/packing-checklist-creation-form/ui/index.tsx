@@ -21,7 +21,7 @@ import {
 } from "./styled";
 import { IFormValues } from "./types";
 
-const PackingChecklistCreationForm = () => {
+const PackingChecklistCreationForm: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

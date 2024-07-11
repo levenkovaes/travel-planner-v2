@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { ReactElement, useMemo, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -30,11 +30,11 @@ import {
 } from "./styled";
 import { IFormValues } from "./types";
 
-const Planner = () => {
+const Planner: React.FC = () => {
   const dispatch = useDispatch();
   const { plannerId } = useParams();
   const planner = useSelector(selectPlannerById(plannerId));
-  const [isAdding, setIsAdding] = useState(false);
+  const [isAdding, setIsAdding] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const plannerTitle: string = planner?.name || "Sorry, planner not found";
@@ -50,13 +50,13 @@ const Planner = () => {
     },
   });
 
-  const clickRef = useRef(null);
+  const clickRef = useRef<HTMLDivElement | null>(null);
 
-  const toggleAddItemWidget = () => {
+  const toggleAddItemWidget = (): void => {
     setIsAdding((prev) => !prev);
   };
 
-  const closeAddItemWidget = () => {
+  const closeAddItemWidget = (): void => {
     setIsAdding((prev) => {
       if (prev) {
         return false;
@@ -68,7 +68,7 @@ const Planner = () => {
 
   useClickOutside(clickRef, closeAddItemWidget);
 
-  const plannerItems = useMemo(() => {
+  const plannerItems = useMemo((): ReactElement[] | undefined => {
     if (planner) {
       return planner.plannerItems.map((item, index) => (
         <PlannerItem item={item} count={index + 1} key={item.id} />
@@ -76,15 +76,15 @@ const Planner = () => {
     }
   }, [planner]);
 
-  const handleClearPlanner = () => {
+  const handleClearPlanner = (): void => {
     dispatch(clearPlanner(plannerId));
   };
 
-  const handleEditStart = () => {
+  const handleEditStart = (): void => {
     setIsEditing(true);
   };
 
-  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data) => {
+  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data): void => {
     dispatch(
       editTitle({
         title: String(data.title),

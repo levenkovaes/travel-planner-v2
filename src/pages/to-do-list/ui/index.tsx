@@ -23,7 +23,7 @@ import {
 import { editTitle, selectToDoListById } from "./toDoListSlice/toDoListSlice";
 import { IFormValues } from "./types";
 
-const ToDoList = () => {
+const ToDoList: React.FC = () => {
   const { listId } = useParams();
   const dispatch = useDispatch();
   const toDoList = useSelector(selectToDoListById(listId || ""));
@@ -48,11 +48,11 @@ const ToDoList = () => {
     },
   });
 
-  const openRemoveCheckmarksModal = () => {
+  const openRemoveCheckmarksModal = (): void => {
     setIsRemoveCheckmarksModalDisplaying(true);
   };
 
-  const closeRemoveCheckmarksModal = () => {
+  const closeRemoveCheckmarksModal = (): void => {
     if (isRemoveCheckmarksModalDisplaying) {
       setIsRemoveCheckmarksModalDisplaying(false);
     }
@@ -66,22 +66,22 @@ const ToDoList = () => {
     }
   }, [toDoList, listId]);
 
-  const closeAddItemModal = () => {
+  const closeAddItemModal = (): void => {
     if (isAddItemModalDisplaying) {
       setIsAddItemModalDisplaying(false);
     }
   };
 
-  const handleAddItem: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleAddItem: MouseEventHandler<HTMLButtonElement> = (e): void => {
     e.preventDefault();
     setIsAddItemModalDisplaying(true);
   };
 
-  const handleEditStart = () => {
+  const handleEditStart = (): void => {
     setIsEditing(true);
   };
 
-  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data) => {
+  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data): void => {
     dispatch(
       editTitle({
         title: String(data.title),

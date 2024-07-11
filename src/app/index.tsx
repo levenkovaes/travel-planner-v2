@@ -8,7 +8,7 @@ import { ThemeProvider } from "styled-components";
 import Pages from "../pages";
 import { selectTheme } from "../shared/ui/theme/themeSlice/themeSlice";
 
-const App = () => {
+const App: React.FC = () => {
   const selectedTheme = useSelector(selectTheme);
 
   return (

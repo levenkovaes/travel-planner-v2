@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { ReactElement, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -27,13 +27,13 @@ import {
 } from "./styled";
 import { IFormValues } from "./types";
 
-const PackingChecklist = () => {
+const PackingChecklist: React.FC = () => {
   const dispatch = useDispatch();
   const { checklistId } = useParams();
   const checklist = useSelector(selectChecklistById(checklistId));
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const title = checklist?.name || "Sorry, checklist not found";
+  const title: string = checklist?.name || "Sorry, checklist not found";
 
   const {
     register,
@@ -49,21 +49,21 @@ const PackingChecklist = () => {
   const [
     isRemoveCheckmarksModalDisplaying,
     setIsRemoveCheckmarksModalDisplaying,
-  ] = useState(false);
+  ] = useState<boolean>(false);
 
-  const openRemoveCheckmarksModal = () => {
+  const openRemoveCheckmarksModal = (): void => {
     setIsRemoveCheckmarksModalDisplaying(true);
   };
 
-  const closeRemoveCheckmarksModal = () => {
+  const closeRemoveCheckmarksModal = (): void => {
     if (isRemoveCheckmarksModalDisplaying) {
       setIsRemoveCheckmarksModalDisplaying(false);
     }
   };
 
-  const print = () => window.print();
+  const print = (): void => window.print();
 
-  const checklistBody = useMemo(() => {
+  const checklistBody = useMemo((): ReactElement[] | undefined => {
     if (checklist) {
       return Object.entries(checklist.categories).map((el) => (
         <PackingItemGroup key={nanoid()} group={el} />
@@ -71,11 +71,11 @@ const PackingChecklist = () => {
     }
   }, [checklist]);
 
-  const handleEditStart = () => {
+  const handleEditStart = (): void => {
     setIsEditing(true);
   };
 
-  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data) => {
+  const handleEditFormSubmit: SubmitHandler<IFormValues> = (data): void => {
     dispatch(
       editPackingListTitle({
         title: String(data.title),

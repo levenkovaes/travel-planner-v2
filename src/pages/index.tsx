@@ -12,7 +12,7 @@ import PreviousPackingChecklists from "./previous-packing-checklists/ui";
 import ToDoLists from "./previous-to-do-lists";
 import ToDoList from "./to-do-list/ui";
 
-const Pages = () => (
+const Pages: React.FC = () => (
   <Routes>
     <Route index element={<Home />} />
 

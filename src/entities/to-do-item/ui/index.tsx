@@ -45,19 +45,17 @@ const ToDoItem: React.FC<{ item: IToDoItem; listId: string }> = ({
     },
   });
 
-  const handleCheck = () => {
+  const handleCheck = (): void => {
     dispatch(checkToDoItem({ itemId: item.id, listId }));
   };
 
-  const handleDeleteItem = () => {
-    const notify = () =>
-      toast.info("Item has been removed!", {
-        autoClose: 500,
-        hideProgressBar: true,
-        progress: undefined,
-      });
+  const handleDeleteItem = (): void => {
+    toast.info("Item has been removed!", {
+      autoClose: 500,
+      hideProgressBar: true,
+      progress: undefined,
+    });
 
-    notify();
     dispatch(
       deleteToDoItem({
         checklistId: listId,
@@ -66,9 +64,9 @@ const ToDoItem: React.FC<{ item: IToDoItem; listId: string }> = ({
     );
   };
 
-  const handleStartEditItem = () => setIsEditing(true);
+  const handleStartEditItem = (): void => setIsEditing(true);
 
-  const handleEditItem = ({ itemName }: IFormValues) => {
+  const handleEditItem = ({ itemName }: IFormValues): void => {
     dispatch(
       editToDoItem({
         itemName: String(itemName),
@@ -80,7 +78,7 @@ const ToDoItem: React.FC<{ item: IToDoItem; listId: string }> = ({
     setIsEditing(false);
   };
 
-  const handleEditItemFormSubmit: SubmitHandler<IFormValues> = (data) => {
+  const handleEditItemFormSubmit: SubmitHandler<IFormValues> = (data): void => {
     handleEditItem({
       itemName: data.itemName,
     });
