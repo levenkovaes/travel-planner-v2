@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { nanoid } from "@reduxjs/toolkit";
 
-import { PakingItem } from "../../../entities/packing-item/ui";
+import PakingItem from "../../../entities/packing-item/ui";
 import { categoryIsUpdatedReset } from "../../../pages/packing-checklist/ui/packingChecklistSlice/packingChecklistSlice";
 import AddIcon from "../../../shared/ui/assets/icons/add-small.svg";
 import AddPackingItemModal from "../../add-packing-item-modal/ui";
@@ -17,21 +17,21 @@ const PackingItemGroup: React.FC<PackingItemGroupProps> = ({ group }) => {
 
   const { checklistId } = useParams();
   const [isAddItemModalDisplaying, setIsAddItemModalDisplaying] =
-    useState(false);
+    useState<boolean>(false);
 
   const [groupName, { isUpdated, data }] = group;
 
-  const openAddItemModal = () => {
+  const openAddItemModal = (): void => {
     setIsAddItemModalDisplaying(true);
   };
 
-  const closeAddItemModal = () => {
+  const closeAddItemModal = (): void => {
     if (isAddItemModalDisplaying) {
       setIsAddItemModalDisplaying(false);
     }
   };
 
-  const handleAddItem: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleAddItem: MouseEventHandler<HTMLButtonElement> = (e): void => {
     e.preventDefault();
     openAddItemModal();
   };

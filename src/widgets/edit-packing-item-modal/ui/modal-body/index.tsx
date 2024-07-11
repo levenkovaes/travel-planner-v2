@@ -78,7 +78,7 @@ const EditPackingItemModalBody: React.FC<EditItemModalProps> = ({
     }
   };
 
-  const handleEditItemIfMatch = () => {
+  const handleEditItemIfMatch = (): void => {
     if (itemMatch) {
       handleEditItem({
         itemName: itemMatch.input.itemName,

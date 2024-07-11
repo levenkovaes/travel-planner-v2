@@ -36,7 +36,7 @@ const AddPackingItemModalBody: React.FC<AddItemModalProps> = ({
 
   const [itemMatch, setItemMatch] = useState<false | IItemMatchData>(false);
 
-  const options = useMemo(() => {
+  const options = useMemo((): string[] | undefined => {
     if (checklist) {
       return Object.keys(checklist.categories);
     }

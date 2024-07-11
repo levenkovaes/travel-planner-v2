@@ -24,36 +24,34 @@ import {
 } from "./styled";
 import { PackingItemProps } from "./types";
 
-export const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
+const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
   const dispatch = useDispatch();
   const { checklistId } = useParams();
 
   const [isEditItemModalDisplaying, setIsEditItemModalDisplaying] =
-    useState(false);
+    useState<boolean>(false);
 
-  const openEditItemModal = () => {
+  const openEditItemModal = (): void => {
     setIsEditItemModalDisplaying(true);
   };
 
-  const closeEditItemModal = () => {
+  const closeEditItemModal = (): void => {
     if (isEditItemModalDisplaying) {
       setIsEditItemModalDisplaying(false);
     }
   };
 
-  const handleCheck = () => {
+  const handleCheck = (): void => {
     dispatch(checkItem({ checklistId, category: groupName, item }));
   };
 
-  const handleDeleteItem = () => {
-    const notify = () =>
-      toast.info("Item has been removed!", {
-        autoClose: 500,
-        hideProgressBar: true,
-        progress: undefined,
-      });
+  const handleDeleteItem = (): void => {
+    toast.info("Item has been removed!", {
+      autoClose: 500,
+      hideProgressBar: true,
+      progress: undefined,
+    });
 
-    notify();
     dispatch(
       deleteItem({
         checklistId,
@@ -93,3 +91,5 @@ export const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
     </>
   );
 };
+
+export default PakingItem;

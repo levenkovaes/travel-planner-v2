@@ -18,14 +18,14 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   value,
   onChange,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const clickRef = React.useRef<HTMLDivElement | null>(null);
 
-  const handleOpen = () => {
+  const handleOpen = (): void => {
     setIsOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     if (isOpen) {
       setIsOpen(false);
     }
@@ -33,7 +33,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 
   useClickOutside(clickRef, handleClose);
 
-  const onOptionClick = (selectedOption: string) => {
+  const onOptionClick = (selectedOption: string): void => {
     value = selectedOption;
     onChange(selectedOption);
     handleClose();

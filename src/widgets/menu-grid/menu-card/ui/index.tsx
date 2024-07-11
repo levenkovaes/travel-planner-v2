@@ -32,7 +32,7 @@ const MenuCard: React.FC<MenuCardProps> = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     switch (title) {
       case CardTitleEnum.Planner:
         const plannerId = nanoid();

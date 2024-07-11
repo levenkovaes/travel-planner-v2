@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -17,30 +17,27 @@ import {
   selectToDoLists,
 } from "../to-do-list/ui/toDoListSlice/toDoListSlice";
 
-const ToDoLists = () => {
+const ToDoLists: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const allToDoLists = useSelector(selectToDoLists);
 
-  const [paragraphContent, setParagraphContent] = useState(
+  const [paragraphContent, setParagraphContent] = useState<string>(
     "You haven't created any to-do list yet"
   );
 
-  const handleDeleteList = (listId: string | null) => {
-    const notify = () =>
+  const handleDeleteList = (listId: string | null): void => {
+    if (listId) {
+      dispatch(deleteToDoList(listId));
       toast.info("Checklist has been removed!", {
         autoClose: 500,
         hideProgressBar: true,
         progress: undefined,
       });
-
-    if (listId) {
-      dispatch(deleteToDoList(listId));
-      notify();
     }
   };
 
-  const namesToDisplay = allToDoLists.map((list) => (
+  const namesToDisplay: ReactElement[] = allToDoLists.map((list) => (
     <ChecklistWrapper key={list.id}>
       <Link onClick={() => navigate(`/to-do-list/${list.id}`)}>
         {list.name}
@@ -54,7 +51,7 @@ const ToDoLists = () => {
     </ChecklistWrapper>
   ));
 
-  const handleDeleteAll = () => {
+  const handleDeleteAll = (): void => {
     dispatch(deleteAllToDoLists());
     setParagraphContent("All checklists have been deleted!");
   };

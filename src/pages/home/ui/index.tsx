@@ -13,10 +13,10 @@ import {
   Section,
 } from "./styled";
 
-const Home = () => {
+const Home: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => navigate("/menu");
+  const handleClick = (): void => navigate("/menu");
 
   return (
     <HomeContainer>

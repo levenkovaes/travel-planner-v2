@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -17,30 +17,27 @@ import {
   ChecklistWrapper,
 } from "./styled";
 
-const PreviousPackingChecklists = () => {
+const PreviousPackingChecklists: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const allChecklists = useSelector(selectChecklists);
 
-  const [paragraphContent, setParagraphContent] = useState(
+  const [paragraphContent, setParagraphContent] = useState<string>(
     "You haven't created any checklist yet"
   );
 
-  const handleDeleteChecklist = (checklistId: string | null) => {
-    const notify = () =>
+  const handleDeleteChecklist = (checklistId: string | null): void => {
+    if (checklistId) {
+      dispatch(deleteChecklist(checklistId));
       toast.info("Checklist has been removed!", {
         autoClose: 500,
         hideProgressBar: true,
         progress: undefined,
       });
-
-    if (checklistId) {
-      dispatch(deleteChecklist(checklistId));
-      notify();
     }
   };
 
-  const namesToDisplay = allChecklists.map((checklist) => (
+  const namesToDisplay: ReactElement[] = allChecklists.map((checklist) => (
     <ChecklistWrapper key={checklist.id}>
       <ChecklistName
         as="a"
@@ -57,7 +54,7 @@ const PreviousPackingChecklists = () => {
     </ChecklistWrapper>
   ));
 
-  const handleDeleteAll = () => {
+  const handleDeleteAll = (): void => {
     dispatch(deleteAllChecklists());
     setParagraphContent("All checklists have been deleted!");
   };

@@ -1,7 +1,7 @@
 import { Heading1, Paragraph } from "../../../shared/ui/typography";
 import { NoPageContainer } from "./styled";
 
-const NoPage = () => {
+const NoPage: React.FC = () => {
   return (
     <NoPageContainer>
       <Heading1>404. PAGE NOT FOUND</Heading1>

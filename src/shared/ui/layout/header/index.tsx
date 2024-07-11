@@ -14,11 +14,11 @@ const Header: React.FC<HeaderProps> = ({ variant }) => {
   const navigate = useNavigate();
   const selectedTheme = useSelector(selectTheme);
 
-  const handleLogoClick = () => {
+  const handleLogoClick = (): void => {
     navigate("/");
   };
 
-  const changeMode = () => {
+  const changeMode = (): void => {
     dispatch(changeTheme());
   };
 

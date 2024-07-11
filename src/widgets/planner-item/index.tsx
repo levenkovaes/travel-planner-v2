@@ -25,17 +25,17 @@ const PlannerItem: React.FC<PlannerItemProps> = ({ item, count }) => {
   const { plannerId } = useParams();
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const clickRef = useRef(null);
+  const clickRef = useRef<HTMLDivElement | null>(null);
 
-  const handleDelete = () => {
+  const handleDelete = (): void => {
     dispatch(deletePlannerItem({ plannerId, itemId: item.id }));
   };
 
-  const openAddItemWidget = () => {
+  const openAddItemWidget = (): void => {
     setIsEditing(true);
   };
 
-  const closeEditItemWidget = () => {
+  const closeEditItemWidget = (): void => {
     setIsEditing((prev) => {
       if (prev) {
         return false;
