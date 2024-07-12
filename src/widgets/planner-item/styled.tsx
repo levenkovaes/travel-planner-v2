@@ -46,6 +46,7 @@ export const PlannerItemCard = styled.div<{ hasPassed: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  height: 100%;
   padding: 20px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.lessContrastBg};
