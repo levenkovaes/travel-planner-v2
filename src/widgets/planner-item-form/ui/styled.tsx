@@ -3,6 +3,7 @@ import styled from "styled-components";
 import MEDIA_QUERY from "../../../shared/constants/styles/media-query";
 import { Button } from "../../../shared/ui/button";
 import { CloseButton } from "../../../shared/ui/modal/styled";
+import { COLORS } from "../../../shared/ui/theme";
 
 export const FormBackdrop = styled.div`
   display: none;
@@ -29,6 +30,18 @@ export const FormContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 376px;
   z-index: 10;
+
+  .rdp-day_selected {
+    background-color: ${COLORS.accentColor};
+  }
+
+  .rdp-button_reset:hover {
+    background-color: ${COLORS.accentDarkColor};
+  }
+
+  .rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+    background-color: #e4f2f1;
+  }
 
   @media ${MEDIA_QUERY.tablet} {
     padding: 20px;
