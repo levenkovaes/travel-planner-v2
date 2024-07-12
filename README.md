@@ -10,6 +10,11 @@ It contains:
 📦 All your data is stored in localStorage.<br>
 🏛️ The architecture of the project is based on the FSD (Feature-Sliced Design) architectural methodology.<br>
 
+## Screenshots
+<details>
+<summary>View images</summary>
+</details>
+
 ## Technologies
 - TypeScript<br>
 - React<br>
