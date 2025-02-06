@@ -10,7 +10,7 @@ const Modal: React.FC<ModalProps> = ({ children, handleClose }) => {
       <ModalBackground onClick={handleClose}></ModalBackground>
 
       <ModalWindow>
-        <CloseButton onClick={handleClose}>
+        <CloseButton aria-label="Close modal" onClick={handleClose}>
           <CloseIcon />
         </CloseButton>
         {children}

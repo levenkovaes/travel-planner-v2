@@ -86,7 +86,7 @@ const ToDoItem: React.FC<{ item: IToDoItem; listId: string }> = ({
 
   return (
     <ToDoItemContainer key={nanoid()}>
-      <CustomCheckbox onClick={handleCheck}>
+      <CustomCheckbox aria-label="Check item" onClick={handleCheck}>
         {item.isChecked ? <CheckedCheckbox /> : <BlankCheckbox />}
       </CustomCheckbox>
 
@@ -125,7 +125,10 @@ const ToDoItem: React.FC<{ item: IToDoItem; listId: string }> = ({
         )}
 
         <ItemButtonContainer isHidden={isEditing}>
-          <TransparentIconButton onClick={handleStartEditItem}>
+          <TransparentIconButton
+            aria-label="Edit item"
+            onClick={handleStartEditItem}
+          >
             <EditIcon />
           </TransparentIconButton>
           <DeleteIconButton handleClick={handleDeleteItem} />

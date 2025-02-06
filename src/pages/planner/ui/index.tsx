@@ -133,7 +133,7 @@ const Planner: React.FC = () => {
           <PlannerContent isEmpty={planner.plannerItems.length === 0}>
             <TimelineContainer>{plannerItems}</TimelineContainer>
             <AddItemContainer isAdding={isAdding} ref={clickRef}>
-              <AddButton onClick={toggleAddItemWidget}>
+              <AddButton aria-label="Add item" onClick={toggleAddItemWidget}>
                 <AddIcon />
               </AddButton>
 

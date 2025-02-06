@@ -105,7 +105,7 @@ const MenuCard: React.FC<MenuCardProps> = ({
       <MenuCardContainer>
         <Heading2>{title}</Heading2>
         <SmallerParagraph>{description}</SmallerParagraph>
-        <CardButton onClick={handleClick}>
+        <CardButton aria-label={`Add ${title}`} onClick={handleClick}>
           <AddIcon />
         </CardButton>
       </MenuCardContainer>

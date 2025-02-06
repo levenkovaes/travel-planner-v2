@@ -24,11 +24,11 @@ const Header: React.FC<HeaderProps> = ({ variant }) => {
 
   return (
     <SHeader variant={variant}>
-      <LogoButton onClick={handleLogoClick}>
+      <LogoButton type="button" aria-label="Logo" onClick={handleLogoClick}>
         <LogoIcon />
       </LogoButton>
 
-      <IconButton onClick={changeMode}>
+      <IconButton aria-label="Change theme" onClick={changeMode}>
         {selectedTheme.name === "light" ? <LightModeIcon /> : <DarkModeIcon />}
       </IconButton>
     </SHeader>
