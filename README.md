@@ -11,10 +11,12 @@ It contains:
 🏛️ The architecture of the project is based on the FSD (Feature-Sliced Design) architectural methodology.<br>
 
 ## Technologies
-- TypeScript<br>
-- React<br>
-- Redux<br>
-- styled-components<br>
+- TypeScript
+- React
+- Redux
+- React Hook Form
+- styled-components
+- SCSS
 
 ## Prerequisites
 - node >= 18.12.1
