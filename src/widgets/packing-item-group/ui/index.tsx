@@ -52,7 +52,7 @@ const PackingItemGroup: React.FC<PackingItemGroupProps> = ({ group }) => {
           <PakingItem key={nanoid()} item={item} groupName={groupName} />
         ))}
 
-        <AddIconContainer onClick={handleAddItem}>
+        <AddIconContainer aria-label="Add item" onClick={handleAddItem}>
           <AddIcon />
         </AddIconContainer>
       </GroupContainer>

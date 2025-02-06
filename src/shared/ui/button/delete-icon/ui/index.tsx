@@ -8,7 +8,7 @@ export const DeleteIconButton: React.FC<DeleteIconButtonProps> = ({
   handleClick,
 }) => {
   return (
-    <TransparentDeleteIconButton onClick={handleClick}>
+    <TransparentDeleteIconButton aria-label="Delete item" onClick={handleClick}>
       <DeleteIcon />
     </TransparentDeleteIconButton>
   );

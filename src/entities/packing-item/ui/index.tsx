@@ -64,7 +64,7 @@ const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
   return (
     <>
       <PakingItemContainer key={nanoid()}>
-        <CustomCheckbox onClick={handleCheck}>
+        <CustomCheckbox aria-label="Check item" onClick={handleCheck}>
           {item.isChecked ? <CheckedCheckbox /> : <BlankCheckbox />}
         </CustomCheckbox>
         <ItemWrapper>
@@ -73,7 +73,10 @@ const PakingItem: React.FC<PackingItemProps> = ({ item, groupName }) => {
           </SmallerParagraph>
 
           <PakingItemButtonContainer>
-            <TransparentIconButton onClick={openEditItemModal}>
+            <TransparentIconButton
+              aria-label="Edit item"
+              onClick={openEditItemModal}
+            >
               <EditIcon />
             </TransparentIconButton>
             <DeleteIconButton handleClick={handleDeleteItem} />

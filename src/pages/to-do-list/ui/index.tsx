@@ -129,7 +129,7 @@ const ToDoList: React.FC = () => {
       {toDoList && (
         <>
           <ListContainer> {listItems}</ListContainer>
-          <AddIconContainer onClick={handleAddItem}>
+          <AddIconContainer aria-label="Add item" onClick={handleAddItem}>
             <AddIcon />
           </AddIconContainer>
           <TransparentLongButton isDelete onClick={openRemoveCheckmarksModal}>
