@@ -1,16 +1,22 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Layout from "../shared/ui/layout";
-import Home from "./home/ui";
-import Menu from "./menu/ui";
-import NoPage from "./no-page/ui";
-import PackingChecklistCreation from "./packing-checklist-creation/ui";
-import PackingChecklist from "./packing-checklist/ui";
-import Planner from "./planner/ui";
-import Planners from "./planners/ui";
-import PreviousPackingChecklists from "./previous-packing-checklists/ui";
-import ToDoLists from "./previous-to-do-lists";
-import ToDoList from "./to-do-list/ui";
+
+const Home = lazy(() => import("./home/ui"));
+const Menu = lazy(() => import("./menu/ui"));
+const NoPage = lazy(() => import("./no-page/ui"));
+const PackingChecklistCreation = lazy(
+  () => import("./packing-checklist-creation/ui")
+);
+const PackingChecklist = lazy(() => import("./packing-checklist/ui"));
+const Planner = lazy(() => import("./planner/ui"));
+const Planners = lazy(() => import("./planners/ui"));
+const PreviousPackingChecklists = lazy(
+  () => import("./previous-packing-checklists/ui")
+);
+const ToDoLists = lazy(() => import("./previous-to-do-lists"));
+const ToDoList = lazy(() => import("./to-do-list/ui"));
 
 const Pages: React.FC = () => (
   <Routes>

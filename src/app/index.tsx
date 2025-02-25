@@ -1,11 +1,12 @@
 import "react-day-picker/dist/style.css";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
 import { Slide, ToastContainer } from "react-toastify";
 import { ThemeProvider } from "styled-components";
 
 import Pages from "../pages";
+import Loading from "../shared/ui/loading";
 import { selectTheme } from "../shared/ui/theme/themeSlice/themeSlice";
 
 const App: React.FC = () => {
@@ -14,7 +15,9 @@ const App: React.FC = () => {
   return (
     <React.Fragment>
       <ThemeProvider theme={selectedTheme}>
-        <Pages />
+        <Suspense fallback={<Loading />}>
+          <Pages />
+        </Suspense>
       </ThemeProvider>
 
       <ToastContainer
