@@ -2,9 +2,11 @@ import SFooter, { FooterParagraph } from "./styled";
 import FooterProps from "./types";
 
 const Footer: React.FC<FooterProps> = ({ variant }) => {
+  const year = new Date().getFullYear();
+
   return (
     <SFooter variant={variant}>
-      <FooterParagraph>© 2024. All Rights Reserved.</FooterParagraph>
+      <FooterParagraph>© {year}. All Rights Reserved.</FooterParagraph>
     </SFooter>
   );
 };

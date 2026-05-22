@@ -1,6 +1,6 @@
-@import "./common/variables";
-@import "./common/normalizecss";
-@import "./common/toast";
+@use "./common/variables";
+@use "./common/normalizecss";
+@use "./common/toast";
 
 @font-face {
   font-family: "Roboto";
