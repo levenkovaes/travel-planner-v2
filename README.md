@@ -48,4 +48,4 @@ Travel Planner is still in progress. Future updates and features are planned.
 
 ## License
 This project is licensed under the MIT license <br> 
-Copyright © 2024 [Ekaterina Levenkova](https://github.com/levenkovaes)
+Copyright © 2026 [Ekaterina Levenkova](https://github.com/levenkovaes)
